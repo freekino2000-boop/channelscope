@@ -391,7 +391,8 @@ main { flex: 1; width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 24px 
 }
 .platform-icon-youtube { background: linear-gradient(135deg, var(--red), var(--red-soft)); }
 .platform-icon-tiktok { background: linear-gradient(135deg, #25f4ee, #fe2c55); }
-.platform-icon-facebook { background: linear-gradient(135deg, #1877f2, #0a4fb5); font-weight: 900; }
+.platform-icon-facebook { background: linear-gradient(135deg, #0064e0, #6d3ce8); }
+.platform-icon svg { display: block; }
 .platform-icon-instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
 .platform-name { font-size: 19px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
 .platform-desc { font-size: 13.5px; color: var(--text-dim); line-height: 1.5; }
