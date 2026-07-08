@@ -1,0 +1,10 @@
+{
+  "name": "channelscope",
+  "version": "1.0.0",
+  "private": true,
+  "description": "채널스코프 — 유튜브/틱톡 크리에이터 탐색기",
+  "main": "server.js",
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}

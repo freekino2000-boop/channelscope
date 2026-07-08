@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>채널스코프 — 유튜브 채널 탐색기</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#/" id="logo">
+      <span class="logo-mark">▶</span>
+      <span class="logo-text">채널스코프</span>
+    </a>
+    <div class="search-wrap">
+      <input id="search-input" type="search" placeholder="채널 이름, 핸들, 카테고리 검색..." autocomplete="off" />
+      <button id="search-btn" title="검색">🔍</button>
+    </div>
+    <span class="mode-badge" id="mode-badge"></span>
+  </header>
+
+  <main id="app">
+    <!-- 목록 뷰 -->
+    <section id="list-view">
+      <div class="hero">
+        <h1>국내 채널 대시보드</h1>
+        <p>대한민국으로 확인된 채널만 구독자 순으로 정렬한 유튜브 백데이터</p>
+      </div>
+
+      <div class="controls">
+        <nav class="tier-tabs" id="tier-tabs">
+          <button class="tab active" data-tier="">전체</button>
+          <button class="tab tab-rising" data-tier="rising">🚀 급상승</button>
+          <button class="tab" data-tier="mega">💎 메가 <small>500만+</small></button>
+          <button class="tab" data-tier="large">🏆 대형 <small>100만+</small></button>
+          <button class="tab" data-tier="medium">⭐ 중형 <small>10만+</small></button>
+          <button class="tab" data-tier="small">🌱 소형</button>
+        </nav>
+        <select id="cat-select">
+          <option value="">모든 카테고리</option>
+        </select>
+        <select id="sort-select">
+          <option value="subscribers">구독자순</option>
+          <option value="views">총 조회수순</option>
+          <option value="growth">성장률순</option>
+          <option value="newest">최신 개설순</option>
+        </select>
+        <span class="export-links">
+          <a class="export-xlsx" href="/api/export.xlsx" download title="현재 백엔드 데이터를 정리한 엑셀 파일로 다운로드">📊 엑셀 다운로드</a>
+          <a href="/api/export.csv" download title="수집한 채널 전체를 CSV로 다운로드">📥 CSV</a>
+          <a href="/api/export.json" download title="수집한 채널 전체를 JSON으로 다운로드">📥 JSON</a>
+        </span>
+      </div>
+
+      <div id="result-info" class="result-info"></div>
+      <div id="channel-grid" class="channel-grid"></div>
+    </section>
+
+    <!-- 상세 뷰 -->
+    <section id="detail-view" hidden></section>
+  </main>
+
+  <footer class="footer">
+    채널스코프 · API 키 없이 유튜브 공개 웹 응답 기반으로 동작 · 수집 데이터는 엑셀/CSV/JSON으로 내보낼 수 있습니다
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

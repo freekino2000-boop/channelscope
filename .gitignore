@@ -1,0 +1,7 @@
+node_modules/
+data/pool.json
+data/pool-tiktok.json
+*.xlsx
+채널스코프.html
+npm-debug.log*
+.DS_Store
