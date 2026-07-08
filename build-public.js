@@ -58,7 +58,8 @@ function topVideoLikes(ch) {
 }
 
 // 개별 댓글(author/text)은 절대 포함하지 않음 — commentSentiment(집계 %)만 유지
-const channels = pool.channels.filter((c) => c.country === DOMESTIC_COUNTRY).map((c) => {
+const PUBLIC_CHANNEL_CAP = Number(process.env.PUBLIC_CHANNEL_CAP || 15000); // GitHub 100MB 제한 방지 — 공개본은 상위 채널만, 전체는 로컬 버전·엑셀에서 제공
+const allChannels = pool.channels.filter((c) => c.country === DOMESTIC_COUNTRY).map((c) => {
   const t = tierOf(c.subscribers);
   const [color1, color2] = colorsFor(c.id);
   return {
@@ -73,13 +74,17 @@ const channels = pool.channels.filter((c) => c.country === DOMESTIC_COUNTRY).map
     commentSentiment: c.commentSentiment || null,
   };
 });
+const totalChannelCount = allChannels.length;
+const totalSubscribers = allChannels.reduce((s, c) => s + (c.subscribers || 0), 0);
+const totalViews = allChannels.reduce((s, c) => s + (c.totalViews || 0), 0);
+const channels = allChannels.slice().sort((a, b) => (b.subscribers || 0) - (a.subscribers || 0)).slice(0, PUBLIC_CHANNEL_CAP);
 
 const catCount = {};
 for (const c of channels) catCount[c.category] = (catCount[c.category] || 0) + 1;
 const categories = Object.keys(catCount).filter(Boolean).sort((a, b) => catCount[b] - catCount[a]);
 const tierCount = { mega: 0, large: 0, medium: 0, small: 0, rising: 0 };
 for (const c of channels) { tierCount[c.tier]++; if (c.rising) tierCount.rising++; }
-const dataJson = JSON.stringify({ channels, categories, tierCount, updatedAt: pool.updatedAt })
+const dataJson = JSON.stringify({ channels, categories, tierCount, updatedAt: pool.updatedAt, totalChannelCount, totalSubscribers, totalViews, cap: PUBLIC_CHANNEL_CAP })
   .replace(/</g, '\\u003c');
 
 const tiktokCreators = (tiktokPool.creators || []).filter((c) => c.domestic).map((c) => {
@@ -430,9 +435,9 @@ function animateStat(el, target){
 }
 
 function renderLanding(){
-  const ySubs=DATA.channels.reduce((s,c)=>s+(c.subscribers||0),0);
-  const yViews=DATA.channels.reduce((s,c)=>s+(c.totalViews||0),0);
-  animateStat($('.platform-stat-value[data-stat="channels"]'), DATA.channels.length);
+  const ySubs=DATA.totalSubscribers ?? DATA.channels.reduce((s,c)=>s+(c.subscribers||0),0);
+  const yViews=DATA.totalViews ?? DATA.channels.reduce((s,c)=>s+(c.totalViews||0),0);
+  animateStat($('.platform-stat-value[data-stat="channels"]'), DATA.totalChannelCount ?? DATA.channels.length);
   animateStat($('.platform-stat-value[data-stat="subs"]'), ySubs);
   animateStat($('.platform-stat-value[data-stat="views"]'), yViews);
 
@@ -593,7 +598,7 @@ ${css}
     <div class="landing-updated" id="landing-updated"></div>
   </section>
   <section id="list-view" hidden>
-    <div class="hero"><h1>국내 채널 대시보드</h1><p>대한민국으로 확인된 채널만 구독자 순으로 정렬한 공개 배포본</p></div>
+    <div class="hero"><h1>국내 채널 대시보드</h1><p>대한민국으로 확인된 채널만 구독자 순으로 정렬한 공개 배포본 · 용량 제한으로 구독자 상위 ${PUBLIC_CHANNEL_CAP.toLocaleString('ko-KR')}개까지만 표시 (전체 데이터는 로컬 버전에서 확인 가능)</p></div>
     <div class="controls">
       <nav class="tier-tabs" id="tier-tabs">
         <button class="tab active" data-tier="">전체</button>
