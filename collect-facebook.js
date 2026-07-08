@@ -1,20 +1,20 @@
 /**
- * collect-threads.js
- * 한국 관련 검색어로 스레드(Threads) 크리에이터를 찾아 채널 단위 통계(팔로워수·스레드수)만 수집합니다.
- * 로그인 없이 검색·프로필 조회가 모두 가능하지만, 세션을 오래 쓰면 조용히 막힐 수 있어
- * 틱톡과 동일하게 배치마다 브라우저를 새로 띄운다.
+ * collect-facebook.js
+ * 한국 관련 해시태그로 페이스북 크리에이터/페이지를 찾아 채널 단위 통계(팔로워/좋아하는 사람 수)만 수집합니다.
+ * 검색은 로그인이 필요해 완전히 막혀있고, 해시태그 피드도 로그인 없이는 노출되는 게시물이 적어
+ * (해시태그 대부분 0~1건) 다른 플랫폼보다 수집 효율이 낮습니다 — 가능한 범위 내 최대치를 노립니다.
  *
- * 실행: node collect-threads.js
- *   TARGET_ADD=500 node collect-threads.js
+ * 실행: node collect-facebook.js
+ *   TARGET_ADD=500 node collect-facebook.js
  */
 const fs = require('fs');
 const path = require('path');
-const { withBrowser, searchUsers, getUserProfile } = require('./scraper-threads');
+const { withBrowser, discoverUsers, getUserProfile } = require('./scraper-facebook');
 
-const POOL_PATH = path.join(__dirname, 'data', 'pool-threads.json');
+const POOL_PATH = path.join(__dirname, 'data', 'pool-facebook.json');
 const TARGET_ADD = Number(process.env.TARGET_ADD || 300);
 const CONCURRENCY = Number(process.env.CONCURRENCY || 3);
-const SAVE_EVERY = 10;
+const SAVE_EVERY = 5;
 const BATCH_SIZE = Number(process.env.BATCH_SIZE || 40);
 
 const BASE_TOPICS = [
@@ -43,20 +43,25 @@ const REGIONS = [
   '서울', '부산', '대구', '인천', '광주', '대전', '울산', '제주', '경기',
   '강원', '충북', '충남', '전북', '전남', '경북', '경남', '세종',
 ];
-const PREFIXES = ['한국', '국내', '대한민국', 'Korean'];
-const SUFFIXES = ['스레드', '크리에이터', '인플루언서', '추천', '브이로그', '챌린지', '일상'];
+const PREFIXES = ['한국', '국내', '대한민국'];
+const SUFFIXES = ['일상', '인플루언서', '추천', '크리에이터'];
 
 function unique(values) {
   return [...new Set(values.map((v) => String(v || '').trim()).filter(Boolean))];
+}
+
+// 해시태그(지역/접두/접미가 붙은 조합)에서 원래 기본 주제만 추출해 카테고리로 사용
+function categoryFromQuery(query) {
+  return BASE_TOPICS.find((topic) => query.includes(topic)) || query;
 }
 
 function buildQueryPlan(tried) {
   const plan = [];
   for (const topic of BASE_TOPICS) {
     plan.push(topic);
-    for (const suffix of SUFFIXES) plan.push(`${topic} ${suffix}`);
-    for (const prefix of PREFIXES) plan.push(`${prefix} ${topic}`);
-    for (const region of REGIONS) plan.push(`${region} ${topic}`);
+    for (const suffix of SUFFIXES) plan.push(`${topic}${suffix}`);
+    for (const prefix of PREFIXES) plan.push(`${prefix}${topic}`);
+    for (const region of REGIONS) plan.push(`${region}${topic}`);
   }
   return unique(plan).filter((q) => !tried.has(q));
 }
@@ -83,8 +88,8 @@ async function run() {
   const newIds = [];
 
   const queries = buildQueryPlan(triedQueries);
-  console.log(`[스레드수집] 현재 ${originalCount}개, 추가 목표 ${TARGET_ADD}개, 후보 검색어 ${queries.length}개`);
-  if (!queries.length) { console.log('[스레드수집] 새 검색어가 없습니다.'); return; }
+  console.log(`[페이스북수집] 현재 ${originalCount}개, 추가 목표 ${TARGET_ADD}개, 후보 해시태그 ${queries.length}개`);
+  if (!queries.length) { console.log('[페이스북수집] 새 해시태그가 없습니다.'); return; }
 
   let idx = 0;
   let processed = 0;
@@ -95,16 +100,16 @@ async function run() {
       async function worker() {
         while (batchIdx < batchEnd && newIds.length < TARGET_ADD) {
           const query = queries[batchIdx++];
-          let handles = [];
-          try { handles = await searchUsers(context, query); } catch { handles = []; }
+          let paths = [];
+          try { paths = await discoverUsers(context, query); } catch { paths = []; }
           triedQueries.add(query);
-          for (const handle of handles) {
-            if (found.has(handle) || newIds.length >= TARGET_ADD) continue;
-            const profile = await getUserProfile(context, handle);
+          for (const p of paths) {
+            if (found.has(p) || newIds.length >= TARGET_ADD) continue;
+            const profile = await getUserProfile(context, p);
             if (!profile) continue;
             if (!looksKorean(profile)) continue; // 한국 관련성 없는 크리에이터는 저장하지 않고 버림
-            found.set(handle, { ...profile, category: query, domestic: true, collectedAt: new Date().toISOString() });
-            newIds.push(handle);
+            found.set(p, { ...profile, category: categoryFromQuery(query), domestic: true, collectedAt: new Date().toISOString() });
+            newIds.push(p);
           }
           processed++;
           if (processed % SAVE_EVERY === 0 || newIds.length >= TARGET_ADD) {
@@ -112,7 +117,7 @@ async function run() {
             pool.triedQueries = [...triedQueries];
             pool.updatedAt = Date.now();
             save(pool);
-            console.log(`[스레드수집] 검색어 ${processed}/${queries.length}, 새 크리에이터 ${newIds.length}/${TARGET_ADD}, 누적 ${found.size}개`);
+            console.log(`[페이스북수집] 해시태그 ${processed}/${queries.length}, 새 크리에이터 ${newIds.length}/${TARGET_ADD}, 누적 ${found.size}개`);
           }
         }
       }
@@ -125,7 +130,7 @@ async function run() {
   pool.triedQueries = [...triedQueries];
   pool.updatedAt = Date.now();
   save(pool);
-  console.log(`[스레드수집] 완료: 기존 ${originalCount}개 → 현재 ${found.size}개 (+${found.size - originalCount}개, 전부 국내 추정)`);
+  console.log(`[페이스북수집] 완료: 기존 ${originalCount}개 → 현재 ${found.size}개 (+${found.size - originalCount}개, 전부 국내 추정)`);
 }
 
-run().then(() => process.exit(0)).catch((e) => { console.error('[스레드수집] 오류:', e.message); process.exit(1); });
+run().then(() => process.exit(0)).catch((e) => { console.error('[페이스북수집] 오류:', e.message); process.exit(1); });

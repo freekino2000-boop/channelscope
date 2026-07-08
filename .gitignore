@@ -1,7 +1,7 @@
 node_modules/
 data/pool.json
 data/pool-tiktok.json
-data/pool-threads.json
+data/pool-facebook.json
 data/pool-instagram.json
 *.xlsx
 채널스코프.html

@@ -15,9 +15,9 @@ const TIKTOK_POOL_PATH = path.join(DIR, 'data', 'pool-tiktok.json');
 const tiktokPool = fs.existsSync(TIKTOK_POOL_PATH)
   ? JSON.parse(fs.readFileSync(TIKTOK_POOL_PATH, 'utf8'))
   : { creators: [], updatedAt: null };
-const THREADS_POOL_PATH = path.join(DIR, 'data', 'pool-threads.json');
-const threadsPool = fs.existsSync(THREADS_POOL_PATH)
-  ? JSON.parse(fs.readFileSync(THREADS_POOL_PATH, 'utf8'))
+const FACEBOOK_POOL_PATH = path.join(DIR, 'data', 'pool-facebook.json');
+const facebookPool = fs.existsSync(FACEBOOK_POOL_PATH)
+  ? JSON.parse(fs.readFileSync(FACEBOOK_POOL_PATH, 'utf8'))
   : { creators: [], updatedAt: null };
 const INSTAGRAM_POOL_PATH = path.join(DIR, 'data', 'pool-instagram.json');
 const instagramPool = fs.existsSync(INSTAGRAM_POOL_PATH)
@@ -94,20 +94,20 @@ const tiktokCategories = Object.keys(tiktokCatCount).filter(Boolean).sort((a, b)
 const tiktokJson = JSON.stringify({ creators: tiktokCreators, categories: tiktokCategories, updatedAt: tiktokPool.updatedAt })
   .replace(/</g, '\\u003c');
 
-const threadsCreators = (threadsPool.creators || []).filter((c) => c.domestic).map((c) => {
+const facebookCreators = (facebookPool.creators || []).filter((c) => c.domestic).map((c) => {
   const [color1, color2] = colorsFor(c.uniqueId);
   const t = tierOf(c.followerCount);
   return {
     uniqueId: c.uniqueId, nickname: c.nickname || '', bio: c.bio || '',
     avatarUrl: c.avatarUrl || '', followerCount: c.followerCount ?? null,
-    threadCount: c.threadCount ?? null, profileUrl: c.profileUrl || `https://www.threads.net/@${c.uniqueId}`,
+    likeCount: c.likeCount ?? null, profileUrl: c.profileUrl || `https://www.facebook.com/${c.uniqueId}`,
     category: c.category || '', tier: t.key, tierLabel: t.label, color1, color2,
   };
 });
-const threadsCatCount = {};
-for (const c of threadsCreators) threadsCatCount[c.category] = (threadsCatCount[c.category] || 0) + 1;
-const threadsCategories = Object.keys(threadsCatCount).filter(Boolean).sort((a, b) => threadsCatCount[b] - threadsCatCount[a]);
-const threadsJson = JSON.stringify({ creators: threadsCreators, categories: threadsCategories, updatedAt: threadsPool.updatedAt })
+const facebookCatCount = {};
+for (const c of facebookCreators) facebookCatCount[c.category] = (facebookCatCount[c.category] || 0) + 1;
+const facebookCategories = Object.keys(facebookCatCount).filter(Boolean).sort((a, b) => facebookCatCount[b] - facebookCatCount[a]);
+const facebookJson = JSON.stringify({ creators: facebookCreators, categories: facebookCategories, updatedAt: facebookPool.updatedAt })
   .replace(/</g, '\\u003c');
 
 const instagramCreators = (instagramPool.creators || []).filter((c) => c.domestic).map((c) => {
@@ -130,7 +130,7 @@ const instagramJson = JSON.stringify({ creators: instagramCreators, categories: 
 const appJs = String.raw`
 const DATA = window.__CHANNELS__;
 const TIKTOK = window.__TIKTOK__;
-const THREADS = window.__THREADS__;
+const FACEBOOK = window.__FACEBOOK__;
 const INSTAGRAM = window.__INSTAGRAM__;
 const $ = (s) => document.querySelector(s);
 const grid = $('#channel-grid');
@@ -140,8 +140,8 @@ const listView = $('#list-view');
 const detailView = $('#detail-view');
 const tiktokView = $('#tiktok-view');
 const tiktokDetailView = $('#tiktok-detail-view');
-const threadsView = $('#threads-view');
-const threadsDetailView = $('#threads-detail-view');
+const facebookView = $('#facebook-view');
+const facebookDetailView = $('#facebook-detail-view');
 const instagramView = $('#instagram-view');
 const instagramDetailView = $('#instagram-detail-view');
 const searchInput = $('#search-input');
@@ -149,10 +149,10 @@ const searchWrap = $('#search-wrap');
 const modeBadge = $('#mode-badge');
 const state = { q: '', tier: '', sort: 'subscribers', cat: '' };
 const tiktokState = { q: '', sort: 'followers', cat: '', tier: '' };
-const threadsState = { q: '', sort: 'followers', cat: '', tier: '' };
+const facebookState = { q: '', sort: 'followers', cat: '', tier: '' };
 const instagramState = { q: '', sort: 'followers', cat: '', tier: '' };
 
-function allSections(){ return [landingView, listView, detailView, tiktokView, tiktokDetailView, threadsView, threadsDetailView, instagramView, instagramDetailView]; }
+function allSections(){ return [landingView, listView, detailView, tiktokView, tiktokDetailView, facebookView, facebookDetailView, instagramView, instagramDetailView]; }
 function showOnly(section){ allSections().forEach((s)=>{ if(s) s.hidden = s!==section; }); }
 
 function fmt(n){ if(n==null)return '-'; if(n>=1e8)return (n/1e8).toFixed(n>=1e9?0:1).replace(/\.0$/,'')+'억'; if(n>=1e4)return (n/1e4).toFixed(n>=1e6?0:1).replace(/\.0$/,'')+'만'; if(n>=1e3)return n.toLocaleString('ko-KR'); return String(n); }
@@ -313,53 +313,53 @@ function renderTiktokDetail(c){
 
 function fillTiktokCategories(){ const sel=$('#tiktok-cat-select'); sel.innerHTML='<option value="">모든 카테고리</option>'; for(const c of TIKTOK.categories){ const o=document.createElement('option'); o.value=c; o.textContent=c+' ('+TIKTOK.creators.filter((x)=>x.category===c).length+')'; sel.appendChild(o);} }
 
-function threadsTierBadge(c){ const cls={mega:'badge-mega',large:'badge-large',medium:'badge-medium',small:'badge-small'}[c.tier]||'badge-small'; return '<span class="badge '+cls+'">'+esc(c.tierLabel)+'</span>'; }
+function facebookTierBadge(c){ const cls={mega:'badge-mega',large:'badge-large',medium:'badge-medium',small:'badge-small'}[c.tier]||'badge-small'; return '<span class="badge '+cls+'">'+esc(c.tierLabel)+'</span>'; }
 
-function threadsCardHtml(c){
-  return '<article class="channel-card threads-card" data-id="'+esc(c.uniqueId)+'">'+
+function facebookCardHtml(c){
+  return '<article class="channel-card facebook-card" data-id="'+esc(c.uniqueId)+'">'+
     '<div class="mini-home"><div class="mini-banner" style="background:'+grad(c)+'">'+
-      '<div class="card-badges">'+threadsTierBadge(c)+'</div>'+
-      '<div class="mini-avatar" style="'+(c.avatarUrl?'':'background:'+grad(c,45))+'">'+(c.avatarUrl?'<img src="'+esc(c.avatarUrl)+'" alt="">':'@')+'</div>'+
+      '<div class="card-badges">'+facebookTierBadge(c)+'</div>'+
+      '<div class="mini-avatar" style="'+(c.avatarUrl?'':'background:'+grad(c,45))+'">'+(c.avatarUrl?'<img src="'+esc(c.avatarUrl)+'" alt="">':'f')+'</div>'+
     '</div></div>'+
     '<div class="card-body"><div class="card-name">'+esc(c.nickname||c.uniqueId)+'</div>'+
       '<div class="card-handle">@'+esc(c.uniqueId)+(c.category?' · '+esc(c.category):'')+'</div>'+
-      '<div class="card-stats"><span>팔로워 <b>'+fmt(c.followerCount)+'</b></span><span>스레드 <b>'+fmt(c.threadCount)+'</b></span></div>'+
+      '<div class="card-stats"><span>팔로워 <b>'+fmt(c.followerCount)+'</b></span><span>좋아요 <b>'+fmt(c.likeCount)+'</b></span></div>'+
     '</div></article>';
 }
-function bindThreadsCards(root){ root.querySelectorAll('.threads-card').forEach((c)=>c.addEventListener('click',()=>{location.hash='#/threads/creator/'+encodeURIComponent(c.dataset.id);})); }
+function bindFacebookCards(root){ root.querySelectorAll('.facebook-card').forEach((c)=>c.addEventListener('click',()=>{location.hash='#/facebook/creator/'+encodeURIComponent(c.dataset.id);})); }
 
-function renderThreadsGrid(){
-  const tgrid=$('#threads-grid'); const tinfo=$('#threads-result-info');
-  let list=THREADS.creators.slice();
-  if(threadsState.q){ const n=threadsState.q.toLowerCase(); list=list.filter((c)=>(c.nickname||'').toLowerCase().includes(n)||(c.uniqueId||'').toLowerCase().includes(n)||(c.category||'').toLowerCase().includes(n)); }
-  if(threadsState.cat) list=list.filter((c)=>c.category===threadsState.cat);
-  if(threadsState.tier) list=list.filter((c)=>c.tier===threadsState.tier);
-  if(threadsState.sort==='threads') list.sort((a,b)=>(b.threadCount||0)-(a.threadCount||0));
+function renderFacebookGrid(){
+  const tgrid=$('#facebook-grid'); const tinfo=$('#facebook-result-info');
+  let list=FACEBOOK.creators.slice();
+  if(facebookState.q){ const n=facebookState.q.toLowerCase(); list=list.filter((c)=>(c.nickname||'').toLowerCase().includes(n)||(c.uniqueId||'').toLowerCase().includes(n)||(c.category||'').toLowerCase().includes(n)); }
+  if(facebookState.cat) list=list.filter((c)=>c.category===facebookState.cat);
+  if(facebookState.tier) list=list.filter((c)=>c.tier===facebookState.tier);
+  if(facebookState.sort==='facebook') list.sort((a,b)=>(b.likeCount||0)-(a.likeCount||0));
   else list.sort((a,b)=>(b.followerCount||0)-(a.followerCount||0));
 
-  const tierName={'':'전체',mega:'메가',large:'대형',medium:'중형',small:'소형'}[threadsState.tier];
-  let info=tierName+' 크리에이터 '+list.length+'명'; if(threadsState.cat)info+=' · '+threadsState.cat; if(threadsState.q)info+=' · "'+threadsState.q+'" 검색';
+  const tierName={'':'전체',mega:'메가',large:'대형',medium:'중형',small:'소형'}[facebookState.tier];
+  let info=tierName+' 크리에이터 '+list.length+'명'; if(facebookState.cat)info+=' · '+facebookState.cat; if(facebookState.q)info+=' · "'+facebookState.q+'" 검색';
   tinfo.textContent=info;
   if(!list.length){ tgrid.innerHTML='<div class="empty">조건에 맞는 크리에이터가 없습니다 😢</div>'; return; }
-  tgrid.innerHTML=list.map(threadsCardHtml).join('');
-  bindThreadsCards(tgrid);
+  tgrid.innerHTML=list.map(facebookCardHtml).join('');
+  bindFacebookCards(tgrid);
 }
 
-function renderThreadsDetail(c){
-  threadsDetailView.innerHTML=
-    '<button class="back-btn" onclick="location.hash='+"'#/threads'"+'">← 목록으로</button>'+
+function renderFacebookDetail(c){
+  facebookDetailView.innerHTML=
+    '<button class="back-btn" onclick="location.hash='+"'#/facebook'"+'">← 목록으로</button>'+
     '<div class="detail-banner" style="background:'+grad(c)+'"></div>'+
-    '<div class="detail-head"><div class="detail-avatar" style="'+(c.avatarUrl?'':'background:'+grad(c,45))+'">'+(c.avatarUrl?'<img src="'+esc(c.avatarUrl)+'" alt="">':'@')+'</div>'+
-      '<div class="detail-title"><h2>'+esc(c.nickname||c.uniqueId)+' '+threadsTierBadge(c)+'</h2><div class="card-handle">@'+esc(c.uniqueId)+(c.category?' · '+esc(c.category):'')+'</div></div></div>'+
+    '<div class="detail-head"><div class="detail-avatar" style="'+(c.avatarUrl?'':'background:'+grad(c,45))+'">'+(c.avatarUrl?'<img src="'+esc(c.avatarUrl)+'" alt="">':'f')+'</div>'+
+      '<div class="detail-title"><h2>'+esc(c.nickname||c.uniqueId)+' '+facebookTierBadge(c)+'</h2><div class="card-handle">@'+esc(c.uniqueId)+(c.category?' · '+esc(c.category):'')+'</div></div></div>'+
     '<p class="detail-desc">'+esc(c.bio)+'</p>'+
     '<div class="stat-row">'+
       '<div class="stat-box"><div class="label">팔로워</div><div class="value">'+fmt(c.followerCount)+'</div></div>'+
-      '<div class="stat-box"><div class="label">스레드 수</div><div class="value">'+fmt(c.threadCount)+'</div></div>'+
+      '<div class="stat-box"><div class="label">좋아요 수</div><div class="value">'+fmt(c.likeCount)+'</div></div>'+
     '</div>'+
-    '<h3 class="section-title">🔗 스레드에서 열기</h3><div class="video-list"><a class="video-item" href="'+esc(c.profileUrl)+'" target="_blank" rel="noopener"><div class="video-rank top">▶</div><div class="video-meta"><div class="video-title">스레드에서 이 크리에이터 프로필 열기</div><div class="video-sub"><span>개별 스레드 본문은 파일럿 범위에서 미지원</span></div></div></a></div>';
+    '<h3 class="section-title">🔗 페이스북에서 열기</h3><div class="video-list"><a class="video-item" href="'+esc(c.profileUrl)+'" target="_blank" rel="noopener"><div class="video-rank top">▶</div><div class="video-meta"><div class="video-title">페이스북에서 이 크리에이터 프로필 열기</div><div class="video-sub"><span>개별 게시물 본문은 파일럿 범위에서 미지원</span></div></div></a></div>';
 }
 
-function fillThreadsCategories(){ const sel=$('#threads-cat-select'); sel.innerHTML='<option value="">모든 카테고리</option>'; for(const c of THREADS.categories){ const o=document.createElement('option'); o.value=c; o.textContent=c+' ('+THREADS.creators.filter((x)=>x.category===c).length+')'; sel.appendChild(o);} }
+function fillFacebookCategories(){ const sel=$('#facebook-cat-select'); sel.innerHTML='<option value="">모든 카테고리</option>'; for(const c of FACEBOOK.categories){ const o=document.createElement('option'); o.value=c; o.textContent=c+' ('+FACEBOOK.creators.filter((x)=>x.category===c).length+')'; sel.appendChild(o);} }
 
 function instagramTierBadge(c){ const cls={mega:'badge-mega',large:'badge-large',medium:'badge-medium',small:'badge-small'}[c.tier]||'badge-small'; return '<span class="badge '+cls+'">'+esc(c.tierLabel)+'</span>'; }
 
@@ -436,11 +436,11 @@ function renderLanding(){
   animateStat($('.platform-stat-value[data-stat="followers"]'), tFollowers);
   animateStat($('.platform-stat-value[data-stat="hearts"]'), tHearts);
 
-  const thFollowers=THREADS.creators.reduce((s,c)=>s+(c.followerCount||0),0);
-  const thThreads=THREADS.creators.reduce((s,c)=>s+(c.threadCount||0),0);
-  animateStat($('.platform-stat-value[data-stat="th-creators"]'), THREADS.creators.length);
-  animateStat($('.platform-stat-value[data-stat="th-followers"]'), thFollowers);
-  animateStat($('.platform-stat-value[data-stat="th-threads"]'), thThreads);
+  const thFollowers=FACEBOOK.creators.reduce((s,c)=>s+(c.followerCount||0),0);
+  const thFacebook=FACEBOOK.creators.reduce((s,c)=>s+(c.likeCount||0),0);
+  animateStat($('.platform-stat-value[data-stat="fb-creators"]'), FACEBOOK.creators.length);
+  animateStat($('.platform-stat-value[data-stat="fb-followers"]'), thFollowers);
+  animateStat($('.platform-stat-value[data-stat="fb-likes"]'), thFacebook);
 
   const iFollowers=INSTAGRAM.creators.reduce((s,c)=>s+(c.followerCount||0),0);
   const iPosts=INSTAGRAM.creators.reduce((s,c)=>s+(c.postCount||0),0);
@@ -448,7 +448,7 @@ function renderLanding(){
   animateStat($('.platform-stat-value[data-stat="ig-followers"]'), iFollowers);
   animateStat($('.platform-stat-value[data-stat="ig-posts"]'), iPosts);
 
-  const times=[DATA.updatedAt, TIKTOK.updatedAt, THREADS.updatedAt, INSTAGRAM.updatedAt].filter(Boolean);
+  const times=[DATA.updatedAt, TIKTOK.updatedAt, FACEBOOK.updatedAt, INSTAGRAM.updatedAt].filter(Boolean);
   const latest=times.length?new Date(Math.max(...times.map((t)=>new Date(t).getTime()))):null;
   $('#landing-updated').textContent=latest?'마지막 데이터 갱신: '+latest.getFullYear()+'년 '+(latest.getMonth()+1)+'월 '+latest.getDate()+'일 '+String(latest.getHours()).padStart(2,'0')+':'+String(latest.getMinutes()).padStart(2,'0'):'';
 }
@@ -457,7 +457,7 @@ function setChrome(view){
   searchWrap.hidden = view!=='youtube';
   if(view==='youtube') modeBadge.textContent='🌐 공개 배포본 · '+fmt(DATA.channels.length)+'개 채널';
   else if(view==='tiktok') modeBadge.textContent='🌐 공개 배포본 · '+fmt(TIKTOK.creators.length)+'명 크리에이터 (파일럿)';
-  else if(view==='threads') modeBadge.textContent='🌐 공개 배포본 · '+fmt(THREADS.creators.length)+'명 크리에이터 (파일럿)';
+  else if(view==='facebook') modeBadge.textContent='🌐 공개 배포본 · '+fmt(FACEBOOK.creators.length)+'명 크리에이터 (파일럿)';
   else if(view==='instagram') modeBadge.textContent='🌐 공개 배포본 · '+fmt(INSTAGRAM.creators.length)+'명 크리에이터 (파일럿)';
   else modeBadge.textContent='🌐 공개 배포본 (댓글 원문 비공개)';
 }
@@ -480,13 +480,13 @@ function route(){
     window.scrollTo(0,0); return;
   }
   if(hash==='#/tiktok'){ showOnly(tiktokView); setChrome('tiktok'); renderTiktokGrid(); return; }
-  if((m=hash.match(/^#\/threads\/creator\/(.+)$/))){
-    const id=decodeURIComponent(m[1]); const c=THREADS.creators.find((x)=>x.uniqueId===id);
-    showOnly(threadsDetailView); setChrome('threads');
-    if(c)renderThreadsDetail(c); else threadsDetailView.innerHTML='<button class="back-btn" onclick="location.hash='+"'#/threads'"+'">← 목록으로</button><div class="empty">크리에이터를 찾을 수 없습니다.</div>';
+  if((m=hash.match(/^#\/facebook\/creator\/(.+)$/))){
+    const id=decodeURIComponent(m[1]); const c=FACEBOOK.creators.find((x)=>x.uniqueId===id);
+    showOnly(facebookDetailView); setChrome('facebook');
+    if(c)renderFacebookDetail(c); else facebookDetailView.innerHTML='<button class="back-btn" onclick="location.hash='+"'#/facebook'"+'">← 목록으로</button><div class="empty">크리에이터를 찾을 수 없습니다.</div>';
     window.scrollTo(0,0); return;
   }
-  if(hash==='#/threads'){ showOnly(threadsView); setChrome('threads'); renderThreadsGrid(); return; }
+  if(hash==='#/facebook'){ showOnly(facebookView); setChrome('facebook'); renderFacebookGrid(); return; }
   if((m=hash.match(/^#\/instagram\/creator\/(.+)$/))){
     const id=decodeURIComponent(m[1]); const c=INSTAGRAM.creators.find((x)=>x.uniqueId===id);
     showOnly(instagramDetailView); setChrome('instagram');
@@ -510,9 +510,9 @@ $('#tiktok-tier-tabs').addEventListener('click',(e)=>{ const b=e.target.closest(
 $('#tiktok-sort-select').addEventListener('change',(e)=>{ tiktokState.sort=e.target.value; renderTiktokGrid(); });
 $('#tiktok-cat-select').addEventListener('change',(e)=>{ tiktokState.cat=e.target.value; renderTiktokGrid(); });
 
-$('#threads-tier-tabs').addEventListener('click',(e)=>{ const b=e.target.closest('.tab'); if(!b)return; $('#threads-tier-tabs').querySelectorAll('.tab').forEach((t)=>t.classList.remove('active')); b.classList.add('active'); threadsState.tier=b.dataset.tier; renderThreadsGrid(); });
-$('#threads-sort-select').addEventListener('change',(e)=>{ threadsState.sort=e.target.value; renderThreadsGrid(); });
-$('#threads-cat-select').addEventListener('change',(e)=>{ threadsState.cat=e.target.value; renderThreadsGrid(); });
+$('#facebook-tier-tabs').addEventListener('click',(e)=>{ const b=e.target.closest('.tab'); if(!b)return; $('#facebook-tier-tabs').querySelectorAll('.tab').forEach((t)=>t.classList.remove('active')); b.classList.add('active'); facebookState.tier=b.dataset.tier; renderFacebookGrid(); });
+$('#facebook-sort-select').addEventListener('change',(e)=>{ facebookState.sort=e.target.value; renderFacebookGrid(); });
+$('#facebook-cat-select').addEventListener('change',(e)=>{ facebookState.cat=e.target.value; renderFacebookGrid(); });
 
 $('#instagram-tier-tabs').addEventListener('click',(e)=>{ const b=e.target.closest('.tab'); if(!b)return; $('#instagram-tier-tabs').querySelectorAll('.tab').forEach((t)=>t.classList.remove('active')); b.classList.add('active'); instagramState.tier=b.dataset.tier; renderInstagramGrid(); });
 $('#instagram-sort-select').addEventListener('change',(e)=>{ instagramState.sort=e.target.value; renderInstagramGrid(); });
@@ -520,7 +520,7 @@ $('#instagram-cat-select').addEventListener('change',(e)=>{ instagramState.cat=e
 
 window.addEventListener('hashchange',route);
 
-fillCategories(); fillTiktokCategories(); fillThreadsCategories(); fillInstagramCategories(); route();
+fillCategories(); fillTiktokCategories(); fillFacebookCategories(); fillInstagramCategories(); route();
 `;
 
 const html = `<!DOCTYPE html>
@@ -563,14 +563,14 @@ ${css}
           <div class="platform-stat"><div class="platform-stat-value" data-stat="hearts">0</div><div class="platform-stat-label">좋아요 합계</div></div>
         </div>
       </a>
-      <a class="platform-card" href="#/threads" id="platform-threads">
-        <div class="platform-icon platform-icon-threads">@</div>
-        <div class="platform-name">스레드 <span class="badge badge-pilot">파일럿</span></div>
-        <div class="platform-desc">국내 추정 크리에이터 팔로워·스레드수 통계 (게시물 본문 미지원)</div>
-        <div class="platform-stat-row" id="platform-threads-stats">
-          <div class="platform-stat"><div class="platform-stat-value" data-stat="th-creators">0</div><div class="platform-stat-label">크리에이터 수</div></div>
-          <div class="platform-stat"><div class="platform-stat-value" data-stat="th-followers">0</div><div class="platform-stat-label">팔로워 합계</div></div>
-          <div class="platform-stat"><div class="platform-stat-value" data-stat="th-threads">0</div><div class="platform-stat-label">스레드 합계</div></div>
+      <a class="platform-card" href="#/facebook" id="platform-facebook">
+        <div class="platform-icon platform-icon-facebook">f</div>
+        <div class="platform-name">페이스북 <span class="badge badge-pilot">파일럿</span></div>
+        <div class="platform-desc">국내 추정 크리에이터 팔로워·좋아요수 통계 (게시물 본문 미지원)</div>
+        <div class="platform-stat-row" id="platform-facebook-stats">
+          <div class="platform-stat"><div class="platform-stat-value" data-stat="fb-creators">0</div><div class="platform-stat-label">크리에이터 수</div></div>
+          <div class="platform-stat"><div class="platform-stat-value" data-stat="fb-followers">0</div><div class="platform-stat-label">팔로워 합계</div></div>
+          <div class="platform-stat"><div class="platform-stat-value" data-stat="fb-likes">0</div><div class="platform-stat-label">좋아요 합계</div></div>
         </div>
       </a>
       <a class="platform-card" href="#/instagram" id="platform-instagram">
@@ -621,23 +621,23 @@ ${css}
     <div id="tiktok-grid" class="channel-grid"></div>
   </section>
   <section id="tiktok-detail-view" hidden></section>
-  <section id="threads-view" hidden>
-    <div class="hero"><h1>스레드 크리에이터 <span class="badge badge-pilot">파일럿</span></h1><p>국내 추정 크리에이터를 팔로워 순으로 정렬 (개별 스레드 본문은 미지원)</p></div>
+  <section id="facebook-view" hidden>
+    <div class="hero"><h1>페이스북 크리에이터 <span class="badge badge-pilot">파일럿</span></h1><p>국내 추정 크리에이터를 팔로워 순으로 정렬 (개별 게시물 본문은 미지원)</p></div>
     <div class="controls">
-      <nav class="tier-tabs" id="threads-tier-tabs">
+      <nav class="tier-tabs" id="facebook-tier-tabs">
         <button class="tab active" data-tier="">전체</button>
         <button class="tab" data-tier="mega">💎 메가 <small>500만+</small></button>
         <button class="tab" data-tier="large">🏆 대형 <small>100만+</small></button>
         <button class="tab" data-tier="medium">⭐ 중형 <small>10만+</small></button>
         <button class="tab" data-tier="small">🌱 소형</button>
       </nav>
-      <select id="threads-cat-select"><option value="">모든 카테고리</option></select>
-      <select id="threads-sort-select"><option value="followers">팔로워순</option><option value="threads">스레드수순</option></select>
+      <select id="facebook-cat-select"><option value="">모든 카테고리</option></select>
+      <select id="facebook-sort-select"><option value="followers">팔로워순</option><option value="facebook">좋아요순</option></select>
     </div>
-    <div id="threads-result-info" class="result-info"></div>
-    <div id="threads-grid" class="channel-grid"></div>
+    <div id="facebook-result-info" class="result-info"></div>
+    <div id="facebook-grid" class="channel-grid"></div>
   </section>
-  <section id="threads-detail-view" hidden></section>
+  <section id="facebook-detail-view" hidden></section>
   <section id="instagram-view" hidden>
     <div class="hero"><h1>인스타그램 크리에이터 <span class="badge badge-pilot">파일럿</span></h1><p>국내 추정 크리에이터를 팔로워 순으로 정렬 (게시물 본문은 미지원)</p></div>
     <div class="controls">
@@ -659,7 +659,7 @@ ${css}
 <footer class="footer">채널스코프 대시보드 · 공개 배포본(개별 댓글 원문 비공개) · GitHub Pages</footer>
 <script>window.__CHANNELS__ = ${dataJson};</script>
 <script>window.__TIKTOK__ = ${tiktokJson};</script>
-<script>window.__THREADS__ = ${threadsJson};</script>
+<script>window.__FACEBOOK__ = ${facebookJson};</script>
 <script>window.__INSTAGRAM__ = ${instagramJson};</script>
 <script>${appJs}</script>
 </body>
@@ -669,5 +669,5 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 const outPath = path.join(OUT_DIR, 'index.html');
 fs.writeFileSync(outPath, html);
 console.log('생성:', outPath, '(' + (html.length / 1024 / 1024).toFixed(2) + 'MB)');
-console.log('채널:', channels.length, '| 틱톡:', tiktokCreators.length, '명 | 스레드:', threadsCreators.length, '명 | 인스타그램:', instagramCreators.length, '명');
+console.log('채널:', channels.length, '| 틱톡:', tiktokCreators.length, '명 | 페이스북:', facebookCreators.length, '명 | 인스타그램:', instagramCreators.length, '명');
 console.log('※ 개별 댓글(작성자·내용)은 이 배포본에 포함되지 않음 — 댓글 감성분석 %만 포함');

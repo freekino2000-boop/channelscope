@@ -63,6 +63,8 @@ async function getUserProfile(context, uniqueId) {
     if (!detail || detail.statusCode !== 0) return null;
     const u = detail.userInfo.user;
     const s = detail.userInfo.stats;
+    const s2 = detail.userInfo.statsV2 || {}; // 문자열로 된 큰 수 — stats(32비트)는 대형 계정에서 오버플로/음수가 남
+    const bigCount = (v2, v1) => { const n = Number(v2); return Number.isFinite(n) && n >= 0 ? n : (v1 ?? null); };
     return {
       id: u.id,
       uniqueId: u.uniqueId,
@@ -73,10 +75,10 @@ async function getUserProfile(context, uniqueId) {
       privateAccount: !!u.privateAccount,
       language: u.language || '',
       createdAt: u.createTime ? new Date(u.createTime * 1000).toISOString().slice(0, 10) : null,
-      followerCount: s.followerCount ?? null,
-      followingCount: s.followingCount ?? null,
-      heartCount: s.heartCount ?? null,
-      videoCount: s.videoCount ?? null,
+      followerCount: bigCount(s2.followerCount, s.followerCount),
+      followingCount: bigCount(s2.followingCount, s.followingCount),
+      heartCount: bigCount(s2.heartCount, s.heartCount),
+      videoCount: bigCount(s2.videoCount, s.videoCount),
       profileUrl: `https://www.tiktok.com/@${u.uniqueId}`,
     };
   } catch {

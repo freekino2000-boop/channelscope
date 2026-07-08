@@ -49,6 +49,11 @@ function unique(values) {
   return [...new Set(values.map((v) => String(v || '').trim()).filter(Boolean))];
 }
 
+// 해시태그(지역/접두/접미가 붙은 조합)에서 원래 기본 주제만 추출해 카테고리로 사용
+function categoryFromQuery(query) {
+  return BASE_TOPICS.find((topic) => query.includes(topic)) || query;
+}
+
 function buildQueryPlan(tried) {
   const plan = [];
   for (const topic of BASE_TOPICS) {
@@ -102,7 +107,7 @@ async function run() {
             const profile = await getUserProfile(context, handle);
             if (!profile) continue;
             if (!looksKorean(profile)) continue; // 한국 관련성 없는 크리에이터는 저장하지 않고 버림
-            found.set(handle, { ...profile, category: query, domestic: true, collectedAt: new Date().toISOString() });
+            found.set(handle, { ...profile, category: categoryFromQuery(query), domestic: true, collectedAt: new Date().toISOString() });
             newIds.push(handle);
           }
           processed++;
