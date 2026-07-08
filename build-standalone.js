@@ -11,6 +11,7 @@ const os = require('os');
 const { buildBackendWorkbook } = require('./export-workbook');
 const { buildTiktokWorkbook } = require('./export-workbook-tiktok');
 const { buildThreadsWorkbook } = require('./export-workbook-threads');
+const { buildInstagramWorkbook } = require('./export-workbook-instagram');
 
 const DIR = __dirname;
 const pool = JSON.parse(fs.readFileSync(path.join(DIR, 'data', 'pool.json'), 'utf8'));
@@ -22,10 +23,15 @@ const THREADS_POOL_PATH = path.join(DIR, 'data', 'pool-threads.json');
 const threadsPool = fs.existsSync(THREADS_POOL_PATH)
   ? JSON.parse(fs.readFileSync(THREADS_POOL_PATH, 'utf8'))
   : { creators: [], updatedAt: null };
+const INSTAGRAM_POOL_PATH = path.join(DIR, 'data', 'pool-instagram.json');
+const instagramPool = fs.existsSync(INSTAGRAM_POOL_PATH)
+  ? JSON.parse(fs.readFileSync(INSTAGRAM_POOL_PATH, 'utf8'))
+  : { creators: [], updatedAt: null };
 const css = fs.readFileSync(path.join(DIR, 'public', 'style.css'), 'utf8');
 const XLSX_NAME = '채널스코프_백데이터.xlsx';
 const TIKTOK_XLSX_NAME = '채널스코프_틱톡_백데이터.xlsx';
 const THREADS_XLSX_NAME = '채널스코프_스레드_백데이터.xlsx';
+const INSTAGRAM_XLSX_NAME = '채널스코프_인스타그램_백데이터.xlsx';
 const DOMESTIC_COUNTRY = '대한민국';
 
 // ----- 서버와 동일한 등급/색상 로직 -----
@@ -123,6 +129,27 @@ for (const c of threadsCreators) threadsTierCount[c.tier]++;
 const threadsJson = JSON.stringify({ creators: threadsCreators, categories: threadsCategories, tierCount: threadsTierCount, updatedAt: threadsPool.updatedAt })
   .replace(/</g, '\\u003c');
 const threadsWorkbookBuffer = buildThreadsWorkbook(threadsCreators, { updatedAt: threadsPool.updatedAt });
+
+// ----- 인스타그램 (파일럿: 채널 단위 통계만, 게시물 본문 없음) -----
+const instagramCreators = (instagramPool.creators || []).filter((c) => c.domestic).map((c) => {
+  const [color1, color2] = colorsFor(c.uniqueId);
+  const t = tierOf(c.followerCount);
+  return {
+    uniqueId: c.uniqueId, nickname: c.nickname || '', bio: c.bio || '',
+    avatarUrl: c.avatarUrl || '', followerCount: c.followerCount ?? null,
+    followingCount: c.followingCount ?? null, postCount: c.postCount ?? null,
+    profileUrl: c.profileUrl || `https://www.instagram.com/${c.uniqueId}/`,
+    category: c.category || '', tier: t.key, tierLabel: t.label, color1, color2,
+  };
+});
+const instagramCatCount = {};
+for (const c of instagramCreators) instagramCatCount[c.category] = (instagramCatCount[c.category] || 0) + 1;
+const instagramCategories = Object.keys(instagramCatCount).filter(Boolean).sort((a, b) => instagramCatCount[b] - instagramCatCount[a]);
+const instagramTierCount = { mega: 0, large: 0, medium: 0, small: 0 };
+for (const c of instagramCreators) instagramTierCount[c.tier]++;
+const instagramJson = JSON.stringify({ creators: instagramCreators, categories: instagramCategories, tierCount: instagramTierCount, updatedAt: instagramPool.updatedAt })
+  .replace(/</g, '\\u003c');
+const instagramWorkbookBuffer = buildInstagramWorkbook(instagramCreators, { updatedAt: instagramPool.updatedAt });
 const workbookBuffer = buildBackendWorkbook(channels, {
   updatedAt: pool.updatedAt,
   sourceMode: 'offline',
@@ -133,6 +160,7 @@ const appJs = String.raw`
 const DATA = window.__CHANNELS__;
 const TIKTOK = window.__TIKTOK__;
 const THREADS = window.__THREADS__;
+const INSTAGRAM = window.__INSTAGRAM__;
 const $ = (s) => document.querySelector(s);
 const grid = $('#channel-grid');
 const resultInfo = $('#result-info');
@@ -143,15 +171,18 @@ const tiktokView = $('#tiktok-view');
 const tiktokDetailView = $('#tiktok-detail-view');
 const threadsView = $('#threads-view');
 const threadsDetailView = $('#threads-detail-view');
+const instagramView = $('#instagram-view');
+const instagramDetailView = $('#instagram-detail-view');
 const searchInput = $('#search-input');
 const searchWrap = $('#search-wrap');
 const modeBadge = $('#mode-badge');
 const state = { q: '', tier: '', sort: 'subscribers', cat: '' };
 const tiktokState = { q: '', sort: 'followers', cat: '', tier: '' };
 const threadsState = { q: '', sort: 'followers', cat: '', tier: '' };
+const instagramState = { q: '', sort: 'followers', cat: '', tier: '' };
 const COMMENT_LIMIT = ${COMMENT_LIMIT};
 
-function allSections(){ return [landingView, listView, detailView, tiktokView, tiktokDetailView, threadsView, threadsDetailView]; }
+function allSections(){ return [landingView, listView, detailView, tiktokView, tiktokDetailView, threadsView, threadsDetailView, instagramView, instagramDetailView]; }
 function showOnly(section){ allSections().forEach((s)=>{ if(s) s.hidden = s!==section; }); }
 
 function fmt(n){ if(n==null)return '-'; if(n>=1e8)return (n/1e8).toFixed(n>=1e9?0:1).replace(/\.0$/,'')+'억'; if(n>=1e4)return (n/1e4).toFixed(n>=1e6?0:1).replace(/\.0$/,'')+'만'; if(n>=1e3)return n.toLocaleString('ko-KR'); return String(n); }
@@ -376,6 +407,56 @@ function renderThreadsDetail(c){
 
 function fillThreadsCategories(){ const sel=$('#threads-cat-select'); sel.innerHTML='<option value="">모든 카테고리</option>'; for(const c of THREADS.categories){ const o=document.createElement('option'); o.value=c; o.textContent=c+' ('+THREADS.creators.filter((x)=>x.category===c).length+')'; sel.appendChild(o);} }
 
+// ---- 인스타그램 카드/그리드/상세 ----
+function instagramTierBadge(c){ const cls={mega:'badge-mega',large:'badge-large',medium:'badge-medium',small:'badge-small'}[c.tier]||'badge-small'; return '<span class="badge '+cls+'">'+esc(c.tierLabel)+'</span>'; }
+
+function instagramCardHtml(c){
+  return '<article class="channel-card instagram-card" data-id="'+esc(c.uniqueId)+'">'+
+    '<div class="mini-home"><div class="mini-banner" style="background:'+grad(c)+'">'+
+      '<div class="card-badges">'+instagramTierBadge(c)+'</div>'+
+      '<div class="mini-avatar" style="'+(c.avatarUrl?'':'background:'+grad(c,45))+'">'+(c.avatarUrl?'<img src="'+esc(c.avatarUrl)+'" alt="">':'📷')+'</div>'+
+    '</div></div>'+
+    '<div class="card-body"><div class="card-name">'+esc(c.nickname||c.uniqueId)+'</div>'+
+      '<div class="card-handle">@'+esc(c.uniqueId)+(c.category?' · '+esc(c.category):'')+'</div>'+
+      '<div class="card-stats"><span>팔로워 <b>'+fmt(c.followerCount)+'</b></span><span>게시물 <b>'+fmt(c.postCount)+'</b></span></div>'+
+    '</div></article>';
+}
+function bindInstagramCards(root){ root.querySelectorAll('.instagram-card').forEach((c)=>c.addEventListener('click',()=>{location.hash='#/instagram/creator/'+encodeURIComponent(c.dataset.id);})); }
+
+function renderInstagramGrid(){
+  const tgrid=$('#instagram-grid'); const tinfo=$('#instagram-result-info');
+  let list=INSTAGRAM.creators.slice();
+  if(instagramState.q){ const n=instagramState.q.toLowerCase(); list=list.filter((c)=>(c.nickname||'').toLowerCase().includes(n)||(c.uniqueId||'').toLowerCase().includes(n)||(c.category||'').toLowerCase().includes(n)); }
+  if(instagramState.cat) list=list.filter((c)=>c.category===instagramState.cat);
+  if(instagramState.tier) list=list.filter((c)=>c.tier===instagramState.tier);
+  if(instagramState.sort==='posts') list.sort((a,b)=>(b.postCount||0)-(a.postCount||0));
+  else list.sort((a,b)=>(b.followerCount||0)-(a.followerCount||0));
+
+  const tierName={'':'전체',mega:'메가',large:'대형',medium:'중형',small:'소형'}[instagramState.tier];
+  let info=tierName+' 크리에이터 '+list.length+'명'; if(instagramState.cat)info+=' · '+instagramState.cat; if(instagramState.q)info+=' · "'+instagramState.q+'" 검색';
+  tinfo.textContent=info;
+  if(!list.length){ tgrid.innerHTML='<div class="empty">조건에 맞는 크리에이터가 없습니다 😢</div>'; return; }
+  tgrid.innerHTML=list.map(instagramCardHtml).join('');
+  bindInstagramCards(tgrid);
+}
+
+function renderInstagramDetail(c){
+  instagramDetailView.innerHTML=
+    '<button class="back-btn" onclick="location.hash='+"'#/instagram'"+'">← 목록으로</button>'+
+    '<div class="detail-banner" style="background:'+grad(c)+'"></div>'+
+    '<div class="detail-head"><div class="detail-avatar" style="'+(c.avatarUrl?'':'background:'+grad(c,45))+'">'+(c.avatarUrl?'<img src="'+esc(c.avatarUrl)+'" alt="">':'📷')+'</div>'+
+      '<div class="detail-title"><h2>'+esc(c.nickname||c.uniqueId)+' '+instagramTierBadge(c)+'</h2><div class="card-handle">@'+esc(c.uniqueId)+(c.category?' · '+esc(c.category):'')+'</div></div></div>'+
+    '<p class="detail-desc">'+esc(c.bio)+'</p>'+
+    '<div class="stat-row">'+
+      '<div class="stat-box"><div class="label">팔로워</div><div class="value">'+fmt(c.followerCount)+'</div></div>'+
+      '<div class="stat-box"><div class="label">팔로잉</div><div class="value">'+fmt(c.followingCount)+'</div></div>'+
+      '<div class="stat-box"><div class="label">게시물 수</div><div class="value">'+fmt(c.postCount)+'</div></div>'+
+    '</div>'+
+    '<h3 class="section-title">🔗 인스타그램에서 열기</h3><div class="video-list"><a class="video-item" href="'+esc(c.profileUrl)+'" target="_blank" rel="noopener"><div class="video-rank top">▶</div><div class="video-meta"><div class="video-title">인스타그램에서 이 크리에이터 프로필 열기</div><div class="video-sub"><span>개별 게시물 본문은 파일럿 범위에서 미지원</span></div></div></a></div>';
+}
+
+function fillInstagramCategories(){ const sel=$('#instagram-cat-select'); sel.innerHTML='<option value="">모든 카테고리</option>'; for(const c of INSTAGRAM.categories){ const o=document.createElement('option'); o.value=c; o.textContent=c+' ('+INSTAGRAM.creators.filter((x)=>x.category===c).length+')'; sel.appendChild(o);} }
+
 // ---- 랜딩 ----
 function animateStat(el, target){
   if(el.dataset.animated===String(target))return; // 같은 값이면 재애니메이션 생략
@@ -409,17 +490,24 @@ function renderLanding(){
   animateStat($('.platform-stat-value[data-stat="th-followers"]'), thFollowers);
   animateStat($('.platform-stat-value[data-stat="th-threads"]'), thThreads);
 
-  const times=[DATA.updatedAt, TIKTOK.updatedAt, THREADS.updatedAt].filter(Boolean);
+  const iFollowers=INSTAGRAM.creators.reduce((s,c)=>s+(c.followerCount||0),0);
+  const iPosts=INSTAGRAM.creators.reduce((s,c)=>s+(c.postCount||0),0);
+  animateStat($('.platform-stat-value[data-stat="ig-creators"]'), INSTAGRAM.creators.length);
+  animateStat($('.platform-stat-value[data-stat="ig-followers"]'), iFollowers);
+  animateStat($('.platform-stat-value[data-stat="ig-posts"]'), iPosts);
+
+  const times=[DATA.updatedAt, TIKTOK.updatedAt, THREADS.updatedAt, INSTAGRAM.updatedAt].filter(Boolean);
   const latest=times.length?new Date(Math.max(...times.map((t)=>new Date(t).getTime()))):null;
   $('#landing-updated').textContent=latest?'마지막 데이터 갱신: '+latest.getFullYear()+'년 '+(latest.getMonth()+1)+'월 '+latest.getDate()+'일 '+String(latest.getHours()).padStart(2,'0')+':'+String(latest.getMinutes()).padStart(2,'0'):'';
 }
 
 function setChrome(view){
-  // view: 'landing' | 'youtube' | 'tiktok' | 'threads'
+  // view: 'landing' | 'youtube' | 'tiktok' | 'threads' | 'instagram'
   searchWrap.hidden = view!=='youtube';
   if(view==='youtube') modeBadge.textContent='💾 오프라인 · '+fmt(DATA.channels.length)+'개 채널';
   else if(view==='tiktok') modeBadge.textContent='💾 오프라인 · '+fmt(TIKTOK.creators.length)+'명 크리에이터 (파일럿)';
   else if(view==='threads') modeBadge.textContent='💾 오프라인 · '+fmt(THREADS.creators.length)+'명 크리에이터 (파일럿)';
+  else if(view==='instagram') modeBadge.textContent='💾 오프라인 · '+fmt(INSTAGRAM.creators.length)+'명 크리에이터 (파일럿)';
   else modeBadge.textContent='💾 오프라인 저장본';
 }
 
@@ -450,6 +538,13 @@ function route(){
     window.scrollTo(0,0); return;
   }
   if(hash==='#/threads'){ showOnly(threadsView); setChrome('threads'); renderThreadsGrid(); return; }
+  if((m=hash.match(/^#\/instagram\/creator\/(.+)$/))){
+    const id=decodeURIComponent(m[1]); const c=INSTAGRAM.creators.find((x)=>x.uniqueId===id);
+    showOnly(instagramDetailView); setChrome('instagram');
+    if(c)renderInstagramDetail(c); else instagramDetailView.innerHTML='<button class="back-btn" onclick="location.hash='+"'#/instagram'"+'">← 목록으로</button><div class="empty">크리에이터를 찾을 수 없습니다.</div>';
+    window.scrollTo(0,0); return;
+  }
+  if(hash==='#/instagram'){ showOnly(instagramView); setChrome('instagram'); renderInstagramGrid(); return; }
   location.hash='#/';
 }
 
@@ -470,9 +565,13 @@ $('#threads-tier-tabs').addEventListener('click',(e)=>{ const b=e.target.closest
 $('#threads-sort-select').addEventListener('change',(e)=>{ threadsState.sort=e.target.value; renderThreadsGrid(); });
 $('#threads-cat-select').addEventListener('change',(e)=>{ threadsState.cat=e.target.value; renderThreadsGrid(); });
 
+$('#instagram-tier-tabs').addEventListener('click',(e)=>{ const b=e.target.closest('.tab'); if(!b)return; $('#instagram-tier-tabs').querySelectorAll('.tab').forEach((t)=>t.classList.remove('active')); b.classList.add('active'); instagramState.tier=b.dataset.tier; renderInstagramGrid(); });
+$('#instagram-sort-select').addEventListener('change',(e)=>{ instagramState.sort=e.target.value; renderInstagramGrid(); });
+$('#instagram-cat-select').addEventListener('change',(e)=>{ instagramState.cat=e.target.value; renderInstagramGrid(); });
+
 window.addEventListener('hashchange',route);
 
-fillCategories(); fillTiktokCategories(); fillThreadsCategories(); route();
+fillCategories(); fillTiktokCategories(); fillThreadsCategories(); fillInstagramCategories(); route();
 `;
 
 const html = `<!DOCTYPE html>
@@ -523,6 +622,16 @@ ${css}
           <div class="platform-stat"><div class="platform-stat-value" data-stat="th-creators">0</div><div class="platform-stat-label">크리에이터 수</div></div>
           <div class="platform-stat"><div class="platform-stat-value" data-stat="th-followers">0</div><div class="platform-stat-label">팔로워 합계</div></div>
           <div class="platform-stat"><div class="platform-stat-value" data-stat="th-threads">0</div><div class="platform-stat-label">스레드 합계</div></div>
+        </div>
+      </a>
+      <a class="platform-card" href="#/instagram" id="platform-instagram">
+        <div class="platform-icon platform-icon-instagram">📷</div>
+        <div class="platform-name">인스타그램 <span class="badge badge-pilot">파일럿</span></div>
+        <div class="platform-desc">국내 추정 크리에이터 팔로워·게시물수 통계 (게시물 본문 미지원)</div>
+        <div class="platform-stat-row" id="platform-instagram-stats">
+          <div class="platform-stat"><div class="platform-stat-value" data-stat="ig-creators">0</div><div class="platform-stat-label">크리에이터 수</div></div>
+          <div class="platform-stat"><div class="platform-stat-value" data-stat="ig-followers">0</div><div class="platform-stat-label">팔로워 합계</div></div>
+          <div class="platform-stat"><div class="platform-stat-value" data-stat="ig-posts">0</div><div class="platform-stat-label">게시물 합계</div></div>
         </div>
       </a>
     </div>
@@ -583,11 +692,30 @@ ${css}
     <div id="threads-grid" class="channel-grid"></div>
   </section>
   <section id="threads-detail-view" hidden></section>
+  <section id="instagram-view" hidden>
+    <div class="hero"><h1>인스타그램 크리에이터 <span class="badge badge-pilot">파일럿</span></h1><p>국내 추정 크리에이터를 팔로워 순으로 정렬 (게시물 본문은 미지원)</p></div>
+    <div class="controls">
+      <nav class="tier-tabs" id="instagram-tier-tabs">
+        <button class="tab active" data-tier="">전체</button>
+        <button class="tab" data-tier="mega">💎 메가 <small>500만+</small></button>
+        <button class="tab" data-tier="large">🏆 대형 <small>100만+</small></button>
+        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+</small></button>
+        <button class="tab" data-tier="small">🌱 소형</button>
+      </nav>
+      <select id="instagram-cat-select"><option value="">모든 카테고리</option></select>
+      <select id="instagram-sort-select"><option value="followers">팔로워순</option><option value="posts">게시물수순</option></select>
+      <span class="export-links"><a class="export-xlsx" href="./${INSTAGRAM_XLSX_NAME}" download title="인스타그램 크리에이터 백데이터만 엑셀 파일로 다운로드">📊 엑셀 다운로드</a></span>
+    </div>
+    <div id="instagram-result-info" class="result-info"></div>
+    <div id="instagram-grid" class="channel-grid"></div>
+  </section>
+  <section id="instagram-detail-view" hidden></section>
 </main>
 <footer class="footer">채널스코프 대시보드 · 백엔드 수집 데이터를 파일에 내장 · 서버 없이 동작</footer>
 <script>window.__CHANNELS__ = ${dataJson};</script>
 <script>window.__TIKTOK__ = ${tiktokJson};</script>
 <script>window.__THREADS__ = ${threadsJson};</script>
+<script>window.__INSTAGRAM__ = ${instagramJson};</script>
 <script>${appJs}</script>
 </body>
 </html>`;
@@ -597,6 +725,7 @@ for (const out of [path.join(DIR, '채널스코프.html'), path.join(os.homedir(
   fs.writeFileSync(path.join(path.dirname(out), XLSX_NAME), workbookBuffer);
   fs.writeFileSync(path.join(path.dirname(out), TIKTOK_XLSX_NAME), tiktokWorkbookBuffer);
   fs.writeFileSync(path.join(path.dirname(out), THREADS_XLSX_NAME), threadsWorkbookBuffer);
+  fs.writeFileSync(path.join(path.dirname(out), INSTAGRAM_XLSX_NAME), instagramWorkbookBuffer);
   console.log('생성:', out, '(' + (html.length / 1024 / 1024).toFixed(2) + 'MB)');
 }
 console.log('채널:', channels.length, '| 카테고리:', categories.length,
@@ -606,3 +735,5 @@ console.log('틱톡:', tiktokCreators.length, '명 |', TIKTOK_XLSX_NAME,
   '(' + (tiktokWorkbookBuffer.length / 1024 / 1024).toFixed(2) + 'MB)');
 console.log('스레드:', threadsCreators.length, '명 |', THREADS_XLSX_NAME,
   '(' + (threadsWorkbookBuffer.length / 1024 / 1024).toFixed(2) + 'MB)');
+console.log('인스타그램:', instagramCreators.length, '명 |', INSTAGRAM_XLSX_NAME,
+  '(' + (instagramWorkbookBuffer.length / 1024 / 1024).toFixed(2) + 'MB)');
