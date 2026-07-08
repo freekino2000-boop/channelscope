@@ -1,19 +1,21 @@
 /**
- * collect-tiktok.js
- * 한국 관련 검색어로 틱톡 크리에이터를 찾아 채널 단위 통계(팔로워수·좋아요합계·영상수 등)만 수집합니다.
- * 헤드리스 브라우저(Playwright)를 사용하며, 영상 목록/댓글은 안티봇에 막혀 수집하지 않습니다(파일럿 범위).
+ * collect-threads.js
+ * 한국 관련 검색어로 스레드(Threads) 크리에이터를 찾아 채널 단위 통계(팔로워수·스레드수)만 수집합니다.
+ * 로그인 없이 검색·프로필 조회가 모두 가능하지만, 세션을 오래 쓰면 조용히 막힐 수 있어
+ * 틱톡과 동일하게 배치마다 브라우저를 새로 띄운다.
  *
- * 실행: node collect-tiktok.js
- *   TARGET_ADD=500 node collect-tiktok.js   (추가 목표 채널 수, 기본 300)
+ * 실행: node collect-threads.js
+ *   TARGET_ADD=500 node collect-threads.js
  */
 const fs = require('fs');
 const path = require('path');
-const { withBrowser, searchUsers, getUserProfile } = require('./scraper-tiktok');
+const { withBrowser, searchUsers, getUserProfile } = require('./scraper-threads');
 
-const POOL_PATH = path.join(__dirname, 'data', 'pool-tiktok.json');
+const POOL_PATH = path.join(__dirname, 'data', 'pool-threads.json');
 const TARGET_ADD = Number(process.env.TARGET_ADD || 300);
 const CONCURRENCY = Number(process.env.CONCURRENCY || 3);
 const SAVE_EVERY = 10;
+const BATCH_SIZE = Number(process.env.BATCH_SIZE || 40);
 
 const BASE_TOPICS = [
   '먹방', '요리', '게임', '브이로그', '여행', '홈트레이닝', '축구', '야구', '골프',
@@ -42,7 +44,7 @@ const REGIONS = [
   '강원', '충북', '충남', '전북', '전남', '경북', '경남', '세종',
 ];
 const PREFIXES = ['한국', '국내', '대한민국', 'Korean'];
-const SUFFIXES = ['틱톡', '크리에이터', '인플루언서', '추천', '브이로그', '챌린지', '일상'];
+const SUFFIXES = ['스레드', '크리에이터', '인플루언서', '추천', '브이로그', '챌린지', '일상'];
 
 function unique(values) {
   return [...new Set(values.map((v) => String(v || '').trim()).filter(Boolean))];
@@ -61,7 +63,7 @@ function buildQueryPlan(tried) {
 
 function looksKorean(profile) {
   const text = `${profile.nickname || ''} ${profile.bio || ''}`;
-  return profile.language === 'ko' || /[가-힣]/.test(text);
+  return /[가-힣]/.test(text);
 }
 
 function load() {
@@ -73,8 +75,6 @@ function save(pool) {
   fs.writeFileSync(POOL_PATH, JSON.stringify(pool));
 }
 
-const BATCH_SIZE = Number(process.env.BATCH_SIZE || 40); // 세션 장시간 사용 시 틱톡이 조용히 빈 응답을 주기 시작해 주기적으로 브라우저를 새로 띄움
-
 async function run() {
   const pool = load();
   const found = new Map(pool.creators.map((c) => [c.uniqueId, c]));
@@ -83,8 +83,8 @@ async function run() {
   const newIds = [];
 
   const queries = buildQueryPlan(triedQueries);
-  console.log(`[틱톡수집] 현재 ${originalCount}개, 추가 목표 ${TARGET_ADD}개, 후보 검색어 ${queries.length}개`);
-  if (!queries.length) { console.log('[틱톡수집] 새 검색어가 없습니다.'); return; }
+  console.log(`[스레드수집] 현재 ${originalCount}개, 추가 목표 ${TARGET_ADD}개, 후보 검색어 ${queries.length}개`);
+  if (!queries.length) { console.log('[스레드수집] 새 검색어가 없습니다.'); return; }
 
   let idx = 0;
   let processed = 0;
@@ -112,7 +112,7 @@ async function run() {
             pool.triedQueries = [...triedQueries];
             pool.updatedAt = Date.now();
             save(pool);
-            console.log(`[틱톡수집] 검색어 ${processed}/${queries.length}, 새 크리에이터 ${newIds.length}/${TARGET_ADD}, 누적 ${found.size}개`);
+            console.log(`[스레드수집] 검색어 ${processed}/${queries.length}, 새 크리에이터 ${newIds.length}/${TARGET_ADD}, 누적 ${found.size}개`);
           }
         }
       }
@@ -125,7 +125,7 @@ async function run() {
   pool.triedQueries = [...triedQueries];
   pool.updatedAt = Date.now();
   save(pool);
-  console.log(`[틱톡수집] 완료: 기존 ${originalCount}개 → 현재 ${found.size}개 (+${found.size - originalCount}개, 전부 국내 추정)`);
+  console.log(`[스레드수집] 완료: 기존 ${originalCount}개 → 현재 ${found.size}개 (+${found.size - originalCount}개, 전부 국내 추정)`);
 }
 
-run().then(() => process.exit(0)).catch((e) => { console.error('[틱톡수집] 오류:', e.message); process.exit(1); });
+run().then(() => process.exit(0)).catch((e) => { console.error('[스레드수집] 오류:', e.message); process.exit(1); });
