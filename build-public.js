@@ -56,6 +56,15 @@ function topVideoLikes(ch) {
     .filter((n) => typeof n === 'number' && Number.isFinite(n));
   return likes.length ? likes.reduce((sum, n) => sum + n, 0) : null;
 }
+// 공개본은 원본 history 배열 전체 대신 최대 8개로 솎아낸 경량 버전만 포함(용량 절약)
+function miniHistory(history) {
+  if (!Array.isArray(history) || history.length < 2) return [];
+  if (history.length <= 8) return history.map((p) => ({ t: p.t, s: p.s }));
+  const step = (history.length - 1) / 7;
+  const picked = [];
+  for (let i = 0; i < 8; i++) picked.push(history[Math.round(i * step)]);
+  return picked.map((p) => ({ t: p.t, s: p.s }));
+}
 
 // 개별 댓글(author/text)은 절대 포함하지 않음 — commentSentiment(집계 %)만 유지
 const PUBLIC_CHANNEL_CAP = Number(process.env.PUBLIC_CHANNEL_CAP || 15000); // GitHub 100MB 제한 방지 — 공개본은 상위 채널만, 전체는 로컬 버전·엑셀에서 제공
@@ -72,6 +81,8 @@ const allChannels = pool.channels.filter((c) => c.country === DOMESTIC_COUNTRY).
     tier: t.key, tierLabel: t.label, rising: isRising(c), color1, color2,
     topVideos: (c.topVideos || []).map(({ comments, ...v }) => v),
     commentSentiment: c.commentSentiment || null,
+    history: miniHistory(c.history),
+    trend: c.trend || 'new', subsGrowth30d: c.subsGrowth30d ?? null, subsGrowthPct30d: c.subsGrowthPct30d ?? null,
   };
 });
 const totalChannelCount = allChannels.length;
@@ -102,7 +113,9 @@ const tiktokCreators = (tiktokPool.creators || []).filter((c) => c.domestic).map
 const tiktokCatCount = {};
 for (const c of tiktokCreators) tiktokCatCount[c.category] = (tiktokCatCount[c.category] || 0) + 1;
 const tiktokCategories = Object.keys(tiktokCatCount).filter(Boolean).sort((a, b) => tiktokCatCount[b] - tiktokCatCount[a]);
-const tiktokJson = JSON.stringify({ creators: tiktokCreators, categories: tiktokCategories, updatedAt: tiktokPool.updatedAt })
+const tiktokTierCount = { mega: 0, large: 0, medium: 0, small: 0 };
+for (const c of tiktokCreators) tiktokTierCount[c.tier]++;
+const tiktokJson = JSON.stringify({ creators: tiktokCreators, categories: tiktokCategories, tierCount: tiktokTierCount, updatedAt: tiktokPool.updatedAt })
   .replace(/</g, '\\u003c');
 
 const facebookCreators = (facebookPool.creators || []).filter((c) => c.domestic).map((c) => {
@@ -118,7 +131,9 @@ const facebookCreators = (facebookPool.creators || []).filter((c) => c.domestic)
 const facebookCatCount = {};
 for (const c of facebookCreators) facebookCatCount[c.category] = (facebookCatCount[c.category] || 0) + 1;
 const facebookCategories = Object.keys(facebookCatCount).filter(Boolean).sort((a, b) => facebookCatCount[b] - facebookCatCount[a]);
-const facebookJson = JSON.stringify({ creators: facebookCreators, categories: facebookCategories, updatedAt: facebookPool.updatedAt })
+const facebookTierCount = { mega: 0, large: 0, medium: 0, small: 0 };
+for (const c of facebookCreators) facebookTierCount[c.tier]++;
+const facebookJson = JSON.stringify({ creators: facebookCreators, categories: facebookCategories, tierCount: facebookTierCount, updatedAt: facebookPool.updatedAt })
   .replace(/</g, '\\u003c');
 
 const instagramCreators = (instagramPool.creators || []).filter((c) => c.domestic).map((c) => {
@@ -135,7 +150,9 @@ const instagramCreators = (instagramPool.creators || []).filter((c) => c.domesti
 const instagramCatCount = {};
 for (const c of instagramCreators) instagramCatCount[c.category] = (instagramCatCount[c.category] || 0) + 1;
 const instagramCategories = Object.keys(instagramCatCount).filter(Boolean).sort((a, b) => instagramCatCount[b] - instagramCatCount[a]);
-const instagramJson = JSON.stringify({ creators: instagramCreators, categories: instagramCategories, updatedAt: instagramPool.updatedAt })
+const instagramTierCount = { mega: 0, large: 0, medium: 0, small: 0 };
+for (const c of instagramCreators) instagramTierCount[c.tier]++;
+const instagramJson = JSON.stringify({ creators: instagramCreators, categories: instagramCategories, tierCount: instagramTierCount, updatedAt: instagramPool.updatedAt })
   .replace(/</g, '\\u003c');
 
 const appJs = String.raw`
@@ -174,6 +191,41 @@ function grad(ch,deg){ return 'linear-gradient('+(deg||135)+'deg, '+ch.color1+',
 function channelLikeValue(ch){ return ch.channelLikes ?? ch.topVideoLikes ?? null; }
 function channelLikeSub(ch){ if(ch.channelLikes!=null)return '채널 공개 수치'; if(ch.topVideoLikes!=null)return '대표 영상 합계'; return '공개 수치 없음'; }
 function tierBadge(ch){ const cls={mega:'badge-mega',large:'badge-large',medium:'badge-medium',small:'badge-small'}[ch.tier]||'badge-small'; let h='<span class="badge '+cls+'">'+esc(ch.tierLabel)+'</span>'; if(ch.rising)h+='<span class="badge badge-rising">🚀 급상승</span>'; return h; }
+function trendBadge(ch){
+  const map={rising:['📈 성장중','badge-trend-rising'],flat:['➖ 정체','badge-trend-flat'],declining:['📉 하락','badge-trend-declining'],new:['🆕 추적시작','badge-trend-new']};
+  const t=map[ch.trend]||map.new;
+  return '<span class="badge '+t[1]+'">'+t[0]+'</span>';
+}
+function sparklineSvg(history){
+  if(!history||history.length<2) return '';
+  const w=560,h=90,pad=8;
+  const xs=history.map((p)=>p.t), ys=history.map((p)=>p.s||0);
+  const minX=Math.min(...xs), maxX=Math.max(...xs);
+  const minY=Math.min(...ys), maxY=Math.max(...ys);
+  const spanX=(maxX-minX)||1, spanY=(maxY-minY)||1;
+  const pts=history.map((p)=>{
+    const x=pad+(p.t-minX)/spanX*(w-pad*2);
+    const y=h-pad-(((p.s||0)-minY)/spanY)*(h-pad*2);
+    return x.toFixed(1)+','+y.toFixed(1);
+  }).join(' ');
+  const up=ys[ys.length-1]>=ys[0];
+  const color=up?'#2ecc71':'#ff4e45';
+  return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none"><polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+}
+function growthHtml(ch){
+  const hasHistory=Array.isArray(ch.history)&&ch.history.length>=2;
+  let sub='';
+  if(hasHistory && ch.subsGrowth30d!=null){
+    const sign=ch.subsGrowth30d>=0?'+':'';
+    const pct=ch.subsGrowthPct30d!=null?(ch.subsGrowthPct30d*100).toFixed(1):'-';
+    sub='<div class="growth-sub">최근 재스캔 구간 기준 '+sign+fmt(ch.subsGrowth30d)+'명 ('+sign+pct+'%)</div>';
+  }
+  return '<div class="growth-section"><div class="growth-head"><h3 class="section-title" style="margin:0">📊 구독자 성장 추이</h3>'+trendBadge(ch)+'</div>'+
+    (hasHistory
+      ? '<div class="sparkline-wrap">'+sparklineSvg(ch.history)+'</div>'+sub
+      : '<div class="empty" style="padding:12px 0">아직 재스캔 데이터가 쌓이는 중입니다 — 다음 주기에 자동으로 반영됩니다.</div>')+
+    '</div>';
+}
 
 function cardHtml(ch){
   return '<article class="channel-card" data-id="'+esc(ch.id)+'">'+
@@ -268,6 +320,7 @@ function renderDetail(ch){
       '<div class="stat-box"><div class="label">업로드 영상</div><div class="value">'+fmt(ch.videoCount)+'개</div></div>'+
       '<div class="stat-box"><div class="label">채널 개설일</div><div class="value" style="font-size:17px">'+fmtDate(ch.createdAt)+'</div><div class="sub">'+ageText(ch.createdAt)+(ch.country?' · '+esc(ch.country):'')+'</div></div>'+
     '</div>'+
+    growthHtml(ch)+
     videosHtml(ch)+
     sentimentHtml(ch);
 }
@@ -603,10 +656,10 @@ ${css}
       <nav class="tier-tabs" id="tier-tabs">
         <button class="tab active" data-tier="">전체</button>
         <button class="tab tab-rising" data-tier="rising">🚀 급상승</button>
-        <button class="tab" data-tier="mega">💎 메가 <small>500만+</small></button>
-        <button class="tab" data-tier="large">🏆 대형 <small>100만+</small></button>
-        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+</small></button>
-        <button class="tab" data-tier="small">🌱 소형</button>
+        <button class="tab" data-tier="mega">💎 메가 <small>500만+ · ${tierCount.mega.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="large">🏆 대형 <small>100만+ · ${tierCount.large.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+ · ${tierCount.medium.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="small">🌱 소형 <small>${tierCount.small.toLocaleString('ko-KR')}개</small></button>
       </nav>
       <select id="cat-select"><option value="">모든 카테고리</option></select>
       <select id="sort-select"><option value="subscribers">구독자순</option><option value="views">총 조회수순</option><option value="newest">최신 개설순</option></select>
@@ -620,10 +673,10 @@ ${css}
     <div class="controls">
       <nav class="tier-tabs" id="tiktok-tier-tabs">
         <button class="tab active" data-tier="">전체</button>
-        <button class="tab" data-tier="mega">💎 메가 <small>500만+</small></button>
-        <button class="tab" data-tier="large">🏆 대형 <small>100만+</small></button>
-        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+</small></button>
-        <button class="tab" data-tier="small">🌱 소형</button>
+        <button class="tab" data-tier="mega">💎 메가 <small>500만+ · ${tiktokTierCount.mega.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="large">🏆 대형 <small>100만+ · ${tiktokTierCount.large.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+ · ${tiktokTierCount.medium.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="small">🌱 소형 <small>${tiktokTierCount.small.toLocaleString('ko-KR')}개</small></button>
       </nav>
       <select id="tiktok-cat-select"><option value="">모든 카테고리</option></select>
       <select id="tiktok-sort-select"><option value="followers">팔로워순</option><option value="hearts">좋아요합계순</option><option value="videos">영상수순</option></select>
@@ -637,10 +690,10 @@ ${css}
     <div class="controls">
       <nav class="tier-tabs" id="facebook-tier-tabs">
         <button class="tab active" data-tier="">전체</button>
-        <button class="tab" data-tier="mega">💎 메가 <small>500만+</small></button>
-        <button class="tab" data-tier="large">🏆 대형 <small>100만+</small></button>
-        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+</small></button>
-        <button class="tab" data-tier="small">🌱 소형</button>
+        <button class="tab" data-tier="mega">💎 메가 <small>500만+ · ${facebookTierCount.mega.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="large">🏆 대형 <small>100만+ · ${facebookTierCount.large.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+ · ${facebookTierCount.medium.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="small">🌱 소형 <small>${facebookTierCount.small.toLocaleString('ko-KR')}개</small></button>
       </nav>
       <select id="facebook-cat-select"><option value="">모든 카테고리</option></select>
       <select id="facebook-sort-select"><option value="followers">팔로워순</option><option value="facebook">좋아요순</option></select>
@@ -654,10 +707,10 @@ ${css}
     <div class="controls">
       <nav class="tier-tabs" id="instagram-tier-tabs">
         <button class="tab active" data-tier="">전체</button>
-        <button class="tab" data-tier="mega">💎 메가 <small>500만+</small></button>
-        <button class="tab" data-tier="large">🏆 대형 <small>100만+</small></button>
-        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+</small></button>
-        <button class="tab" data-tier="small">🌱 소형</button>
+        <button class="tab" data-tier="mega">💎 메가 <small>500만+ · ${instagramTierCount.mega.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="large">🏆 대형 <small>100만+ · ${instagramTierCount.large.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="medium">⭐ 중형 <small>10만+ · ${instagramTierCount.medium.toLocaleString('ko-KR')}개</small></button>
+        <button class="tab" data-tier="small">🌱 소형 <small>${instagramTierCount.small.toLocaleString('ko-KR')}개</small></button>
       </nav>
       <select id="instagram-cat-select"><option value="">모든 카테고리</option></select>
       <select id="instagram-sort-select"><option value="followers">팔로워순</option><option value="posts">게시물수순</option></select>

@@ -9,6 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 const scraper = require('./scraper');
+const { buildQueryPlan } = require('./query-topics');
 
 const POOL_PATH = path.join(__dirname, 'data', 'pool.json');
 const TARGET_ADD = Number(process.env.TARGET_ADD || process.argv[2] || 10000);
@@ -32,67 +33,6 @@ const triedQueries = new Set([...pool.crawledQueries, ...pool.expansionQueries])
 const newlyAddedIds = [];
 let stopReason = '';
 let networkFailures = 0;
-
-const BASE_TOPICS = [
-  '먹방', '요리', '게임', '브이로그', '여행', '홈트레이닝', '축구', '야구', '골프',
-  '낚시', '캠핑', '자동차', '테크 리뷰', '과학', '역사', '경제', '주식', '부동산',
-  '코딩', 'AI', '영어공부', '공부', '음악', '커버곡', '댄스', '뷰티', '패션',
-  '키즈', '영화리뷰', '드라마', '예능', '코미디', '인터뷰', '뉴스', '다큐',
-  '쇼츠', '일상', '인테리어', 'KPOP', '아이돌', '동요', '뮤직비디오',
-  '개발자', '프로그래밍', '롤', '마인크래프트', '모바일게임', '디저트', '베이킹',
-  '맛집', '커피', '육아', '시골생활', '심리학', '철학', '수학', '물리학',
-  '의학', '건강', '재테크', '창업', '마케팅', '등산', '자전거', '러닝',
-  '피아노', '기타 연주', '영화', '웹툰', '타로', '명상', '요가', '필라테스',
-  '헬스', '전기차', '오토바이', '국내여행', '한국사', '일본어', '중국어',
-  '트로트', '발라드', '힙합', '클래식', '국악', '스타크래프트', '발로란트',
-  '원신', '로블록스', '한식', '중식', '일식', '분식', '홈베이킹', '라면',
-  '치킨', '해산물', '메이크업', '스킨케어', '골프레슨', '파이썬',
-  '자바스크립트', '데이터분석', '머신러닝', '챗GPT', '보안', '유튜브 수익',
-  '부업', '스마트스토어', '코인', '미국주식', '청약', '과학실험', '세계사',
-  '정치', '토론', '자기계발', '연애상담', '교육', '입시', '유학', '토익',
-  '캠핑 브이로그', '제주도', '일본여행', '세계여행', '반려견', '반려묘',
-  '식물', '가드닝', '살림', '직장인 브이로그', '대학생 브이로그', '제품리뷰',
-  '가전리뷰', '스마트폰 리뷰', 'ASMR', '실화', '사건사고', '챌린지',
-  '리액션', '웹드라마', '숏폼', '해외축구', 'NBA', 'F1', '탐사보도',
-  '북리뷰', '영상편집', '포토샵', '웹툰작가',
-];
-
-const REGIONS = [
-  '서울', '부산', '대구', '인천', '광주', '대전', '울산', '제주', '경기',
-  '강원', '충북', '충남', '전북', '전남', '경북', '경남', '세종',
-];
-
-const PREFIXES = ['한국', '국내', '대한민국', 'Korean'];
-const SUFFIXES = [
-  '유튜브', '유튜버', '채널', '추천', '리뷰', '강의', '입문', '전문가',
-  '브이로그', '뉴스', '하이라이트', '라이브', '쇼츠', '랭킹',
-];
-
-function unique(values) {
-  return [...new Set(values.map((value) => String(value || '').trim()).filter(Boolean))];
-}
-
-function categoryFromQuery(query, topics) {
-  return topics.find((topic) => query.includes(topic)) || query.split(/\s+/)[0] || '확장수집';
-}
-
-function buildQueryPlan() {
-  const existingCategories = pool.channels.map((channel) => channel.category);
-  const topics = unique([...existingCategories, ...BASE_TOPICS]);
-  const plan = [];
-
-  for (const topic of topics) {
-    plan.push({ query: topic, category: topic });
-    for (const suffix of SUFFIXES) plan.push({ query: `${topic} ${suffix}`, category: topic });
-    for (const prefix of PREFIXES) plan.push({ query: `${prefix} ${topic}`, category: topic });
-    for (const region of REGIONS) plan.push({ query: `${region} ${topic}`, category: topic });
-  }
-
-  return unique(plan.map((item) => item.query))
-    .filter((query) => !triedQueries.has(query))
-    .map((query) => ({ query, category: categoryFromQuery(query, topics) }))
-    .slice(0, MAX_QUERIES || undefined);
-}
 
 function save() {
   pool.channels = [...found.values()].filter((channel) => !REQUIRE_DOMESTIC || channel.country === DOMESTIC_COUNTRY);
@@ -141,7 +81,7 @@ async function run() {
     throw new Error('TARGET_ADD는 1 이상의 숫자여야 합니다.');
   }
 
-  const queries = buildQueryPlan();
+  const queries = buildQueryPlan(pool.channels.map((channel) => channel.category), triedQueries, MAX_QUERIES);
   console.log(`[확장수집] 현재 ${originalCount}개, 추가 목표 ${TARGET_ADD}개, 후보 검색어 ${queries.length}개, 국내확인전용 ${REQUIRE_DOMESTIC ? 'ON' : 'OFF'}`);
   if (!queries.length) {
     console.log('[확장수집] 새 검색어가 없습니다.');

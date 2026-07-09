@@ -44,6 +44,9 @@ function isDomestic(ch) {
   if (!ch.country) return '미확인';
   return 'N';
 }
+function trendLabel(trend) {
+  return { rising: '성장중', flat: '정체', declining: '하락', new: '추적시작' }[trend] || '추적시작';
+}
 
 function joinedReplies(comment) {
   return (comment.replies || [])
@@ -138,9 +141,10 @@ function buildChannelSheet(channels) {
       '채널ID', '카테고리', '채널명', '핸들', '등급', '급상승', '국내판정', '국가',
       '공개구독자수', '채널총조회수', '채널영상수', '채널생성일', '채널썸네일URL',
       '채널배너URL', '채널URL', '상세수집여부', '영상수집여부', '저장대표영상수',
-      '저장댓글수', '긍정률(%)', '중립률(%)', '부정률(%)', '채널설명',
+      '저장댓글수', '긍정률(%)', '중립률(%)', '부정률(%)',
+      '성장추세', '최근재스캔일시', '30일구독자증감', '30일증감률(%)', '채널설명',
     ],
-    widths: [26, 14, 28, 22, 8, 8, 10, 10, 14, 14, 11, 12, 36, 36, 44, 12, 12, 12, 10, 10, 10, 10, 60],
+    widths: [26, 14, 28, 22, 8, 8, 10, 10, 14, 14, 11, 12, 36, 36, 44, 12, 12, 12, 10, 10, 10, 10, 12, 18, 14, 12, 60],
     rows: channels.map((c) => [
       c.id || '', c.category || '', c.name || '', c.handle || '', c.tierLabel || '',
       c.rising ? 'Y' : '', isDomestic(c), c.country || '', c.subscribers ?? null,
@@ -150,6 +154,8 @@ function buildChannelSheet(channels) {
       c.commentSentiment?.total ? c.commentSentiment.positivePct : null,
       c.commentSentiment?.total ? c.commentSentiment.neutralPct : null,
       c.commentSentiment?.total ? c.commentSentiment.negativePct : null,
+      trendLabel(c.trend), c.lastScannedAt ? new Date(c.lastScannedAt).toISOString() : '',
+      c.subsGrowth30d ?? null, c.subsGrowthPct30d != null ? Math.round(c.subsGrowthPct30d * 1000) / 10 : null,
       c.description || '',
     ]),
   };

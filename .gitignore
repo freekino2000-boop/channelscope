@@ -3,7 +3,24 @@ data/pool.json
 data/pool-tiktok.json
 data/pool-facebook.json
 data/pool-instagram.json
+data/datascope-history.json
+data/datascope-summary.json
+data/*.lock
 *.xlsx
 채널스코프.html
+데이터스코프.html
+최종데이터/
 npm-debug.log*
 .DS_Store
+.claude/settings.local.json
+
+# ── 대외비/민감 자료 — 깃허브 업로드 금지 ──
+# CIV(YOUCHI 가치평가) 산정방식은 대외비 문서 기반 — 문서/구현/파생 데이터 전부 비공개
+*대외비*
+AI매칭알고리즘_설계문서.md
+civ-engine.js
+data/civ-stats.json
+# 광고주가 등록한 광고 소재와 매칭 결과물
+data/ads.json
+data/ad-scores/
+매칭리포트/

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>매칭스코프 — 광고·크리에이터 매칭</title>
+<style>
+  :root{
+    --bg:#f4f5f7; --card:#fff; --ink:#111827; --sub:#6b7280; --line:#e5e7eb;
+    --accent:#4f46e5; --accent-soft:#eef2ff;
+    --s:#7c3aed; --a:#2563eb; --b:#059669; --c:#6b7280;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:#1e1b4b;color:#fff;padding:18px 28px;display:flex;align-items:baseline;gap:12px}
+  header h1{margin:0;font-size:20px}
+  header .sub{font-size:13px;opacity:.75}
+  main{max-width:1080px;margin:0 auto;padding:24px;display:grid;grid-template-columns:380px 1fr;gap:20px;align-items:start}
+  @media(max-width:900px){main{grid-template-columns:1fr}}
+  .panel{background:var(--card);border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05);padding:20px}
+  .panel h2{margin:0 0 14px;font-size:15px}
+  label{display:block;font-size:12px;color:var(--sub);margin:12px 0 4px}
+  label .req{color:#dc2626}
+  input[type=text],textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 10px;font-size:13px;font-family:inherit;background:#fafafa}
+  input:focus,textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  textarea{resize:vertical;min-height:56px}
+  .formats,.platforms{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .opt{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer;user-select:none;background:#fafafa}
+  .opt.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  button.primary{width:100%;margin-top:18px;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer}
+  button.primary:disabled{opacity:.55;cursor:wait}
+  .hint{font-size:11px;color:var(--sub);margin-top:3px}
+  .adlist{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+  .adlist .item{display:flex;justify-content:space-between;align-items:center;padding:7px 8px;border-radius:8px;font-size:12px;cursor:pointer;gap:8px}
+  .adlist .item:hover{background:var(--accent-soft)}
+  .adlist .item .del{color:#dc2626;cursor:pointer;font-size:11px;flex-shrink:0}
+  .empty{color:var(--sub);font-size:13px;text-align:center;padding:60px 20px}
+  .loading{text-align:center;padding:60px 20px;color:var(--sub);font-size:14px}
+  .spinner{width:28px;height:28px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;margin:0 auto 14px;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .meta-bar{font-size:12px;color:var(--sub);margin-bottom:14px;line-height:1.7}
+  .meta-bar b{color:var(--ink)}
+  .rank-card{display:flex;gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px;background:#fff}
+  .rank-num{font-size:22px;font-weight:800;color:var(--accent);width:36px;text-align:center;flex-shrink:0}
+  .rank-num.top3{color:#d97706}
+  .rank-body{flex:1;min-width:0}
+  .rank-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+  .rank-head a{color:var(--ink);font-weight:700;font-size:15px;text-decoration:none}
+  .rank-head a:hover{text-decoration:underline}
+  .rank-head .info{font-size:12px;color:var(--sub)}
+  .scoreline{display:flex;align-items:center;gap:10px;margin:6px 0}
+  .score-big{font-size:19px;font-weight:800}
+  .grade{font-size:12px;font-weight:800;color:#fff;border-radius:6px;padding:2px 8px}
+  .pct{font-size:12px;color:var(--sub)}
+  .axes{display:flex;gap:12px;font-size:11px;color:var(--sub);flex-wrap:wrap;margin-bottom:6px}
+  .axes b{color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+  .chip{background:var(--accent-soft);color:#3730a3;border-radius:999px;padding:2px 8px;font-size:11px}
+  .chip.badge{background:#ecfdf5;color:#065f46}
+  .chip.fmt{background:#fef3c7;color:#92400e}
+  .refwhy{font-size:11px;color:var(--sub);margin-top:4px}
+  .email{font-size:11px;color:var(--b);margin-top:4px}
+  .share-btn{font-size:12px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;text-decoration:none;color:var(--ink);background:#fafafa;white-space:nowrap}
+  .share-btn:hover{background:var(--accent-soft);border-color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1>매칭스코프</h1>
+  <span class="sub">광고 소재를 등록하면 10만+ 크리에이터 풀에서 상위 1~10위를 뽑아드립니다 · 매칭엔진 v0.4 (적합도 × YOUCHI CIV)</span>
+</header>
+<main>
+  <section class="panel">
+    <h2>광고 소재 등록</h2>
+    <form id="adForm">
+      <label>광고명 <span class="req">*</span></label>
+      <input type="text" id="adName" placeholder="예) 단백질 보충제 신제품 런칭 캠페인" required>
+
+      <label>컨셉</label>
+      <textarea id="concept" placeholder="광고의 톤/무드/방향 — 예) 운동 초보도 부담 없는 저당 쉐이크, 담백하고 신뢰감 있는 톤"></textarea>
+
+      <label>키워드</label>
+      <input type="text" id="keywords" placeholder="콤마로 구분 — 예) 헬스, 다이어트, 단백질, 운동">
+
+      <label>영상제작방식</label>
+      <div class="formats" id="formats"></div>
+      <input type="text" id="formatCustom" placeholder="직접 입력(선택)" style="margin-top:6px">
+
+      <label>레퍼런스</label>
+      <textarea id="references" placeholder="참고 채널/영상 URL 또는 채널명, 줄바꿈으로 구분&#10;예) @heebab&#10;https://youtu.be/..."></textarea>
+      <div class="hint">레퍼런스를 넣으면 그 채널과 닮은 크리에이터에 가중치 30%가 배정됩니다</div>
+
+      <label>노출 플랫폼</label>
+      <div class="platforms" id="platforms"></div>
+
+      <button type="submit" class="primary" id="submitBtn">등록하고 매칭 순위 뽑기</button>
+      <div class="hint" style="text-align:center;margin-top:6px">등록 시 전체 후보군을 스코어링합니다(약 10초)</div>
+    </form>
+
+    <div class="adlist">
+      <h2 style="font-size:13px">등록된 광고</h2>
+      <div id="adList"><div class="hint">불러오는 중…</div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="resultPanel">
+    <div class="empty" id="placeholder">왼쪽에서 광고 소재를 등록하면<br>여기에 크리에이터 1~10위 랭킹이 표시됩니다</div>
+    <div id="result" style="display:none"></div>
+  </section>
+</main>
+
+<script>
+const FORMAT_PRESETS = ['리뷰','언박싱','브이로그','쇼츠','라이브','튜토리얼','챌린지','먹방','인터뷰','예능','정보전달','게임공략','ASMR'];
+const PLATFORM_OPTS = [['youtube','유튜브'],['tiktok','틱톡'],['instagram','인스타그램'],['facebook','메타']];
+const GRADE_COLORS = {S:'var(--s)',A:'var(--a)',B:'var(--b)',C:'var(--c)'};
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+let selectedFormat = '';
+const selectedPlatforms = new Set(['youtube']);
+
+// 형식 프리셋 칩(단일 선택 토글)
+$('formats').innerHTML = FORMAT_PRESETS.map((f) => `<span class="opt" data-f="${f}">${f}</span>`).join('');
+$('formats').addEventListener('click', (e) => {
+  const el = e.target.closest('.opt'); if (!el) return;
+  const f = el.dataset.f;
+  selectedFormat = selectedFormat === f ? '' : f;
+  document.querySelectorAll('#formats .opt').forEach((o) => o.classList.toggle('on', o.dataset.f === selectedFormat));
+  if (selectedFormat) $('formatCustom').value = '';
+});
+
+// 플랫폼 칩(다중 선택)
+$('platforms').innerHTML = PLATFORM_OPTS.map(([k, l]) => `<span class="opt ${selectedPlatforms.has(k) ? 'on' : ''}" data-p="${k}">${l}</span>`).join('');
+$('platforms').addEventListener('click', (e) => {
+  const el = e.target.closest('.opt'); if (!el) return;
+  const p = el.dataset.p;
+  selectedPlatforms.has(p) ? selectedPlatforms.delete(p) : selectedPlatforms.add(p);
+  el.classList.toggle('on');
+});
+
+$('adForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const ad = {
+    adName: $('adName').value.trim(),
+    concept: $('concept').value.trim(),
+    keywords: $('keywords').value.trim(),
+    videoFormat: $('formatCustom').value.trim() || selectedFormat,
+    references: $('references').value.split(/[\n,]+/).map((s) => s.trim()).filter(Boolean),
+    platforms: [...selectedPlatforms],
+  };
+  if (!ad.platforms.length) { alert('플랫폼을 하나 이상 선택하세요'); return; }
+
+  $('submitBtn').disabled = true;
+  showLoading();
+  try {
+    const r = await fetch('/api/ads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(ad) });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || '등록 실패');
+    renderResult(data);
+    loadAdList();
+  } catch (err) {
+    $('result').style.display = 'none';
+    $('placeholder').style.display = 'block';
+    $('placeholder').textContent = '오류: ' + err.message;
+  } finally {
+    $('submitBtn').disabled = false;
+  }
+});
+
+function showLoading() {
+  $('placeholder').style.display = 'none';
+  $('result').style.display = 'block';
+  $('result').innerHTML = '<div class="loading"><div class="spinner"></div>10만+ 후보군을 스코어링하는 중입니다…<br>약 10초 걸립니다</div>';
+}
+
+function renderResult({ ad, ranking, meta }) {
+  const refLine = meta.references.resolved.length
+    ? `레퍼런스 인식: <b>${meta.references.resolved.map((r) => esc(r.name)).join(', ')}</b>` +
+      (meta.references.unresolved.length ? ` (풀에 없음: ${meta.references.unresolved.map(esc).join(', ')})` : '')
+    : (meta.references.unresolved.length ? `레퍼런스를 풀에서 찾지 못함: ${meta.references.unresolved.map(esc).join(', ')} — 키워드 중심으로 매칭됨` : '레퍼런스 없음 — 키워드 중심 매칭');
+  const w = meta.weights;
+  const rows = ranking.map((c) => {
+    const b = c.breakdown;
+    const badges = [];
+    if (b.derived.sponsoredExperience) badges.push('협찬경험');
+    if (b.derived.contactEmail) badges.push('연락 가능');
+    for (const r of b.qualityReasons || []) if (r.startsWith('강점:') || r.startsWith('약점:')) badges.push(r);
+    return `
+    <div class="rank-card">
+      <div class="rank-num ${c.rank <= 3 ? 'top3' : ''}">${c.rank}</div>
+      <div class="rank-body">
+        <div class="rank-head">
+          ${c.channelUrl ? `<a href="${esc(c.channelUrl)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : `<span style="font-weight:700">${esc(c.name)}</span>`}
+          <span class="info">${esc(c.category)} · ${esc(c.tier)} · ${c.metric != null ? c.metric.toLocaleString() + '명' : '-'} · ${esc(c.platform)}</span>
+        </div>
+        <div class="scoreline">
+          <span class="score-big">${c.score}</span>
+          <span class="grade" style="background:${GRADE_COLORS[c.percentile.grade]}">${c.percentile.grade}</span>
+          <span class="pct">상위 ${c.percentile.topPct}%</span>
+        </div>
+        <div class="axes">
+          <span>키워드 <b>${b.keywordScore}</b></span>
+          <span>형식 <b>${b.formatScore}</b></span>
+          ${b.referenceScore != null ? `<span>레퍼런스 <b>${b.referenceScore}</b></span>` : ''}
+          <span>CIV <b>${b.civ && b.civ.available ? `${b.civ.score} (${b.civ.grade})` : '분석 준비 중'}</b> → ×${b.qualityMultiplier}</span>
+        </div>
+        ${b.matchedKeywords.length ? `<div class="chips">${b.matchedKeywords.map((k) => `<span class="chip">${esc(k)}</span>`).join('')}</div>` : ''}
+        ${b.creatorFormatTags.length ? `<div class="chips">${b.creatorFormatTags.map((f) => `<span class="chip fmt">${esc(f)}</span>`).join('')}</div>` : ''}
+        ${badges.length ? `<div class="chips">${badges.map((x) => `<span class="chip badge">${esc(x)}</span>`).join('')}</div>` : ''}
+        ${b.referenceReasons.length ? `<div class="refwhy">레퍼런스 근거: ${b.referenceReasons.map(esc).join(' · ')}</div>` : ''}
+        ${b.derived.contactEmail ? `<div class="email">문의: ${esc(b.derived.contactEmail)}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  $('placeholder').style.display = 'none';
+  $('result').style.display = 'block';
+  $('result').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <h2 style="margin:0">"${esc(ad.adName)}" — 크리에이터 매칭 TOP ${ranking.length}</h2>
+      <span style="display:flex;gap:6px">
+        <a class="share-btn" href="/api/ads/${esc(ad.adId)}/report" target="_blank" rel="noopener">🔗 공유용 HTML 보기</a>
+        <a class="share-btn" href="/api/ads/${esc(ad.adId)}/report?download=1">📥 파일로 저장</a>
+      </span>
+    </div>
+    <div class="meta-bar">
+      후보 <b>${meta.candidateCount.toLocaleString()}</b>명 스코어링(${(meta.tookMs / 1000).toFixed(1)}초) ·
+      가중치: 키워드 ${Math.round(w.keyword * 100)}% / 형식 ${Math.round(w.format * 100)}%${w.reference ? ` / 레퍼런스 ${Math.round(w.reference * 100)}%` : ''}<br>
+      ${refLine}<br>
+      등급컷: ${meta.gradeCuts.map((g) => `${g.grade} ≥ ${g.minScore}점(상위 ${g.topPct}%)`).join(' · ')}
+    </div>
+    ${rows || '<div class="empty">후보가 없습니다 — 하드필터(플랫폼/국내) 조건을 확인하세요</div>'}`;
+}
+
+async function loadAdList() {
+  const r = await fetch('/api/ads');
+  const { ads } = await r.json();
+  $('adList').innerHTML = ads.length
+    ? ads.map((a) => `<div class="item" data-id="${a.adId}"><span>📣 ${esc(a.adName)} <span style="color:var(--sub)">(${a.createdAt.slice(0, 10)}${a.scored ? '' : ' · 미채점'})</span></span><span class="del" data-del="${a.adId}">삭제</span></div>`).join('')
+    : '<div class="hint">아직 등록된 광고가 없습니다</div>';
+}
+
+$('adList').addEventListener('click', async (e) => {
+  const delId = e.target.dataset.del;
+  if (delId) {
+    if (!confirm('이 광고와 스코어 기록을 삭제할까요?')) return;
+    await fetch('/api/ads/' + delId, { method: 'DELETE' });
+    loadAdList();
+    return;
+  }
+  const item = e.target.closest('.item');
+  if (!item) return;
+  showLoading();
+  const r = await fetch(`/api/ads/${item.dataset.id}/ranking`);
+  const data = await r.json();
+  if (r.ok) renderResult(data);
+  else { $('result').innerHTML = `<div class="empty">${esc(data.error)}</div>`; }
+});
+
+loadAdList();
+</script>
+</body>
+</html>

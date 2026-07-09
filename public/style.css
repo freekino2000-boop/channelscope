@@ -716,6 +716,22 @@ a.video-item:hover { border-color: var(--border-strong); background: var(--bg-el
   vertical-align: middle;
 }
 
+/* 채널 성장 추이 */
+.growth-section { margin: 18px 0 24px; }
+.growth-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sparkline-wrap {
+  background: var(--bg-elev);
+  border-radius: 12px;
+  padding: 10px 14px 4px;
+  margin-top: 10px;
+}
+.sparkline-wrap svg { width: 100%; display: block; }
+.growth-sub { font-size: 13px; color: var(--text-dim); margin-top: 8px; }
+.badge-trend-rising { background: color-mix(in srgb, var(--green) 18%, transparent); color: var(--green); border: 1px solid color-mix(in srgb, var(--green) 45%, transparent); }
+.badge-trend-flat { background: color-mix(in srgb, var(--text-dim) 18%, transparent); color: var(--text-dim); border: 1px solid color-mix(in srgb, var(--text-dim) 45%, transparent); }
+.badge-trend-declining { background: color-mix(in srgb, var(--red-soft) 18%, transparent); color: var(--red-soft); border: 1px solid color-mix(in srgb, var(--red-soft) 45%, transparent); }
+.badge-trend-new { background: color-mix(in srgb, var(--t-medium, #60a5fa) 18%, transparent); color: var(--t-medium, #60a5fa); border: 1px solid color-mix(in srgb, var(--t-medium, #60a5fa) 45%, transparent); }
+
 /* ---------- 푸터 ---------- */
 .footer {
   text-align: center;

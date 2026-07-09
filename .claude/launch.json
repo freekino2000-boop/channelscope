@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "매칭스코프",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["match-server.js"],
+      "port": 3457
+    }
+  ]
+}
