@@ -1,0 +1,6720 @@
+{
+  "demo": true,
+  "note": "데모 모드용 가상 채널 데이터 — 실존 채널이 아닙니다. pool.json이 없을 때 매칭엔진이 자동으로 이 풀을 사용합니다.",
+  "generatedAt": "2026-07-09T11:19:48.941Z",
+  "channels": [
+    {
+      "id": "UCdemo000demowangbap",
+      "name": "왕밥이",
+      "handle": "@demo-wangbap",
+      "subscribers": 1850000,
+      "avatarUrl": "",
+      "description": "많이 먹는 게 특기입니다! 협업 문의: wangbap.demo@example.com",
+      "category": "먹방",
+      "enriched": true,
+      "videoCount": 137,
+      "totalViews": 65765856,
+      "createdAt": "2020-07-22",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": -1850,
+      "subsGrowthPct30d": -0.1,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 55,
+        "neutralPct": 35,
+        "negativePct": 10,
+        "total": 119
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo00v0czem",
+          "title": "매운 갈비찜 10인분 도전 먹방 mukbang",
+          "views": 4052342,
+          "likes": 104144,
+          "commentCount": 6142,
+          "description": "매운 갈비찜 10인분 도전 먹방 mukbang — 데모용 가상 영상입니다.",
+          "tags": [
+            "먹방",
+            "매운맛",
+            "도전먹방"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2026-01-12",
+          "duration": "19:00",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user805",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1527,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user629",
+              "text": "오 이런 것도 있군요",
+              "likes": 1627,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user527",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 952,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user461",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2095,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo00v1hypu",
+          "title": "편의점 신상 전메뉴 리뷰 먹방",
+          "views": 4469813,
+          "likes": 175979,
+          "commentCount": 18012,
+          "description": "편의점 신상 전메뉴 리뷰 먹방 — 데모용 가상 영상입니다.",
+          "tags": [
+            "먹방",
+            "편의점",
+            "신상리뷰"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2023-03-06",
+          "duration": "16:36",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user652",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1548,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user984",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2715,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user243",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 999,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo00v26z67",
+          "title": "(유료광고포함) 신제품 라면 5종 먹방",
+          "views": 3057815,
+          "likes": 52568,
+          "commentCount": 13678,
+          "description": "(유료광고포함) 신제품 라면 5종 먹방 — 데모용 가상 영상입니다.",
+          "tags": [
+            "먹방",
+            "라면",
+            "협찬"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2026-05-13",
+          "duration": "16:11",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user107",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1056,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user526",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1855,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user295",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2836,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user658",
+              "text": "오 이런 것도 있군요",
+              "likes": 2280,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user689",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 346,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo00v3fnm4",
+          "title": "길거리 음식 먹방 브이로그",
+          "views": 3398935,
+          "likes": 141925,
+          "commentCount": 9598,
+          "description": "길거리 음식 먹방 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "먹방",
+            "길거리음식",
+            "브이로그"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2023-08-24",
+          "duration": "22:27",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user933",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1963,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user605",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1141,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user730",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 423,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo001demominieats",
+      "name": "소식좌 미니",
+      "handle": "@demo-mini-eats",
+      "subscribers": 89000,
+      "avatarUrl": "",
+      "description": "조금씩, 맛있게. 소식 먹방 채널",
+      "category": "먹방",
+      "enriched": true,
+      "videoCount": 413,
+      "totalViews": 9515089,
+      "createdAt": "2022-04-07",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 694,
+      "subsGrowthPct30d": 0.78,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 65,
+        "neutralPct": 28,
+        "negativePct": 7,
+        "total": 149
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo01v0bngm",
+          "title": "분식집 떡볶이 소식 먹방",
+          "views": 84852,
+          "likes": 3728,
+          "commentCount": 117,
+          "description": "분식집 떡볶이 소식 먹방 — 데모용 가상 영상입니다.",
+          "tags": [
+            "먹방",
+            "분식",
+            "떡볶이"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2025-10-18",
+          "duration": "17:52",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user832",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2730,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user834",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 381,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user944",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 605,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user837",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2423,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo01v1dugh",
+          "title": "디저트 카페 신메뉴 후기",
+          "views": 154348,
+          "likes": 5274,
+          "commentCount": 556,
+          "description": "디저트 카페 신메뉴 후기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "디저트",
+            "카페",
+            "후기"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2026-06-16",
+          "duration": "19:58",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user189",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 439,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user375",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1796,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user164",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 740,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user971",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2186,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo01v22lhk",
+          "title": "한입만 먹방 쇼츠 모음",
+          "views": 107388,
+          "likes": 4579,
+          "commentCount": 458,
+          "description": "한입만 먹방 쇼츠 모음 — 데모용 가상 영상입니다.",
+          "tags": [
+            "먹방",
+            "쇼츠"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2026-10-05",
+          "duration": "0:57",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user571",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2166,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user434",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2790,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user627",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2605,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo002demobaekban",
+      "name": "백반기행TV",
+      "handle": "@demo-baekban",
+      "subscribers": 320000,
+      "avatarUrl": "",
+      "description": "전국 백반집을 찾아다닙니다",
+      "category": "맛집",
+      "enriched": true,
+      "videoCount": 374,
+      "totalViews": 15258243,
+      "createdAt": "2015-09-28",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 320,
+      "subsGrowthPct30d": 0.1,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 76,
+        "neutralPct": 13,
+        "negativePct": 11,
+        "total": 197
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo02v07v4w",
+          "title": "시골 백반집 7첩 반상 리뷰",
+          "views": 253963,
+          "likes": 8907,
+          "commentCount": 663,
+          "description": "시골 백반집 7첩 반상 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "맛집",
+            "백반",
+            "리뷰"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2026-01-07",
+          "duration": "14:43",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user481",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 624,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user719",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1608,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user770",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 941,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user519",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2505,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo02v15v15",
+          "title": "시장 국밥 맛집 먹방 브이로그",
+          "views": 348303,
+          "likes": 9178,
+          "commentCount": 539,
+          "description": "시장 국밥 맛집 먹방 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "맛집",
+            "국밥",
+            "먹방"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2026-10-25",
+          "duration": "7:23",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user570",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1964,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user801",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1052,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user957",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2748,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user195",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2291,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo02v2ixy0",
+          "title": "제주도 향토음식 맛집 총정리",
+          "views": 580770,
+          "likes": 9025,
+          "commentCount": 1382,
+          "description": "제주도 향토음식 맛집 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "맛집",
+            "제주도",
+            "여행"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2024-10-17",
+          "duration": "4:15",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user363",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 377,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user796",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1544,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user664",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 979,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user573",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2670,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user425",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 983,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo003demoglowjin",
+      "name": "글로우진",
+      "handle": "@demo-glowjin",
+      "subscribers": 540000,
+      "avatarUrl": "",
+      "description": "민감성 피부를 위한 스킨케어 연구. 광고문의 glowjin.demo@example.com",
+      "category": "뷰티",
+      "enriched": true,
+      "videoCount": 742,
+      "totalViews": 72224500,
+      "createdAt": "2022-09-13",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 3834,
+      "subsGrowthPct30d": 0.71,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 63,
+        "neutralPct": 30,
+        "negativePct": 7,
+        "total": 148
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo03v089fk",
+          "title": "(유료광고포함) 수분 토너 2주 사용 리뷰",
+          "views": 1224372,
+          "likes": 28131,
+          "commentCount": 3211,
+          "description": "(유료광고포함) 수분 토너 2주 사용 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "뷰티",
+            "스킨케어",
+            "토너",
+            "내돈내산"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2023-01-02",
+          "duration": "4:19",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user926",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 663,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user942",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1819,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user539",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1798,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo03v1a1xv",
+          "title": "민감성 피부 진정 루틴 총정리",
+          "views": 793350,
+          "likes": 13396,
+          "commentCount": 1853,
+          "description": "민감성 피부 진정 루틴 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "뷰티",
+            "민감성피부",
+            "루틴"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2026-05-02",
+          "duration": "17:57",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user457",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1601,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user691",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1188,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user888",
+              "text": "오 이런 것도 있군요",
+              "likes": 2374,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user495",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1354,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo03v26xjt",
+          "title": "저자극 선크림 5종 비교 리뷰",
+          "views": 946777,
+          "likes": 23913,
+          "commentCount": 3756,
+          "description": "저자극 선크림 5종 비교 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "뷰티",
+            "선크림",
+            "비교리뷰"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2026-12-11",
+          "duration": "5:08",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user622",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1836,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user282",
+              "text": "오 이런 것도 있군요",
+              "likes": 227,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user408",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1829,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user837",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 731,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo03v3fagf",
+          "title": "데일리 꾸안꾸 메이크업 튜토리얼",
+          "views": 1182508,
+          "likes": 21661,
+          "commentCount": 2906,
+          "description": "데일리 꾸안꾸 메이크업 튜토리얼 — 데모용 가상 영상입니다.",
+          "tags": [
+            "메이크업",
+            "튜토리얼"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2023-08-27",
+          "duration": "7:13",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user910",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 367,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user859",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 583,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user467",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 216,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user993",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2041,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user363",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 14,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo004demoyunamua",
+      "name": "메이크업 유나",
+      "handle": "@demo-yuna-mua",
+      "subscribers": 76000,
+      "avatarUrl": "",
+      "description": "아이돌 커버 메이크업 전문",
+      "category": "메이크업",
+      "enriched": true,
+      "videoCount": 564,
+      "totalViews": 5277206,
+      "createdAt": "2022-06-16",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 84,
+      "subsGrowthPct30d": 0.11,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 67,
+        "neutralPct": 21,
+        "negativePct": 12,
+        "total": 59
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo04v02kr1",
+          "title": "아이돌 무대 메이크업 따라하기",
+          "views": 55764,
+          "likes": 1485,
+          "commentCount": 261,
+          "description": "아이돌 무대 메이크업 따라하기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "메이크업",
+            "커버",
+            "튜토리얼"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-09-03",
+          "duration": "13:18",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user415",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2555,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user964",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 927,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user778",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 714,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo04v110l5",
+          "title": "쿠션 파운데이션 신제품 언박싱",
+          "views": 144451,
+          "likes": 4926,
+          "commentCount": 312,
+          "description": "쿠션 파운데이션 신제품 언박싱 — 데모용 가상 영상입니다.",
+          "tags": [
+            "뷰티",
+            "언박싱",
+            "쿠션"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-05-19",
+          "duration": "9:33",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user344",
+              "text": "오 이런 것도 있군요",
+              "likes": 2755,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user917",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2898,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user183",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1315,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo04v2kiie",
+          "title": "1분 데일리 메이크업 쇼츠",
+          "views": 110913,
+          "likes": 3674,
+          "commentCount": 367,
+          "description": "1분 데일리 메이크업 쇼츠 — 데모용 가상 영상입니다.",
+          "tags": [
+            "메이크업",
+            "쇼츠"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2026-02-12",
+          "duration": "0:34",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user345",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1229,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user685",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1618,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user318",
+              "text": "오 이런 것도 있군요",
+              "likes": 1857,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo005demohairjun",
+      "name": "헤어살롱 준",
+      "handle": "@demo-hair-jun",
+      "subscribers": 41000,
+      "avatarUrl": "",
+      "description": "미용실 원장이 알려주는 셀프 스타일링",
+      "category": "헤어",
+      "enriched": true,
+      "videoCount": 669,
+      "totalViews": 4275942,
+      "createdAt": "2018-03-21",
+      "country": "대한민국",
+      "trend": "declining",
+      "subsGrowth30d": -266,
+      "subsGrowthPct30d": -0.65,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 65,
+        "neutralPct": 31,
+        "negativePct": 4,
+        "total": 48
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo05v03p6i",
+          "title": "남자 다운펌 셀프로 하는법",
+          "views": 68822,
+          "likes": 2593,
+          "commentCount": 338,
+          "description": "남자 다운펌 셀프로 하는법 — 데모용 가상 영상입니다.",
+          "tags": [
+            "헤어",
+            "셀프",
+            "튜토리얼"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2026-09-17",
+          "duration": "6:41",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user621",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1752,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user998",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2441,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user539",
+              "text": "오 이런 것도 있군요",
+              "likes": 1680,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user218",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2200,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user283",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2190,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo05v1b6kx",
+          "title": "드라이기 하나로 볼륨 살리기 꿀팁",
+          "views": 94803,
+          "likes": 2517,
+          "commentCount": 258,
+          "description": "드라이기 하나로 볼륨 살리기 꿀팁 — 데모용 가상 영상입니다.",
+          "tags": [
+            "헤어",
+            "꿀팁",
+            "스타일링"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2026-01-28",
+          "duration": "15:52",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user969",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1577,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user248",
+              "text": "오 이런 것도 있군요",
+              "likes": 1798,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user562",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 493,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user349",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2519,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user574",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2993,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo006demogamdol",
+      "name": "겜돌이 형",
+      "handle": "@demo-gamdol",
+      "subscribers": 920000,
+      "avatarUrl": "",
+      "description": "신작 게임 리뷰와 공략. 비즈니스: gamdol.demo@example.com",
+      "category": "게임",
+      "enriched": true,
+      "videoCount": 263,
+      "totalViews": 100062921,
+      "createdAt": "2020-03-26",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": -1748,
+      "subsGrowthPct30d": -0.19,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 63,
+        "neutralPct": 29,
+        "negativePct": 8,
+        "total": 108
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo06v0j05s",
+          "title": "신작 모바일 RPG 사전예약 해봐야 하는 이유 (리뷰)",
+          "views": 2373533,
+          "likes": 105223,
+          "commentCount": 8648,
+          "description": "신작 모바일 RPG 사전예약 해봐야 하는 이유 (리뷰) — 데모용 가상 영상입니다.",
+          "tags": [
+            "게임",
+            "모바일게임",
+            "RPG",
+            "리뷰"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2025-01-05",
+          "duration": "5:42",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user321",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2042,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user634",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2912,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user404",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1543,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        },
+        {
+          "videoId": "demo06v12mx6",
+          "title": "보스 레이드 공략 가이드 완벽정리",
+          "views": 684434,
+          "likes": 35611,
+          "commentCount": 1611,
+          "description": "보스 레이드 공략 가이드 완벽정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "게임",
+            "공략",
+            "가이드"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2025-06-03",
+          "duration": "11:32",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user209",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 762,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user495",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2649,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user385",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2059,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user471",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2383,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user845",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 366,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo06v2b9ph",
+          "title": "(유료광고포함) 신작 게임 플레이 후기",
+          "views": 801275,
+          "likes": 37911,
+          "commentCount": 2795,
+          "description": "(유료광고포함) 신작 게임 플레이 후기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "게임",
+            "협찬",
+            "플레이"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2023-11-28",
+          "duration": "19:43",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user591",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1197,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user947",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2470,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user382",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1892,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user832",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2990,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo06v3b6t9",
+          "title": "랭크 1위 찍는 실황 하이라이트",
+          "views": 1460146,
+          "likes": 24876,
+          "commentCount": 4478,
+          "description": "랭크 1위 찍는 실황 하이라이트 — 데모용 가상 영상입니다.",
+          "tags": [
+            "게임",
+            "실황",
+            "랭크"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2024-12-15",
+          "duration": "12:11",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user126",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 903,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user435",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1738,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user781",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2635,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user587",
+              "text": "오 이런 것도 있군요",
+              "likes": 2185,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user743",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 490,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo007demololescap",
+      "name": "롤린이 탈출기",
+      "handle": "@demo-lol-escape",
+      "subscribers": 67000,
+      "avatarUrl": "",
+      "description": "초보 탈출 전문 게임 강의",
+      "category": "게임",
+      "enriched": true,
+      "videoCount": 783,
+      "totalViews": 3333655,
+      "createdAt": "2019-06-06",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 2955,
+      "subsGrowthPct30d": 4.41,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 79,
+        "neutralPct": 16,
+        "negativePct": 5,
+        "total": 150
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo07v0ilva",
+          "title": "라인전 이기는 법 기초 강의",
+          "views": 45990,
+          "likes": 1427,
+          "commentCount": 163,
+          "description": "라인전 이기는 법 기초 강의 — 데모용 가상 영상입니다.",
+          "tags": [
+            "게임",
+            "롤",
+            "강의",
+            "공략"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2024-12-02",
+          "duration": "16:55",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user567",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2917,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user910",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2580,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user770",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1496,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user767",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2847,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo07v1czk7",
+          "title": "챌린저의 시점 분석 - 왜 지는가",
+          "views": 65751,
+          "likes": 2124,
+          "commentCount": 186,
+          "description": "챌린저의 시점 분석 - 왜 지는가 — 데모용 가상 영상입니다.",
+          "tags": [
+            "게임",
+            "분석",
+            "공략"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2023-11-22",
+          "duration": "7:57",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user138",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 293,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user269",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 194,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user579",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 584,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user281",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 555,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo07v2ktvp",
+          "title": "1분 챔피언 팁 쇼츠",
+          "views": 40362,
+          "likes": 1143,
+          "commentCount": 99,
+          "description": "1분 챔피언 팁 쇼츠 — 데모용 가상 영상입니다.",
+          "tags": [
+            "게임",
+            "쇼츠",
+            "꿀팁"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2025-08-20",
+          "duration": "0:33",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user476",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1510,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user142",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 228,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user788",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1212,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo008demoretrogam",
+      "name": "레트로 게임관",
+      "handle": "@demo-retro-game",
+      "subscribers": 28000,
+      "avatarUrl": "",
+      "description": "고전게임 수집가의 아카이브",
+      "category": "레트로게임",
+      "enriched": true,
+      "videoCount": 120,
+      "totalViews": 1036143,
+      "createdAt": "2021-03-16",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 42,
+      "subsGrowthPct30d": 0.15,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 67,
+        "neutralPct": 24,
+        "negativePct": 9,
+        "total": 151
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo08v03iin",
+          "title": "고전 게임기 언박싱 & 복원기",
+          "views": 18695,
+          "likes": 536,
+          "commentCount": 47,
+          "description": "고전 게임기 언박싱 & 복원기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "레트로게임",
+            "언박싱",
+            "복원"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2026-05-10",
+          "duration": "8:22",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user456",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2205,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user650",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 8,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user244",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1564,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user420",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1951,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo08v1cejd",
+          "title": "추억의 오락실 게임 TOP 10",
+          "views": 56748,
+          "likes": 2338,
+          "commentCount": 98,
+          "description": "추억의 오락실 게임 TOP 10 — 데모용 가상 영상입니다.",
+          "tags": [
+            "레트로게임",
+            "랭킹"
+          ],
+          "category": "Gaming",
+          "uploadDate": "2025-09-23",
+          "duration": "14:35",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user197",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1511,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user450",
+              "text": "오 이런 것도 있군요",
+              "likes": 1579,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user115",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1102,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo009democampcoup",
+      "name": "캠핑하는 부부",
+      "handle": "@demo-camp-couple",
+      "subscribers": 210000,
+      "avatarUrl": "",
+      "description": "주말마다 떠나는 감성 캠핑. 협찬문의 campcouple.demo@example.com",
+      "category": "캠핑",
+      "enriched": true,
+      "videoCount": 246,
+      "totalViews": 26208771,
+      "createdAt": "2016-09-06",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 6216,
+      "subsGrowthPct30d": 2.96,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 71,
+        "neutralPct": 21,
+        "negativePct": 8,
+        "total": 51
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo09v02x0x",
+          "title": "가을 감성 캠핑 브이로그 - 장비 소개",
+          "views": 520341,
+          "likes": 24792,
+          "commentCount": 1303,
+          "description": "가을 감성 캠핑 브이로그 - 장비 소개 — 데모용 가상 영상입니다.",
+          "tags": [
+            "캠핑",
+            "브이로그",
+            "캠핑장비"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2024-02-06",
+          "duration": "6:24",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user799",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1365,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user276",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1727,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user199",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2921,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo09v1c6kd",
+          "title": "(유료광고포함) 신상 휴대용 버너 리뷰",
+          "views": 454184,
+          "likes": 18882,
+          "commentCount": 1536,
+          "description": "(유료광고포함) 신상 휴대용 버너 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "캠핑",
+            "버너",
+            "리뷰",
+            "협찬"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2026-02-07",
+          "duration": "8:29",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user563",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1920,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user217",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1769,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user349",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 549,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user106",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 792,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user409",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2015,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo09v24gnq",
+          "title": "차박 초보 준비물 총정리",
+          "views": 488419,
+          "likes": 22981,
+          "commentCount": 1346,
+          "description": "차박 초보 준비물 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "차박",
+            "캠핑",
+            "총정리"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2025-11-09",
+          "duration": "15:59",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user279",
+              "text": "오 이런 것도 있군요",
+              "likes": 2082,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user415",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2952,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user780",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 83,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user335",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2572,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user843",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 34,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        },
+        {
+          "videoId": "demo09v3l9p",
+          "title": "캠핑 요리 5가지 레시피",
+          "views": 103528,
+          "likes": 2194,
+          "commentCount": 504,
+          "description": "캠핑 요리 5가지 레시피 — 데모용 가상 영상입니다.",
+          "tags": [
+            "캠핑요리",
+            "레시피"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2024-09-23",
+          "duration": "11:12",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user738",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2724,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user317",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 114,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user215",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1792,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user797",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 70,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo010demosoloback",
+      "name": "솔로 백패커",
+      "handle": "@demo-solo-backpack",
+      "subscribers": 54000,
+      "avatarUrl": "",
+      "description": "혼자 걷고 혼자 잡니다",
+      "category": "백패킹",
+      "enriched": true,
+      "videoCount": 666,
+      "totalViews": 2645659,
+      "createdAt": "2020-07-17",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 2036,
+      "subsGrowthPct30d": 3.77,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 77,
+        "neutralPct": 12,
+        "negativePct": 11,
+        "total": 144
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo10v0hdbb",
+          "title": "1박 2일 백패킹 코스 추천",
+          "views": 59605,
+          "likes": 2342,
+          "commentCount": 211,
+          "description": "1박 2일 백패킹 코스 추천 — 데모용 가상 영상입니다.",
+          "tags": [
+            "백패킹",
+            "등산",
+            "코스추천"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2026-04-18",
+          "duration": "8:20",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user557",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2031,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user938",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 178,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user373",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2108,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user641",
+              "text": "오 이런 것도 있군요",
+              "likes": 2772,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo10v193h6",
+          "title": "초경량 백패킹 장비 리뷰",
+          "views": 121464,
+          "likes": 4593,
+          "commentCount": 387,
+          "description": "초경량 백패킹 장비 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "백패킹",
+            "장비",
+            "리뷰"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2025-04-01",
+          "duration": "14:10",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user109",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1964,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user974",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 933,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user263",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2310,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user963",
+              "text": "오 이런 것도 있군요",
+              "likes": 904,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user343",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1421,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo011demo3dae500",
+      "name": "3대500 형님",
+      "handle": "@demo-3dae500",
+      "subscribers": 480000,
+      "avatarUrl": "",
+      "description": "헬스장에서 살아남기. 광고: gym500.demo@example.com",
+      "category": "헬스",
+      "enriched": true,
+      "videoCount": 781,
+      "totalViews": 52497628,
+      "createdAt": "2020-10-19",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": -288,
+      "subsGrowthPct30d": -0.06,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 74,
+        "neutralPct": 15,
+        "negativePct": 11,
+        "total": 171
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo11v0h1b",
+          "title": "(유료광고포함) 단백질 보충제 정직 리뷰",
+          "views": 1148735,
+          "likes": 26005,
+          "commentCount": 2894,
+          "description": "(유료광고포함) 단백질 보충제 정직 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "헬스",
+            "단백질",
+            "보충제",
+            "리뷰"
+          ],
+          "category": "Sports",
+          "uploadDate": "2025-08-01",
+          "duration": "17:33",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user927",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2750,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user942",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 78,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user314",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1458,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user378",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 609,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo11v1hyzr",
+          "title": "3대 운동 중량 늘리는 법",
+          "views": 719933,
+          "likes": 19894,
+          "commentCount": 1378,
+          "description": "3대 운동 중량 늘리는 법 — 데모용 가상 영상입니다.",
+          "tags": [
+            "헬스",
+            "3대운동",
+            "벌크업"
+          ],
+          "category": "Sports",
+          "uploadDate": "2023-03-01",
+          "duration": "20:15",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user141",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 983,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user603",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2881,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user314",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 313,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user687",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2022,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo11v2iep6",
+          "title": "다이어트 식단 일주일 브이로그",
+          "views": 626174,
+          "likes": 26726,
+          "commentCount": 1197,
+          "description": "다이어트 식단 일주일 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "다이어트",
+            "식단",
+            "브이로그"
+          ],
+          "category": "Sports",
+          "uploadDate": "2024-01-04",
+          "duration": "8:11",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user277",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2400,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user961",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 2529,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user739",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1654,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user734",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 36,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user506",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2535,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo11v3g0ao",
+          "title": "헬스 초보 루틴 완벽 가이드",
+          "views": 686070,
+          "likes": 14222,
+          "commentCount": 2721,
+          "description": "헬스 초보 루틴 완벽 가이드 — 데모용 가상 영상입니다.",
+          "tags": [
+            "헬스",
+            "루틴",
+            "초보"
+          ],
+          "category": "Sports",
+          "uploadDate": "2025-09-08",
+          "duration": "15:21",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user596",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2108,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user225",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1892,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user659",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 604,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo012demopilasoeu",
+      "name": "필라테스 소은",
+      "handle": "@demo-pila-soeun",
+      "subscribers": 95000,
+      "avatarUrl": "",
+      "description": "몸이 바뀌는 홈 필라테스",
+      "category": "필라테스",
+      "enriched": true,
+      "videoCount": 193,
+      "totalViews": 3021994,
+      "createdAt": "2022-09-22",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 1587,
+      "subsGrowthPct30d": 1.67,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 63,
+        "neutralPct": 35,
+        "negativePct": 2,
+        "total": 119
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo12v03qna",
+          "title": "거북목 교정 10분 홈트 따라하기",
+          "views": 211110,
+          "likes": 9975,
+          "commentCount": 729,
+          "description": "거북목 교정 10분 홈트 따라하기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "필라테스",
+            "홈트",
+            "교정운동"
+          ],
+          "category": "Sports",
+          "uploadDate": "2023-02-25",
+          "duration": "13:14",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user870",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 224,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user432",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1383,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user884",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1748,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user977",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 490,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo12v11lxo",
+          "title": "하루 15분 전신 스트레칭 루틴",
+          "views": 131210,
+          "likes": 3170,
+          "commentCount": 353,
+          "description": "하루 15분 전신 스트레칭 루틴 — 데모용 가상 영상입니다.",
+          "tags": [
+            "스트레칭",
+            "홈트",
+            "루틴"
+          ],
+          "category": "Sports",
+          "uploadDate": "2025-09-12",
+          "duration": "22:44",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user434",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1594,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user390",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 990,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user271",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1163,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user228",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2658,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo12v2hlvs",
+          "title": "1분 코어운동 쇼츠",
+          "views": 187172,
+          "likes": 10274,
+          "commentCount": 579,
+          "description": "1분 코어운동 쇼츠 — 데모용 가상 영상입니다.",
+          "tags": [
+            "홈트",
+            "쇼츠",
+            "코어"
+          ],
+          "category": "Sports",
+          "uploadDate": "2024-03-03",
+          "duration": "0:47",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user556",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 634,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user410",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1031,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user376",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1178,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user206",
+              "text": "오 이런 것도 있군요",
+              "likes": 1611,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user305",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1632,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo013demoruncrew",
+      "name": "러닝크루 대장",
+      "handle": "@demo-run-crew",
+      "subscribers": 33000,
+      "avatarUrl": "",
+      "description": "같이 뛰실 분?",
+      "category": "러닝",
+      "enriched": true,
+      "videoCount": 425,
+      "totalViews": 2730642,
+      "createdAt": "2022-10-24",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 782,
+      "subsGrowthPct30d": 2.37,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 57,
+        "neutralPct": 35,
+        "negativePct": 8,
+        "total": 72
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo13v0la0",
+          "title": "풀코스 마라톤 완주 브이로그",
+          "views": 36027,
+          "likes": 760,
+          "commentCount": 138,
+          "description": "풀코스 마라톤 완주 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "러닝",
+            "마라톤",
+            "브이로그"
+          ],
+          "category": "Sports",
+          "uploadDate": "2024-01-13",
+          "duration": "19:07",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user465",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2829,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user629",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 915,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user742",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1260,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user129",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 14,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo13v1jie2",
+          "title": "러닝화 5종 비교 리뷰",
+          "views": 22558,
+          "likes": 585,
+          "commentCount": 53,
+          "description": "러닝화 5종 비교 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "러닝화",
+            "리뷰",
+            "비교"
+          ],
+          "category": "Sports",
+          "uploadDate": "2026-03-27",
+          "duration": "9:51",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user769",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2319,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user269",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2609,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user233",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 205,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user833",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1850,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user132",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1785,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo014demogoodtech",
+      "name": "IT리뷰 굿텍",
+      "handle": "@demo-goodtech",
+      "subscribers": 660000,
+      "avatarUrl": "",
+      "description": "전자기기 심층 리뷰. 제품 문의: goodtech.demo@example.com",
+      "category": "테크 리뷰",
+      "enriched": true,
+      "videoCount": 408,
+      "totalViews": 93375905,
+      "createdAt": "2022-06-25",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 66,
+      "subsGrowthPct30d": 0.01,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 61,
+        "neutralPct": 35,
+        "negativePct": 4,
+        "total": 166
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo14v03wx6",
+          "title": "(유료광고포함) 신형 무선이어폰 2주 사용기",
+          "views": 596473,
+          "likes": 15835,
+          "commentCount": 2105,
+          "description": "(유료광고포함) 신형 무선이어폰 2주 사용기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "테크",
+            "이어폰",
+            "리뷰",
+            "사용기"
+          ],
+          "category": "Science & Technology",
+          "uploadDate": "2024-02-13",
+          "duration": "17:20",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user322",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1660,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user478",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2503,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user714",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 315,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user598",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 742,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo14v16x87",
+          "title": "보급형 스마트폰 벤치마크 비교",
+          "views": 388082,
+          "likes": 7579,
+          "commentCount": 1549,
+          "description": "보급형 스마트폰 벤치마크 비교 — 데모용 가상 영상입니다.",
+          "tags": [
+            "스마트폰",
+            "비교",
+            "벤치마크"
+          ],
+          "category": "Science & Technology",
+          "uploadDate": "2025-11-27",
+          "duration": "9:31",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user131",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1042,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user659",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 537,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user264",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2821,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo14v2hfh6",
+          "title": "노트북 신제품 언박싱 & 첫인상",
+          "views": 1516168,
+          "likes": 56350,
+          "commentCount": 1978,
+          "description": "노트북 신제품 언박싱 & 첫인상 — 데모용 가상 영상입니다.",
+          "tags": [
+            "노트북",
+            "언박싱",
+            "테크"
+          ],
+          "category": "Science & Technology",
+          "uploadDate": "2023-07-18",
+          "duration": "5:23",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user359",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 682,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user631",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 855,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user174",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2203,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user592",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2652,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user838",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1936,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo14v3ei6v",
+          "title": "가성비 모니터 추천 총정리",
+          "views": 1038336,
+          "likes": 36576,
+          "commentCount": 5107,
+          "description": "가성비 모니터 추천 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "모니터",
+            "추천",
+            "가성비"
+          ],
+          "category": "Science & Technology",
+          "uploadDate": "2025-01-11",
+          "duration": "10:54",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user848",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1299,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user395",
+              "text": "오 이런 것도 있군요",
+              "likes": 86,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user512",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1564,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo015demoapptech",
+      "name": "앱테크 연구소",
+      "handle": "@demo-apptech",
+      "subscribers": 47000,
+      "avatarUrl": "",
+      "description": "유용한 앱과 서비스 발굴",
+      "category": "IT",
+      "enriched": true,
+      "videoCount": 645,
+      "totalViews": 5760812,
+      "createdAt": "2018-11-17",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 1311,
+      "subsGrowthPct30d": 2.79,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 78,
+        "neutralPct": 16,
+        "negativePct": 6,
+        "total": 148
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo15v0392u",
+          "title": "생산성 앱 10개 써보고 남긴 것",
+          "views": 61346,
+          "likes": 2992,
+          "commentCount": 264,
+          "description": "생산성 앱 10개 써보고 남긴 것 — 데모용 가상 영상입니다.",
+          "tags": [
+            "앱추천",
+            "생산성",
+            "리뷰"
+          ],
+          "category": "Science & Technology",
+          "uploadDate": "2025-08-09",
+          "duration": "15:06",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user178",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 210,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user952",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 21,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user591",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2530,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo15v1k7i9",
+          "title": "스마트폰 저장공간 정리 꿀팁",
+          "views": 57665,
+          "likes": 3074,
+          "commentCount": 144,
+          "description": "스마트폰 저장공간 정리 꿀팁 — 데모용 가상 영상입니다.",
+          "tags": [
+            "꿀팁",
+            "스마트폰",
+            "정리"
+          ],
+          "category": "Science & Technology",
+          "uploadDate": "2026-10-17",
+          "duration": "5:13",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user499",
+              "text": "오 이런 것도 있군요",
+              "likes": 1746,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user617",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 330,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user936",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1522,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user882",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2025,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user219",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2154,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo016demotravelog",
+      "name": "트래블로그 하나",
+      "handle": "@demo-travelog",
+      "subscribers": 380000,
+      "avatarUrl": "",
+      "description": "세계를 걷는 여행 브이로그",
+      "category": "여행",
+      "enriched": true,
+      "videoCount": 273,
+      "totalViews": 53843027,
+      "createdAt": "2018-06-22",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": -76,
+      "subsGrowthPct30d": -0.02,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 70,
+        "neutralPct": 25,
+        "negativePct": 5,
+        "total": 99
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo16v07pwh",
+          "title": "교토 골목 여행 브이로그 4K",
+          "views": 737145,
+          "likes": 12457,
+          "commentCount": 2810,
+          "description": "교토 골목 여행 브이로그 4K — 데모용 가상 영상입니다.",
+          "tags": [
+            "여행",
+            "일본",
+            "브이로그"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2025-09-10",
+          "duration": "19:40",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user359",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2111,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user170",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2261,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user465",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1840,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user260",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2759,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user754",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2530,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo16v1keht",
+          "title": "동남아 배낭여행 경비 총정리",
+          "views": 154537,
+          "likes": 5486,
+          "commentCount": 684,
+          "description": "동남아 배낭여행 경비 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "여행",
+            "배낭여행",
+            "경비"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2023-10-10",
+          "duration": "9:46",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user911",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 127,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user944",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2152,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user448",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 646,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo16v22vlq",
+          "title": "국내 당일치기 여행지 추천 TOP 7",
+          "views": 223513,
+          "likes": 10535,
+          "commentCount": 274,
+          "description": "국내 당일치기 여행지 추천 TOP 7 — 데모용 가상 영상입니다.",
+          "tags": [
+            "국내여행",
+            "추천",
+            "당일치기"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2026-12-10",
+          "duration": "8:23",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user930",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 197,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user695",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1507,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user840",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1531,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user603",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2326,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo017demojejumont",
+      "name": "제주 한달살기",
+      "handle": "@demo-jeju-month",
+      "subscribers": 52000,
+      "avatarUrl": "",
+      "description": "제주에서 삽니다",
+      "category": "국내여행",
+      "enriched": true,
+      "videoCount": 679,
+      "totalViews": 4074643,
+      "createdAt": "2021-09-04",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 265,
+      "subsGrowthPct30d": 0.51,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 80,
+        "neutralPct": 8,
+        "negativePct": 12,
+        "total": 155
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo17v0jvlc",
+          "title": "제주 동쪽 숨은 카페 브이로그",
+          "views": 72490,
+          "likes": 2029,
+          "commentCount": 111,
+          "description": "제주 동쪽 숨은 카페 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "제주",
+            "카페",
+            "브이로그"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2025-10-16",
+          "duration": "22:08",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user198",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1352,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user105",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 774,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user861",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1090,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user751",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1756,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user383",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 71,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo17v1kjf7",
+          "title": "한달살기 숙소 구하는 법",
+          "views": 72334,
+          "likes": 3485,
+          "commentCount": 266,
+          "description": "한달살기 숙소 구하는 법 — 데모용 가상 영상입니다.",
+          "tags": [
+            "제주",
+            "한달살기",
+            "꿀팁"
+          ],
+          "category": "Travel & Events",
+          "uploadDate": "2025-06-28",
+          "duration": "20:52",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user126",
+              "text": "오 이런 것도 있군요",
+              "likes": 873,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user167",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2917,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user279",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1528,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo018demohomecook",
+      "name": "집밥 요리왕",
+      "handle": "@demo-homecook",
+      "subscribers": 720000,
+      "avatarUrl": "",
+      "description": "누구나 따라하는 집밥 레시피. 문의: homecook.demo@example.com",
+      "category": "요리",
+      "enriched": true,
+      "videoCount": 336,
+      "totalViews": 48375518,
+      "createdAt": "2018-07-04",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 720,
+      "subsGrowthPct30d": 0.1,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 59,
+        "neutralPct": 37,
+        "negativePct": 4,
+        "total": 126
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo18v0fo2c",
+          "title": "백종원도 놀랄 김치찌개 레시피",
+          "views": 1122848,
+          "likes": 36428,
+          "commentCount": 2458,
+          "description": "백종원도 놀랄 김치찌개 레시피 — 데모용 가상 영상입니다.",
+          "tags": [
+            "요리",
+            "레시피",
+            "김치찌개"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-03-08",
+          "duration": "10:02",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user418",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1346,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user185",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1592,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user139",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2161,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo18v1h4la",
+          "title": "(유료광고포함) 신제품 에어프라이어 요리 5가지",
+          "views": 1326334,
+          "likes": 69700,
+          "commentCount": 2853,
+          "description": "(유료광고포함) 신제품 에어프라이어 요리 5가지 — 데모용 가상 영상입니다.",
+          "tags": [
+            "요리",
+            "에어프라이어",
+            "협찬"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2024-05-27",
+          "duration": "19:07",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user265",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 524,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user935",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2160,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user580",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1675,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user510",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1856,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo18v2bxmv",
+          "title": "자취생 일주일 밑반찬 만들기",
+          "views": 1497610,
+          "likes": 67278,
+          "commentCount": 6439,
+          "description": "자취생 일주일 밑반찬 만들기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "요리",
+            "자취",
+            "밑반찬"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2024-08-12",
+          "duration": "22:23",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user276",
+              "text": "오 이런 것도 있군요",
+              "likes": 1561,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user856",
+              "text": "오 이런 것도 있군요",
+              "likes": 31,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user914",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 180,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo18v3726o",
+          "title": "1분 계란요리 쇼츠",
+          "views": 1133959,
+          "likes": 57349,
+          "commentCount": 1290,
+          "description": "1분 계란요리 쇼츠 — 데모용 가상 영상입니다.",
+          "tags": [
+            "요리",
+            "쇼츠",
+            "계란"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2026-04-18",
+          "duration": "0:38",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user146",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2347,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user858",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2244,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user604",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 165,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo019demobakingon",
+      "name": "베이킹 스튜디오 온",
+      "handle": "@demo-baking-on",
+      "subscribers": 88000,
+      "avatarUrl": "",
+      "description": "홈베이킹 클래스 운영중",
+      "category": "베이킹",
+      "enriched": true,
+      "videoCount": 305,
+      "totalViews": 4950488,
+      "createdAt": "2016-05-12",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 3819,
+      "subsGrowthPct30d": 4.34,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 57,
+        "neutralPct": 36,
+        "negativePct": 7,
+        "total": 155
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo19v0kjjp",
+          "title": "숙성 없이 만드는 쿠키 레시피",
+          "views": 146936,
+          "likes": 6529,
+          "commentCount": 610,
+          "description": "숙성 없이 만드는 쿠키 레시피 — 데모용 가상 영상입니다.",
+          "tags": [
+            "베이킹",
+            "쿠키",
+            "레시피"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-05-03",
+          "duration": "15:57",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user214",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2279,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user388",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1273,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user693",
+              "text": "오 이런 것도 있군요",
+              "likes": 1990,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user136",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1022,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo19v1ci6",
+          "title": "오븐 없이 케이크 만들기 튜토리얼",
+          "views": 218078,
+          "likes": 5289,
+          "commentCount": 714,
+          "description": "오븐 없이 케이크 만들기 튜토리얼 — 데모용 가상 영상입니다.",
+          "tags": [
+            "베이킹",
+            "케이크",
+            "튜토리얼"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-07-17",
+          "duration": "19:15",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user735",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 351,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user305",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2101,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user998",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1867,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user421",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1816,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user857",
+              "text": "오 이런 것도 있군요",
+              "likes": 117,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo020demosupermom",
+      "name": "육아만렙 슈퍼맘",
+      "handle": "@demo-supermom",
+      "subscribers": 190000,
+      "avatarUrl": "",
+      "description": "세 아이 엄마의 리얼 육아. 협찬: supermom.demo@example.com",
+      "category": "육아",
+      "enriched": true,
+      "videoCount": 308,
+      "totalViews": 22395854,
+      "createdAt": "2018-07-19",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 266,
+      "subsGrowthPct30d": 0.14,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 70,
+        "neutralPct": 20,
+        "negativePct": 10,
+        "total": 138
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo20v0f0qe",
+          "title": "(유료광고포함) 신생아 필수템 정직 리뷰",
+          "views": 291600,
+          "likes": 14493,
+          "commentCount": 816,
+          "description": "(유료광고포함) 신생아 필수템 정직 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "육아",
+            "신생아",
+            "리뷰",
+            "육아템"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2026-08-05",
+          "duration": "10:39",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user526",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1251,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user893",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1546,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user912",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 910,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user179",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1986,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user438",
+              "text": "오 이런 것도 있군요",
+              "likes": 2794,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo20v143y",
+          "title": "이유식 초기 식단표 공유",
+          "views": 185349,
+          "likes": 9155,
+          "commentCount": 244,
+          "description": "이유식 초기 식단표 공유 — 데모용 가상 영상입니다.",
+          "tags": [
+            "육아",
+            "이유식",
+            "식단"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2023-02-07",
+          "duration": "18:45",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user502",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2258,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user520",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2784,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user340",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 948,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo20v25m6a",
+          "title": "등원 준비 아침 브이로그",
+          "views": 465435,
+          "likes": 20762,
+          "commentCount": 1698,
+          "description": "등원 준비 아침 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "육아",
+            "브이로그",
+            "일상"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2024-05-23",
+          "duration": "5:25",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user347",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 772,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user330",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2016,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user399",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 953,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo021demodaddycar",
+      "name": "아빠는 육아중",
+      "handle": "@demo-daddycare",
+      "subscribers": 36000,
+      "avatarUrl": "",
+      "description": "육아휴직 아빠의 하루",
+      "category": "육아",
+      "enriched": true,
+      "videoCount": 636,
+      "totalViews": 4678542,
+      "createdAt": "2021-02-13",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 1364,
+      "subsGrowthPct30d": 3.79,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 55,
+        "neutralPct": 34,
+        "negativePct": 11,
+        "total": 48
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo21v0j67e",
+          "title": "아기랑 놀아주기 꿀팁 10가지",
+          "views": 26371,
+          "likes": 918,
+          "commentCount": 98,
+          "description": "아기랑 놀아주기 꿀팁 10가지 — 데모용 가상 영상입니다.",
+          "tags": [
+            "육아",
+            "꿀팁",
+            "놀이"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2026-10-13",
+          "duration": "4:16",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user974",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1510,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user544",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1494,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user808",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1026,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo21v13u2c",
+          "title": "아빠 육아 브이로그 - 목욕 편",
+          "views": 67889,
+          "likes": 1474,
+          "commentCount": 235,
+          "description": "아빠 육아 브이로그 - 목욕 편 — 데모용 가상 영상입니다.",
+          "tags": [
+            "육아",
+            "브이로그"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2026-01-10",
+          "duration": "20:53",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user712",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2226,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user505",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2367,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user554",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 626,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user899",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 31,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user682",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 638,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo022demosalaryte",
+      "name": "월급쟁이 재테크",
+      "handle": "@demo-salary-tech",
+      "subscribers": 410000,
+      "avatarUrl": "",
+      "description": "평범한 직장인의 자산 만들기. 문의: salarytech.demo@example.com",
+      "category": "재테크",
+      "enriched": true,
+      "videoCount": 460,
+      "totalViews": 21622715,
+      "createdAt": "2016-08-11",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 2419,
+      "subsGrowthPct30d": 0.59,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 65,
+        "neutralPct": 30,
+        "negativePct": 5,
+        "total": 90
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo22v0eu98",
+          "title": "월 100만원 저축 로드맵 총정리",
+          "views": 570264,
+          "likes": 24176,
+          "commentCount": 2678,
+          "description": "월 100만원 저축 로드맵 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "재테크",
+            "저축",
+            "월급"
+          ],
+          "category": "Education",
+          "uploadDate": "2025-11-10",
+          "duration": "8:34",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user769",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2546,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user904",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2692,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user614",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 409,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user264",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2221,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user132",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 420,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        },
+        {
+          "videoId": "demo22v1jsf2",
+          "title": "ETF 적립식 투자 3년 후기",
+          "views": 314146,
+          "likes": 12360,
+          "commentCount": 362,
+          "description": "ETF 적립식 투자 3년 후기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "재테크",
+            "ETF",
+            "투자",
+            "후기"
+          ],
+          "category": "Education",
+          "uploadDate": "2025-03-27",
+          "duration": "12:45",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user621",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1977,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user872",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2822,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user851",
+              "text": "오 이런 것도 있군요",
+              "likes": 1518,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo22v2h36c",
+          "title": "연말정산 환급 늘리는 꿀팁",
+          "views": 896341,
+          "likes": 36465,
+          "commentCount": 1724,
+          "description": "연말정산 환급 늘리는 꿀팁 — 데모용 가상 영상입니다.",
+          "tags": [
+            "재테크",
+            "연말정산",
+            "꿀팁"
+          ],
+          "category": "Education",
+          "uploadDate": "2023-08-24",
+          "duration": "18:20",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user899",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2479,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user720",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2739,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user266",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2749,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user175",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2164,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user565",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1365,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo023demorealtyma",
+      "name": "부동산 읽어주는 남자",
+      "handle": "@demo-realty-man",
+      "subscribers": 150000,
+      "avatarUrl": "",
+      "description": "뉴스 뒤의 부동산 흐름 분석",
+      "category": "부동산",
+      "enriched": true,
+      "videoCount": 524,
+      "totalViews": 9636087,
+      "createdAt": "2020-12-09",
+      "country": "대한민국",
+      "trend": "declining",
+      "subsGrowth30d": -1245,
+      "subsGrowthPct30d": -0.83,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 76,
+        "neutralPct": 12,
+        "negativePct": 12,
+        "total": 167
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo23v011w9",
+          "title": "금리와 집값의 관계 분석",
+          "views": 385927,
+          "likes": 9968,
+          "commentCount": 1260,
+          "description": "금리와 집값의 관계 분석 — 데모용 가상 영상입니다.",
+          "tags": [
+            "부동산",
+            "금리",
+            "분석"
+          ],
+          "category": "Education",
+          "uploadDate": "2024-04-05",
+          "duration": "22:06",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user863",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 503,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user386",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2097,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user244",
+              "text": "오 이런 것도 있군요",
+              "likes": 112,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user238",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 137,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user354",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2076,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo23v1gdju",
+          "title": "청약 당첨 전략 정리",
+          "views": 389550,
+          "likes": 19396,
+          "commentCount": 1080,
+          "description": "청약 당첨 전략 정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "부동산",
+            "청약",
+            "전략"
+          ],
+          "category": "Education",
+          "uploadDate": "2024-05-28",
+          "duration": "13:07",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user738",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2219,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user451",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2342,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user676",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2987,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user364",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1634,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user339",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1630,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo024demodailyloo",
+      "name": "데일리룩 수아",
+      "handle": "@demo-dailylook",
+      "subscribers": 230000,
+      "avatarUrl": "",
+      "description": "키 160 데일리룩. 협찬문의 sua.demo@example.com",
+      "category": "패션",
+      "enriched": true,
+      "videoCount": 80,
+      "totalViews": 14109194,
+      "createdAt": "2015-04-03",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 8004,
+      "subsGrowthPct30d": 3.48,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 69,
+        "neutralPct": 27,
+        "negativePct": 4,
+        "total": 77
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo24v0e992",
+          "title": "(유료광고포함) 가을 신상 원피스 착용 리뷰",
+          "views": 561964,
+          "likes": 27752,
+          "commentCount": 1138,
+          "description": "(유료광고포함) 가을 신상 원피스 착용 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "패션",
+            "원피스",
+            "리뷰",
+            "데일리룩"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-02-10",
+          "duration": "18:57",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user422",
+              "text": "오 이런 것도 있군요",
+              "likes": 1207,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user254",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1052,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user797",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1866,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo24v176yx",
+          "title": "체형별 청바지 고르는 법",
+          "views": 563786,
+          "likes": 14781,
+          "commentCount": 2157,
+          "description": "체형별 청바지 고르는 법 — 데모용 가상 영상입니다.",
+          "tags": [
+            "패션",
+            "청바지",
+            "꿀팁"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2024-06-14",
+          "duration": "13:19",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user975",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 231,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user103",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 699,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user961",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 707,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user212",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2290,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo24v2agk4",
+          "title": "일주일 출근룩 브이로그",
+          "views": 410768,
+          "likes": 11501,
+          "commentCount": 1390,
+          "description": "일주일 출근룩 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "패션",
+            "출근룩",
+            "브이로그"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2024-08-08",
+          "duration": "4:08",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user578",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 276,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user171",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2719,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user146",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1530,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user347",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2883,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user981",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 158,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo025demosneakerh",
+      "name": "스니커 헌터",
+      "handle": "@demo-sneaker-h",
+      "subscribers": 58000,
+      "avatarUrl": "",
+      "description": "한정판 스니커즈 리뷰/발매정보",
+      "category": "패션",
+      "enriched": true,
+      "videoCount": 382,
+      "totalViews": 2010630,
+      "createdAt": "2016-09-10",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": -35,
+      "subsGrowthPct30d": -0.06,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 77,
+        "neutralPct": 18,
+        "negativePct": 5,
+        "total": 193
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo25v08sf1",
+          "title": "이번 달 발매 스니커즈 총정리",
+          "views": 146141,
+          "likes": 3878,
+          "commentCount": 467,
+          "description": "이번 달 발매 스니커즈 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "스니커즈",
+            "발매정보",
+            "패션"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2023-01-21",
+          "duration": "4:18",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user190",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2074,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user551",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1071,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user966",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 743,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user962",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1561,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user540",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 15,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo25v1l21a",
+          "title": "한정판 언박싱 & 실착 리뷰",
+          "views": 41070,
+          "likes": 1798,
+          "commentCount": 149,
+          "description": "한정판 언박싱 & 실착 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "스니커즈",
+            "언박싱",
+            "리뷰"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-02-16",
+          "duration": "7:46",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user264",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 144,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user157",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1022,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user479",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2328,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo026democatlog",
+      "name": "냥집사 로그",
+      "handle": "@demo-catlog",
+      "subscribers": 290000,
+      "avatarUrl": "",
+      "description": "고양이 세 마리와의 일상. 문의: catlog.demo@example.com",
+      "category": "반려동물",
+      "enriched": true,
+      "videoCount": 383,
+      "totalViews": 37549603,
+      "createdAt": "2015-10-10",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": -522,
+      "subsGrowthPct30d": -0.18,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 61,
+        "neutralPct": 31,
+        "negativePct": 8,
+        "total": 74
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo26v0fnbq",
+          "title": "(유료광고포함) 신제품 캣타워 설치 후기",
+          "views": 514947,
+          "likes": 11088,
+          "commentCount": 1912,
+          "description": "(유료광고포함) 신제품 캣타워 설치 후기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "고양이",
+            "캣타워",
+            "리뷰",
+            "협찬"
+          ],
+          "category": "Pets & Animals",
+          "uploadDate": "2024-12-14",
+          "duration": "21:53",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user178",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 338,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user599",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 731,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user387",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 964,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo26v17snl",
+          "title": "아깽이 첫 목욕 브이로그",
+          "views": 222659,
+          "likes": 11633,
+          "commentCount": 658,
+          "description": "아깽이 첫 목욕 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "고양이",
+            "브이로그",
+            "집사"
+          ],
+          "category": "Pets & Animals",
+          "uploadDate": "2024-06-17",
+          "duration": "12:35",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user955",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1137,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user640",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2188,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user268",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1814,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user195",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 668,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user372",
+              "text": "오 이런 것도 있군요",
+              "likes": 677,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo26v2aakz",
+          "title": "고양이 사료 고르는 법 총정리",
+          "views": 603260,
+          "likes": 22474,
+          "commentCount": 2697,
+          "description": "고양이 사료 고르는 법 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "고양이",
+            "사료",
+            "꿀팁"
+          ],
+          "category": "Pets & Animals",
+          "uploadDate": "2026-06-01",
+          "duration": "10:19",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user361",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 1644,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user111",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1286,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user409",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 247,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user831",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 193,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo027demodogtrain",
+      "name": "멍트레이너 박",
+      "handle": "@demo-dogtrainer",
+      "subscribers": 71000,
+      "avatarUrl": "",
+      "description": "문제행동 교정 전문 훈련사",
+      "category": "강아지 훈련",
+      "enriched": true,
+      "videoCount": 754,
+      "totalViews": 5297823,
+      "createdAt": "2023-09-09",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 1924,
+      "subsGrowthPct30d": 2.71,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 56,
+        "neutralPct": 40,
+        "negativePct": 4,
+        "total": 154
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo27v09utj",
+          "title": "짖는 강아지 훈련 하는법",
+          "views": 76024,
+          "likes": 3068,
+          "commentCount": 155,
+          "description": "짖는 강아지 훈련 하는법 — 데모용 가상 영상입니다.",
+          "tags": [
+            "강아지",
+            "훈련",
+            "교정"
+          ],
+          "category": "Pets & Animals",
+          "uploadDate": "2024-02-27",
+          "duration": "19:35",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user579",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1036,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user163",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1193,
+              "replyCount": 3,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user879",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1148,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user958",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 599,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user393",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2107,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        },
+        {
+          "videoId": "demo27v1h6am",
+          "title": "산책 매너 기초 강의",
+          "views": 166575,
+          "likes": 5090,
+          "commentCount": 788,
+          "description": "산책 매너 기초 강의 — 데모용 가상 영상입니다.",
+          "tags": [
+            "강아지",
+            "산책",
+            "강의"
+          ],
+          "category": "Pets & Animals",
+          "uploadDate": "2026-04-14",
+          "duration": "19:28",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user932",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 493,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user308",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 252,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user348",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 839,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user664",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2672,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo028demoseouldia",
+      "name": "서울 자취일기",
+      "handle": "@demo-seoul-diary",
+      "subscribers": 130000,
+      "avatarUrl": "",
+      "description": "오피스텔 자취 일상",
+      "category": "브이로그",
+      "enriched": true,
+      "videoCount": 612,
+      "totalViews": 9362310,
+      "createdAt": "2021-07-12",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 1950,
+      "subsGrowthPct30d": 1.5,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 73,
+        "neutralPct": 17,
+        "negativePct": 10,
+        "total": 86
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo28v0brdz",
+          "title": "퇴근 후 저녁 루틴 브이로그",
+          "views": 114369,
+          "likes": 6180,
+          "commentCount": 463,
+          "description": "퇴근 후 저녁 루틴 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "브이로그",
+            "일상",
+            "자취"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2026-05-19",
+          "duration": "11:06",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user295",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1319,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user910",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1993,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user234",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1913,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo28v13m70",
+          "title": "자취방 룸투어 & 수납 꿀팁",
+          "views": 137406,
+          "likes": 7127,
+          "commentCount": 505,
+          "description": "자취방 룸투어 & 수납 꿀팁 — 데모용 가상 영상입니다.",
+          "tags": [
+            "자취",
+            "룸투어",
+            "꿀팁"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2026-05-18",
+          "duration": "14:42",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user748",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1447,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user280",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1175,
+              "replyCount": 6,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user783",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1389,
+              "replyCount": 11,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo28v2l3o5",
+          "title": "주말 카페 브이로그 쇼츠",
+          "views": 330696,
+          "likes": 17161,
+          "commentCount": 1407,
+          "description": "주말 카페 브이로그 쇼츠 — 데모용 가상 영상입니다.",
+          "tags": [
+            "브이로그",
+            "쇼츠"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2026-10-09",
+          "duration": "0:41",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user177",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2667,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user264",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1086,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user926",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1988,
+              "replyCount": 8,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user404",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2360,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user990",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 415,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo029democountryy",
+      "name": "시골살이 청년",
+      "handle": "@demo-country-y",
+      "subscribers": 44000,
+      "avatarUrl": "",
+      "description": "귀촌 3년차의 기록",
+      "category": "시골생활",
+      "enriched": true,
+      "videoCount": 134,
+      "totalViews": 1801465,
+      "createdAt": "2017-02-25",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 44,
+      "subsGrowthPct30d": 0.1,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 74,
+        "neutralPct": 15,
+        "negativePct": 11,
+        "total": 140
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo29v0672x",
+          "title": "텃밭 농사 한 달 기록 브이로그",
+          "views": 110477,
+          "likes": 2293,
+          "commentCount": 416,
+          "description": "텃밭 농사 한 달 기록 브이로그 — 데모용 가상 영상입니다.",
+          "tags": [
+            "시골생활",
+            "귀촌",
+            "브이로그"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2026-08-02",
+          "duration": "16:53",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user991",
+              "text": "오 이런 것도 있군요",
+              "likes": 160,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user963",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 272,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user125",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2705,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user118",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 928,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user321",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 45,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo29v1iahj",
+          "title": "시골집 수리 셀프 인테리어",
+          "views": 60580,
+          "likes": 2965,
+          "commentCount": 205,
+          "description": "시골집 수리 셀프 인테리어 — 데모용 가상 영상입니다.",
+          "tags": [
+            "시골집",
+            "셀프인테리어"
+          ],
+          "category": "People & Blogs",
+          "uploadDate": "2023-11-17",
+          "duration": "9:18",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user674",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1919,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user376",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2718,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user939",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 604,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo030demodaonmusi",
+      "name": "어쿠스틱 다온",
+      "handle": "@demo-daon-music",
+      "subscribers": 175000,
+      "avatarUrl": "",
+      "description": "기타 하나로 부르는 커버곡",
+      "category": "커버곡",
+      "enriched": true,
+      "videoCount": 146,
+      "totalViews": 25652217,
+      "createdAt": "2015-10-26",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 105,
+      "subsGrowthPct30d": 0.06,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 61,
+        "neutralPct": 29,
+        "negativePct": 10,
+        "total": 192
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo30v0zd9",
+          "title": "최신 발라드 어쿠스틱 커버",
+          "views": 434217,
+          "likes": 9622,
+          "commentCount": 1508,
+          "description": "최신 발라드 어쿠스틱 커버 — 데모용 가상 영상입니다.",
+          "tags": [
+            "커버곡",
+            "어쿠스틱",
+            "발라드"
+          ],
+          "category": "Music",
+          "uploadDate": "2026-10-28",
+          "duration": "15:09",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user157",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 704,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user216",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2498,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user299",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2129,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo30v1i4g1",
+          "title": "버스킹 라이브 직캠",
+          "views": 262935,
+          "likes": 6623,
+          "commentCount": 299,
+          "description": "버스킹 라이브 직캠 — 데모용 가상 영상입니다.",
+          "tags": [
+            "버스킹",
+            "라이브",
+            "커버"
+          ],
+          "category": "Music",
+          "uploadDate": "2024-02-12",
+          "duration": "17:17",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user123",
+              "text": "오 이런 것도 있군요",
+              "likes": 2534,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user887",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1847,
+              "replyCount": 5,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user944",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 584,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo031demopianoday",
+      "name": "피아노 하루",
+      "handle": "@demo-piano-day",
+      "subscribers": 62000,
+      "avatarUrl": "",
+      "description": "하루 10분 피아노 강좌",
+      "category": "피아노",
+      "enriched": true,
+      "videoCount": 108,
+      "totalViews": 3745690,
+      "createdAt": "2023-10-26",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 1197,
+      "subsGrowthPct30d": 1.93,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 60,
+        "neutralPct": 33,
+        "negativePct": 7,
+        "total": 158
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo31v030ll",
+          "title": "왕초보 피아노 코드 반주 강의",
+          "views": 156095,
+          "likes": 8527,
+          "commentCount": 479,
+          "description": "왕초보 피아노 코드 반주 강의 — 데모용 가상 영상입니다.",
+          "tags": [
+            "피아노",
+            "강의",
+            "초보"
+          ],
+          "category": "Music",
+          "uploadDate": "2026-03-10",
+          "duration": "11:28",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user653",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 664,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user877",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2881,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user746",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1590,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo31v17p4",
+          "title": "OST 피아노 커버 모음",
+          "views": 82395,
+          "likes": 2960,
+          "commentCount": 185,
+          "description": "OST 피아노 커버 모음 — 데모용 가상 영상입니다.",
+          "tags": [
+            "피아노",
+            "커버",
+            "OST"
+          ],
+          "category": "Music",
+          "uploadDate": "2025-10-21",
+          "duration": "6:12",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user921",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1525,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user781",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2081,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user722",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1096,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo032demosuneungj",
+      "name": "수능 국어 정쌤",
+      "handle": "@demo-suneung-j",
+      "subscribers": 240000,
+      "avatarUrl": "",
+      "description": "국어 1등급 만들기. 문의: jssam.demo@example.com",
+      "category": "수능",
+      "enriched": true,
+      "videoCount": 848,
+      "totalViews": 33323856,
+      "createdAt": "2017-08-05",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 360,
+      "subsGrowthPct30d": 0.15,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 72,
+        "neutralPct": 22,
+        "negativePct": 6,
+        "total": 50
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo32v056lf",
+          "title": "비문학 지문 빠르게 읽는 법 강의",
+          "views": 102690,
+          "likes": 3929,
+          "commentCount": 170,
+          "description": "비문학 지문 빠르게 읽는 법 강의 — 데모용 가상 영상입니다.",
+          "tags": [
+            "수능",
+            "국어",
+            "강의",
+            "공부법"
+          ],
+          "category": "Education",
+          "uploadDate": "2025-09-11",
+          "duration": "6:40",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user504",
+              "text": "오 이런 것도 있군요",
+              "likes": 671,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user642",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 339,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user969",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 542,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo32v17c0k",
+          "title": "수능 D-100 공부 계획 총정리",
+          "views": 229244,
+          "likes": 10305,
+          "commentCount": 453,
+          "description": "수능 D-100 공부 계획 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "수능",
+            "공부계획",
+            "총정리"
+          ],
+          "category": "Education",
+          "uploadDate": "2025-05-27",
+          "duration": "16:26",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user938",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2519,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user396",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1327,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user852",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 2578,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo033demoenglish1",
+      "name": "영어 한걸음",
+      "handle": "@demo-english-1",
+      "subscribers": 83000,
+      "avatarUrl": "",
+      "description": "직장인 영어 회화 습관 만들기",
+      "category": "영어공부",
+      "enriched": true,
+      "videoCount": 897,
+      "totalViews": 8404948,
+      "createdAt": "2018-09-24",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 3503,
+      "subsGrowthPct30d": 4.22,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 67,
+        "neutralPct": 21,
+        "negativePct": 12,
+        "total": 168
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo33v0a47j",
+          "title": "출근길 10분 영어 쉐도잉 따라하기",
+          "views": 106066,
+          "likes": 4361,
+          "commentCount": 386,
+          "description": "출근길 10분 영어 쉐도잉 따라하기 — 데모용 가상 영상입니다.",
+          "tags": [
+            "영어공부",
+            "쉐도잉",
+            "회화"
+          ],
+          "category": "Education",
+          "uploadDate": "2026-09-26",
+          "duration": "16:46",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user823",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 2142,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user708",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 180,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user214",
+              "text": "오 이런 것도 있군요",
+              "likes": 1354,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo33v1krxg",
+          "title": "영어 면접 단골 질문 정리",
+          "views": 38358,
+          "likes": 1873,
+          "commentCount": 134,
+          "description": "영어 면접 단골 질문 정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "영어",
+            "면접",
+            "정리"
+          ],
+          "category": "Education",
+          "uploadDate": "2026-04-09",
+          "duration": "4:24",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user415",
+              "text": "오 이런 것도 있군요",
+              "likes": 2953,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user534",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1907,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user231",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 2874,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo034demoasmrcozy",
+      "name": "ASMR 포근",
+      "handle": "@demo-asmr-cozy",
+      "subscribers": 350000,
+      "avatarUrl": "",
+      "description": "잠 못 드는 밤을 위해",
+      "category": "ASMR",
+      "enriched": true,
+      "videoCount": 480,
+      "totalViews": 40555318,
+      "createdAt": "2019-03-10",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 525,
+      "subsGrowthPct30d": 0.15,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 56,
+        "neutralPct": 39,
+        "negativePct": 5,
+        "total": 70
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo34v0jid8",
+          "title": "빗소리 백색소음 ASMR 8시간",
+          "views": 565322,
+          "likes": 20223,
+          "commentCount": 675,
+          "description": "빗소리 백색소음 ASMR 8시간 — 데모용 가상 영상입니다.",
+          "tags": [
+            "asmr",
+            "백색소음",
+            "수면유도"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2024-07-09",
+          "duration": "6:57",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user359",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 639,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user435",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2013,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user117",
+              "text": "광고가 너무 많아진 것 같아요",
+              "likes": 1938,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "negative"
+            }
+          ]
+        },
+        {
+          "videoId": "demo34v1bomo",
+          "title": "속삭이는 북 리딩 ASMR",
+          "views": 305853,
+          "likes": 5388,
+          "commentCount": 501,
+          "description": "속삭이는 북 리딩 ASMR — 데모용 가상 영상입니다.",
+          "tags": [
+            "asmr",
+            "속삭임"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2026-09-09",
+          "duration": "10:58",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user580",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2360,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user796",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 956,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user227",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 624,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo035demogarageto",
+      "name": "오늘의 차고",
+      "handle": "@demo-garage-today",
+      "subscribers": 185000,
+      "avatarUrl": "",
+      "description": "신차 리뷰와 정비 상식. 문의: garage.demo@example.com",
+      "category": "자동차",
+      "enriched": true,
+      "videoCount": 351,
+      "totalViews": 27299863,
+      "createdAt": "2016-02-04",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": -74,
+      "subsGrowthPct30d": -0.04,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 78,
+        "neutralPct": 20,
+        "negativePct": 2,
+        "total": 188
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo35v058qx",
+          "title": "(유료광고포함) 신형 전기차 시승 리뷰",
+          "views": 246190,
+          "likes": 10436,
+          "commentCount": 589,
+          "description": "(유료광고포함) 신형 전기차 시승 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "자동차",
+            "전기차",
+            "시승",
+            "리뷰"
+          ],
+          "category": "Autos & Vehicles",
+          "uploadDate": "2026-02-25",
+          "duration": "10:34",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user316",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 2843,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user336",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 754,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user432",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2356,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "1개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo35v1dm6f",
+          "title": "셀프 세차 완벽 가이드",
+          "views": 153727,
+          "likes": 5440,
+          "commentCount": 440,
+          "description": "셀프 세차 완벽 가이드 — 데모용 가상 영상입니다.",
+          "tags": [
+            "세차",
+            "가이드",
+            "자동차"
+          ],
+          "category": "Autos & Vehicles",
+          "uploadDate": "2024-08-16",
+          "duration": "13:23",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user463",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1810,
+              "replyCount": 17,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user491",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 698,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "11개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user351",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 1248,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo036demohomemood",
+      "name": "홈스타일링 무드",
+      "handle": "@demo-home-mood",
+      "subscribers": 97000,
+      "avatarUrl": "",
+      "description": "작은 집도 넓어 보이게",
+      "category": "인테리어",
+      "enriched": true,
+      "videoCount": 513,
+      "totalViews": 13017617,
+      "createdAt": "2016-01-25",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 3502,
+      "subsGrowthPct30d": 3.61,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 56,
+        "neutralPct": 36,
+        "negativePct": 8,
+        "total": 180
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo36v0gw10",
+          "title": "10평 원룸 인테리어 비포애프터",
+          "views": 94710,
+          "likes": 1625,
+          "commentCount": 433,
+          "description": "10평 원룸 인테리어 비포애프터 — 데모용 가상 영상입니다.",
+          "tags": [
+            "인테리어",
+            "원룸",
+            "비포애프터"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2023-09-03",
+          "duration": "18:45",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user842",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 1954,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user350",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 641,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user153",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 280,
+              "replyCount": 16,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        },
+        {
+          "videoId": "demo36v1dtzo",
+          "title": "조명으로 분위기 바꾸는 법",
+          "views": 223000,
+          "likes": 11750,
+          "commentCount": 838,
+          "description": "조명으로 분위기 바꾸는 법 — 데모용 가상 영상입니다.",
+          "tags": [
+            "인테리어",
+            "조명",
+            "꿀팁"
+          ],
+          "category": "Howto & Style",
+          "uploadDate": "2025-11-28",
+          "duration": "13:44",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user381",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1683,
+              "replyCount": 15,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user575",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 1081,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user679",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2675,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user519",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 544,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo037demofishingk",
+      "name": "주말 낚시왕",
+      "handle": "@demo-fishing-k",
+      "subscribers": 66000,
+      "avatarUrl": "",
+      "description": "전국 포인트 탐방",
+      "category": "낚시",
+      "enriched": true,
+      "videoCount": 273,
+      "totalViews": 5920756,
+      "createdAt": "2015-03-10",
+      "country": "대한민국",
+      "trend": "flat",
+      "subsGrowth30d": 73,
+      "subsGrowthPct30d": 0.11,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 70,
+        "neutralPct": 26,
+        "negativePct": 4,
+        "total": 120
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo37v0c2qa",
+          "title": "가을 감성돔 낚시 포인트 공개",
+          "views": 142604,
+          "likes": 6262,
+          "commentCount": 601,
+          "description": "가을 감성돔 낚시 포인트 공개 — 데모용 가상 영상입니다.",
+          "tags": [
+            "낚시",
+            "감성돔",
+            "포인트"
+          ],
+          "category": "Sports",
+          "uploadDate": "2023-10-19",
+          "duration": "16:34",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user320",
+              "text": "중간에 나온 제품 이름이 뭔가요?",
+              "likes": 2506,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "9개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user245",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2189,
+              "replyCount": 2,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user155",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1698,
+              "replyCount": 18,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo37v1fdxl",
+          "title": "초보 바다낚시 장비 총정리",
+          "views": 169341,
+          "likes": 9154,
+          "commentCount": 428,
+          "description": "초보 바다낚시 장비 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "낚시",
+            "장비",
+            "초보"
+          ],
+          "category": "Sports",
+          "uploadDate": "2026-09-04",
+          "duration": "16:01",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user244",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1770,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user419",
+              "text": "퀄리티가 진짜 미쳤다.. 구독 박고 갑니다",
+              "likes": 1377,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user840",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 2540,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo038demogolflab",
+      "name": "골프 스윙연구소",
+      "handle": "@demo-golf-lab",
+      "subscribers": 120000,
+      "avatarUrl": "",
+      "description": "아마추어 스윙 교정 전문. 문의: golflab.demo@example.com",
+      "category": "골프",
+      "enriched": true,
+      "videoCount": 887,
+      "totalViews": 17120043,
+      "createdAt": "2018-05-28",
+      "country": "대한민국",
+      "trend": "rising",
+      "subsGrowth30d": 2736,
+      "subsGrowthPct30d": 2.28,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 61,
+        "neutralPct": 31,
+        "negativePct": 8,
+        "total": 43
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo38v0tju",
+          "title": "드라이버 비거리 20m 늘리는 법 강의",
+          "views": 214329,
+          "likes": 7897,
+          "commentCount": 242,
+          "description": "드라이버 비거리 20m 늘리는 법 강의 — 데모용 가상 영상입니다.",
+          "tags": [
+            "골프",
+            "드라이버",
+            "강의"
+          ],
+          "category": "Sports",
+          "uploadDate": "2023-09-03",
+          "duration": "18:18",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user754",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 223,
+              "replyCount": 20,
+              "replies": [],
+              "publishedAt": "6개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user584",
+              "text": "설명이 너무 친절해서 좋아요, 많이 배워갑니다",
+              "likes": 2756,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user164",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 927,
+              "replyCount": 1,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo38v16xm4",
+          "title": "(유료광고포함) 신형 아이언 필드 리뷰",
+          "views": 195339,
+          "likes": 6436,
+          "commentCount": 473,
+          "description": "(유료광고포함) 신형 아이언 필드 리뷰 — 데모용 가상 영상입니다.",
+          "tags": [
+            "골프",
+            "아이언",
+            "리뷰"
+          ],
+          "category": "Sports",
+          "uploadDate": "2025-03-24",
+          "duration": "16:40",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user777",
+              "text": "예전 콘텐츠가 더 좋았는데 아쉽네요",
+              "likes": 1079,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "negative"
+            },
+            {
+              "author": "@demo_user760",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 609,
+              "replyCount": 10,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user362",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 882,
+              "replyCount": 12,
+              "replies": [],
+              "publishedAt": "8개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user640",
+              "text": "다음 편은 언제 올라오나요?",
+              "likes": 366,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UCdemo039demomysteryt",
+      "name": "미스터리 극장",
+      "handle": "@demo-mystery-t",
+      "subscribers": 430000,
+      "avatarUrl": "",
+      "description": "세상의 미스터리를 파헤칩니다",
+      "category": "미스터리",
+      "enriched": true,
+      "videoCount": 413,
+      "totalViews": 38695325,
+      "createdAt": "2015-02-02",
+      "country": "대한민국",
+      "trend": "declining",
+      "subsGrowth30d": -1763,
+      "subsGrowthPct30d": -0.41,
+      "dsStatus": "blue",
+      "commentSentiment": {
+        "positivePct": 65,
+        "neutralPct": 32,
+        "negativePct": 3,
+        "total": 176
+      },
+      "demo": true,
+      "topVideos": [
+        {
+          "videoId": "demo39v07km1",
+          "title": "풀리지 않은 사건 분석 - 1부",
+          "views": 259033,
+          "likes": 11223,
+          "commentCount": 384,
+          "description": "풀리지 않은 사건 분석 - 1부 — 데모용 가상 영상입니다.",
+          "tags": [
+            "미스터리",
+            "사건",
+            "분석"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2024-04-03",
+          "duration": "8:25",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user542",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 2710,
+              "replyCount": 7,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user438",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 293,
+              "replyCount": 13,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user653",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 344,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "3개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        },
+        {
+          "videoId": "demo39v1ic44",
+          "title": "도시전설의 진실 총정리",
+          "views": 769748,
+          "likes": 19275,
+          "commentCount": 3085,
+          "description": "도시전설의 진실 총정리 — 데모용 가상 영상입니다.",
+          "tags": [
+            "미스터리",
+            "도시전설"
+          ],
+          "category": "Entertainment",
+          "uploadDate": "2024-01-07",
+          "duration": "22:04",
+          "thumbnail": "",
+          "comments": [
+            {
+              "author": "@demo_user375",
+              "text": "오늘도 잘 보고 갑니다! 최고예요",
+              "likes": 277,
+              "replyCount": 4,
+              "replies": [],
+              "publishedAt": "5개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user747",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 1976,
+              "replyCount": 19,
+              "replies": [],
+              "publishedAt": "10개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user321",
+              "text": "오 이런 것도 있군요",
+              "likes": 2030,
+              "replyCount": 9,
+              "replies": [],
+              "publishedAt": "2개월 전",
+              "sentiment": "neutral"
+            },
+            {
+              "author": "@demo_user663",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 287,
+              "replyCount": 14,
+              "replies": [],
+              "publishedAt": "7개월 전",
+              "sentiment": "positive"
+            },
+            {
+              "author": "@demo_user257",
+              "text": "이 채널 없으면 못 살아요 ㅋㅋ 꿀정보 감사합니다",
+              "likes": 857,
+              "replyCount": 0,
+              "replies": [],
+              "publishedAt": "4개월 전",
+              "sentiment": "positive"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

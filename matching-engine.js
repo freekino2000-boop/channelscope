@@ -60,14 +60,26 @@ function loadJson(p, fallback) {
   try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fallback; }
 }
 
-/** 플랫폼별 풀을 [{platform, src, items}] 형태로 로드(한 번만 읽어서 재사용) */
+const DEMO_POOL_PATH = path.join(DIR, 'data', 'demo-pool.json');
+
+/** 플랫폼별 풀을 [{platform, src, items}] 형태로 로드(한 번만 읽어서 재사용).
+ *  데모 모드: 실제 풀 파일이 하나도 없으면(깃허브 클론 환경 등) 가상 채널 40개(demo-pool.json)로
+ *  자동 대체 — 로직 테스트용이며 실존 채널이 아니다. */
 function loadPools(platforms) {
   const list = (platforms && platforms.length ? platforms : ALL_PLATFORMS).filter((p) => PLATFORM_SOURCES[p]);
-  return list.map((platform) => {
+  const pools = list.map((platform) => {
     const src = PLATFORM_SOURCES[platform];
     const pool = loadJson(src.poolPath, {});
     return { platform, src, items: pool[src.arrayKey] || [] };
   });
+  if (pools.every((p) => !p.items.length)) {
+    const demo = loadJson(DEMO_POOL_PATH, null);
+    if (demo?.channels?.length) {
+      console.warn(`[매칭엔진] 실제 풀 데이터(pool.json) 없음 → 데모 모드: 가상 채널 ${demo.channels.length}개로 동작합니다`);
+      return [{ platform: 'youtube', src: PLATFORM_SOURCES.youtube, items: demo.channels, demo: true }];
+    }
+  }
+  return pools;
 }
 
 function tokenize(text) {
@@ -268,9 +280,14 @@ function passesHardFilter(creator) {
  *  poolsCache를 주면 디스크 재로드 없이 재사용(match-server.js가 메모리 캐시로 사용) */
 function prepareAd(ad, poolsCache) {
   const wanted = ad.platforms && ad.platforms.length ? ad.platforms : ALL_PLATFORMS;
-  const pools = poolsCache
+  let pools = poolsCache
     ? poolsCache.filter((p) => wanted.includes(p.platform))
     : loadPools(ad.platforms);
+  // 데모 모드에서 선택 플랫폼과 데모 풀(youtube)이 어긋나 비어버리면 데모 풀 유지
+  if (poolsCache && !pools.some((p) => p.items.length) && poolsCache.some((p) => p.demo)) {
+    pools = poolsCache.filter((p) => p.demo);
+  }
+  const demoMode = pools.some((p) => p.demo);
   const adKeywords = extractAdKeywords(ad);
   const refs = resolveReferences(ad.references, pools);
   // CIV 카테고리 통계(보정/신뢰도 블렌딩 기준) — 파일 캐시 우선, 없으면 즉석 생성 후 저장
@@ -279,7 +296,7 @@ function prepareAd(ad, poolsCache) {
     civStats = civEngine.loadStatsFile();
     if (!civStats) { civStats = civEngine.buildStats(pools); civEngine.saveStats(civStats); }
   }
-  return { ad, pools, adKeywords, refs, civStats, weights: refs.profile ? WEIGHTS_WITH_REF : WEIGHTS_NO_REF };
+  return { ad, pools, adKeywords, refs, civStats, demoMode, weights: refs.profile ? WEIGHTS_WITH_REF : WEIGHTS_NO_REF };
 }
 
 /** 크리에이터 1명 스코어링 — 일괄 스코어링과 크리에이터 카드 조회가 공유하는 핵심 함수 */

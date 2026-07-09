@@ -49,6 +49,7 @@ function rankingOf(record) {
 function metaOf(record) {
   return {
     adId: record.adId,
+    demo: record.demo || false,
     scoredAt: record.scoredAt,
     tookMs: record.tookMs,
     candidateCount: record.candidateCount,

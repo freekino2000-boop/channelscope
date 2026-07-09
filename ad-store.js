@@ -64,6 +64,7 @@ function scoreAd(ad, poolsCache) {
     scoredAt: new Date().toISOString(),
     tookMs: Date.now() - started,
     candidateCount: count,
+    demo: prepared.demoMode || false,
     weights: prepared.weights,
     references: { resolved: prepared.refs.resolved, unresolved: prepared.refs.unresolved },
     gradeCuts: cuts,

@@ -224,6 +224,7 @@ function renderResult({ ad, ranking, meta }) {
       </span>
     </div>
     <div class="meta-bar">
+      ${meta.demo ? '<span style="display:inline-block;background:#fef3c7;color:#92400e;border-radius:6px;padding:2px 8px;font-weight:700;margin-bottom:4px">🧪 데모 모드 — 실제 풀 없이 가상 샘플 채널로 동작 중(결과의 채널은 실존하지 않습니다)</span><br>' : ''}
       후보 <b>${meta.candidateCount.toLocaleString()}</b>명 스코어링(${(meta.tookMs / 1000).toFixed(1)}초) ·
       가중치: 키워드 ${Math.round(w.keyword * 100)}% / 형식 ${Math.round(w.format * 100)}%${w.reference ? ` / 레퍼런스 ${Math.round(w.reference * 100)}%` : ''}<br>
       ${refLine}<br>

@@ -119,6 +119,7 @@ function buildShareHtml(ad, record) {
     <div class="sub">매칭스코프 · 매칭엔진 v0.4 (적합도 × YOUCHI CIV) · 이 파일은 단독으로 열립니다</div>
   </div>
   <div class="adinfo">
+    ${record.demo ? '<div style="background:#fef3c7;color:#92400e;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;margin-bottom:10px">🧪 데모 모드 리포트 — 가상 샘플 채널 기반이며 실존 채널이 아닙니다</div>' : ''}
     <h2>📣 ${esc(ad.adName)}</h2>
     ${ad.concept ? `<div class="row"><b>컨셉</b> — ${esc(ad.concept)}</div>` : ''}
     ${ad.keywords ? `<div class="row"><b>키워드</b> — ${esc(ad.keywords)}</div>` : ''}
