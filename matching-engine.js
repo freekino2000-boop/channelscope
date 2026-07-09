@@ -9,7 +9,7 @@
  * 알고리즘(v0.4): 적합도(Fit) × 가치(CIV) 2계층 구조
  *   [적합도 — 이 광고와 얼마나 맞는가]
  *   1) 하드필터        — 플랫폼/국내판정/데이터스코프 상태 + CIV D등급·어뷰징 확정 제외(CIV 설계서 02/14장)
- *   2) 키워드매칭      — Lv1(단순 포함 매칭)
+ *   2) 키워드매칭      — Lv1.5(핵심/맥락 키워드 분리 + 조사 제거 매칭)
  *   3) 영상형식적합도  — video-format.js
  *   4) 레퍼런스유사도  — 카테고리(40)+형식(30)+어휘(20)+티어근접(10), 리졸브 실패 시 축 생략
  *   [가치 — 이 채널이 광고 집행처로서 얼마나 가치 있는가]
@@ -90,10 +90,34 @@ function tokenize(text) {
     .filter((w) => w.length >= 2);
 }
 
-/** 광고에서 매칭용 키워드 목록 추출(광고명+컨셉+키워드 통합, 중복 제거) */
+// 한국어 조사/어미(토큰 끝에 붙는 것들) — 긴 것부터 매칭해서 1회 제거
+const JOSA = ['으로', '에서', '에게', '한테', '부터', '까지', '처럼', '보다', '마다', '라도', '이나', '이랑', '하고', '들을', '들이', '을', '를', '이', '가', '은', '는', '와', '과', '의', '에', '로', '도', '만', '랑', '들'];
+
+/** 토큰 끝의 조사 1개 제거("직장인을"→"직장인"). 제거 후 2자 미만이면 원형 유지 */
+function stripJosa(token) {
+  for (const j of JOSA) {
+    if (token.length - j.length >= 2 && token.endsWith(j)) return token.slice(0, -j.length);
+  }
+  return token;
+}
+
+/** 광고 토큰이 크리에이터 텍스트에 있는지 — 원형 우선, 없으면 조사 제거형으로 재시도(Lv1.5) */
+function tokenMatches(creatorText, token) {
+  if (creatorText.includes(token)) return true;
+  const stripped = stripJosa(token);
+  return stripped !== token && creatorText.includes(stripped);
+}
+
+/**
+ * 광고에서 매칭용 키워드 추출(v0.4.1 — 핵심/맥락 분리).
+ * - core: 광고주가 직접 입력한 keywords 필드(매칭 점수의 분모 — 의도가 명확한 핵심어)
+ * - context: 광고명+컨셉의 토큰(보너스 가점용 — 문장 서술어가 분모를 키우지 않도록 분리)
+ */
 function extractAdKeywords(ad) {
-  const raw = [ad.adName, ad.concept, ad.keywords].filter(Boolean).join(' ');
-  return [...new Set(tokenize(raw))];
+  const core = [...new Set(tokenize(ad.keywords))];
+  const coreSet = new Set(core);
+  const context = [...new Set(tokenize([ad.adName, ad.concept].filter(Boolean).join(' ')))].filter((t) => !coreSet.has(t));
+  return { core, context, all: [...core, ...context] };
 }
 
 /** 크리에이터의 매칭용 텍스트(카테고리+설명+최근 영상 제목/태그) */
@@ -105,11 +129,27 @@ function buildCreatorText(creator) {
   return parts.filter(Boolean).join(' ').toLowerCase();
 }
 
-/** Lv1 키워드 매칭 스코어: 광고 키워드 중 크리에이터 텍스트에 등장하는 비율 → 0~100 */
+/**
+ * Lv1.5 키워드 매칭 스코어(v0.4.1):
+ * - 핵심 키워드(keywords 필드) 매칭 비율 × 90 + 맥락 토큰(광고명/컨셉) 매칭 비율 × 20 (최대 100)
+ *   → 핵심어를 다 맞추면 맥락 절반만 겹쳐도 100점. "신제품/캠페인" 같은 서술어가 점수를 깎지 않음
+ * - 핵심 키워드가 없으면 맥락 토큰만으로 종전 방식(비율×100) 적용
+ * - 조사 제거 매칭(tokenMatches): "직장인을"도 "직장인"으로 잡음
+ */
 function keywordMatchScore(adKeywords, creatorText) {
-  if (!adKeywords.length) return 50; // 키워드가 아예 없으면 중립값
-  const hits = adKeywords.filter((kw) => creatorText.includes(kw));
-  return Math.round((hits.length / adKeywords.length) * 100);
+  const { core, context } = adKeywords;
+  if (!core.length && !context.length) return { score: 50, hits: [] }; // 키워드가 아예 없으면 중립값
+  const coreHits = core.filter((kw) => tokenMatches(creatorText, kw));
+  const contextHits = context.filter((kw) => tokenMatches(creatorText, kw));
+  let score;
+  if (core.length) {
+    const coreRatio = coreHits.length / core.length;
+    const contextRatio = context.length ? contextHits.length / context.length : 0;
+    score = Math.min(100, Math.round(coreRatio * 90 + contextRatio * 20));
+  } else {
+    score = Math.round((contextHits.length / context.length) * 100);
+  }
+  return { score, hits: [...coreHits, ...contextHits], coreHits, contextHits };
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -305,8 +345,9 @@ function scoreCreator(creator, prepared, platform) {
   const { ad, adKeywords, refs, weights } = prepared;
 
   const creatorText = buildCreatorText(creator);
-  const kwHits = adKeywords.filter((kw) => creatorText.includes(kw));
-  const kwScore = keywordMatchScore(adKeywords, creatorText);
+  const kw = keywordMatchScore(adKeywords, creatorText);
+  const kwScore = kw.score;
+  const kwHits = kw.hits;
 
   const formatTags = classifyVideoFormats(creator.topVideos);
   const fmtScore = formatMatchScore(ad.videoFormat, formatTags);
@@ -321,7 +362,8 @@ function scoreCreator(creator, prepared, platform) {
   const rawScore = refSim
     ? kwScore * weights.keyword + fmtScore * weights.format + refSim.score * weights.reference
     : kwScore * weights.keyword + fmtScore * weights.format;
-  const finalScore = Math.round(rawScore * multiplier * 10) / 10;
+  // CIV 보정으로 100을 넘을 수 있어 0~100 스케일로 캡(점수 해석 일관성)
+  const finalScore = Math.min(100, Math.round(rawScore * multiplier * 10) / 10);
 
   return {
     platform,
@@ -334,6 +376,7 @@ function scoreCreator(creator, prepared, platform) {
     breakdown: {
       keywordScore: kwScore,
       matchedKeywords: kwHits,
+      matchedCoreKeywords: kw.coreHits || [],
       formatScore: fmtScore,
       creatorFormatTags: formatTags,
       referenceScore: refSim ? refSim.score : null,
@@ -386,6 +429,8 @@ module.exports = {
   findInPools,
   extractAdKeywords,
   keywordMatchScore,
+  tokenMatches,
+  stripJosa,
   civMultiplier,
   engagementRate,
   passesHardFilter,

@@ -14,7 +14,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { prepareAd, scoreCreator, parseReference, PLATFORM_SOURCES } = require('./matching-engine');
+const { prepareAd, scoreCreator, parseReference, tokenMatches, PLATFORM_SOURCES } = require('./matching-engine');
 const { loadAds, loadAdScores, percentileOf } = require('./ad-store');
 
 const DIR = __dirname;
@@ -42,8 +42,9 @@ function buildHints(ad, result, prepared) {
   const hints = [];
   const b = result.breakdown;
 
-  const missed = prepared.adKeywords.filter((kw) => !b.matchedKeywords.includes(kw));
-  if (missed.length) hints.push(`광고 키워드 중 [${missed.slice(0, 8).join(', ')}]이(가) 채널 콘텐츠(제목/태그/설명)에서 발견되지 않았습니다.`);
+  // 핵심 키워드(분모) 미매칭이 점수에 직결 — 우선 안내. 맥락 토큰은 보너스라 참고로만
+  const missedCore = prepared.adKeywords.core.filter((kw) => !b.matchedKeywords.includes(kw));
+  if (missedCore.length) hints.push(`핵심 키워드 중 [${missedCore.slice(0, 8).join(', ')}]이(가) 채널 콘텐츠(제목/태그/설명)에서 발견되지 않았습니다 — 이 키워드가 점수 분모의 90%를 차지합니다.`);
 
   if (ad.videoFormat && b.formatScore < 100) {
     hints.push(`이 광고는 '${ad.videoFormat}' 형식을 원합니다 — 최근 영상에서 해당 형식이 감지되지 않아 감점됐습니다.` +
