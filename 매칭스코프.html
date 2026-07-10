@@ -161,11 +161,24 @@ $('adForm').addEventListener('submit', async (e) => {
   } catch (err) {
     $('result').style.display = 'none';
     $('placeholder').style.display = 'block';
-    $('placeholder').textContent = '오류: ' + err.message;
+    $('placeholder').innerHTML = serverDownMessage(err);
   } finally {
     $('submitBtn').disabled = false;
   }
 });
+
+// 서버 미연결(가장 흔한 실패)일 때 친절한 안내, 그 외엔 원문 오류
+function serverDownMessage(err) {
+  const isConn = location.protocol === 'file:' || /Failed to fetch|NetworkError|load failed/i.test(err.message);
+  if (isConn) {
+    return '⚠️ 매칭 서버에 연결할 수 없습니다.<br><br>' +
+      '이 페이지는 <b>서버가 켜져 있어야</b> 동작합니다.<br>' +
+      '<b>“매칭스코프 실행.command”</b> 파일을 더블클릭해서 서버를 켠 뒤<br>' +
+      '<b>http://localhost:3457</b> 로 접속하세요.' +
+      (location.protocol === 'file:' ? '<br><br>(지금은 파일을 직접 열어 둔 상태라 매칭이 실행되지 않습니다.)' : '');
+  }
+  return '오류: ' + esc(err.message);
+}
 
 function showLoading() {
   $('placeholder').style.display = 'none';
@@ -236,11 +249,16 @@ function renderResult({ ad, ranking, meta }) {
 }
 
 async function loadAdList() {
-  const r = await fetch('/api/ads');
-  const { ads } = await r.json();
-  $('adList').innerHTML = ads.length
-    ? ads.map((a) => `<div class="item" data-id="${a.adId}"><span>📣 ${esc(a.adName)} <span style="color:var(--sub)">(${a.createdAt.slice(0, 10)}${a.scored ? '' : ' · 미채점'})</span></span><span class="del" data-del="${a.adId}">삭제</span></div>`).join('')
-    : '<div class="hint">아직 등록된 광고가 없습니다</div>';
+  try {
+    const r = await fetch('/api/ads');
+    const { ads } = await r.json();
+    $('adList').innerHTML = ads.length
+      ? ads.map((a) => `<div class="item" data-id="${a.adId}"><span>📣 ${esc(a.adName)} <span style="color:var(--sub)">(${a.createdAt.slice(0, 10)}${a.scored ? '' : ' · 미채점'})</span></span><span class="del" data-del="${a.adId}">삭제</span></div>`).join('')
+      : '<div class="hint">아직 등록된 광고가 없습니다</div>';
+  } catch (err) {
+    // 서버 미연결이면 목록 자리에도 안내를 띄워 "멈춘 것처럼 보이는" 상태를 없앤다
+    $('adList').innerHTML = '<div class="hint" style="color:#dc2626">⚠️ 서버에 연결할 수 없습니다 — “매칭스코프 실행.command”로 서버를 켜세요</div>';
+  }
 }
 
 $('adList').addEventListener('click', async (e) => {
