@@ -6,18 +6,16 @@
  *
  * 입력(광고): { adName, concept, keywords, videoFormat, references, platforms }
  *
- * 알고리즘(v0.5): CIV 등급 우선 랭킹 — CIV 설계서의 "광고 매칭" 정책(광고주 관점)을 그대로 따름
- *   [1층: 가치 계층 — 어떤 채널을 먼저 보여줄 것인가]
- *   CIV 광고용 등급으로 계층 결정: S(자동 추천 1순위) → A(추천) → B(조건부) → C(신중 검토)
- *   → 미산출(최소기준 미달) 순. D등급·어뷰징 확정은 매칭 제외.
- *   [2층: 적합도 — 같은 계층 안에서 이 광고와 얼마나 맞는가 (표시 점수 0~100)]
- *   1) 하드필터        — 플랫폼/국내판정/데이터스코프 상태
+ * 알고리즘(v0.6): 적합도 주도 + CIV 보너스 — 단일 최종점수(0~100)로 랭킹
+ *   0) 관련성 게이트  — 핵심 키워드의 40% 이상 매칭돼야 후보(흔한 단어 1개로 끼는 무관 채널 배제)
+ *   1) 하드필터        — 플랫폼/국내판정/데이터스코프 상태 + CIV D등급·어뷰징 제외
  *   2) 키워드매칭      — Lv1.5(핵심/맥락 키워드 분리 + 조사 제거 + 복합어 매칭)
  *   3) 영상형식적합도  — video-format.js
  *   4) 레퍼런스유사도  — 카테고리(40)+형식(30)+어휘(20)+티어근접(10), 리졸브 실패 시 축 생략
+ *   5) CIV 보너스계수  — 적합도에 ×(0.85~1.15) 곱함(civ-engine.js, 광고용). 미산출 ×0.90
  *
- * 적합도 점수: 레퍼런스 있으면 키워드×0.5 + 형식×0.2 + 레퍼런스×0.3 / 없으면 키워드×0.8 + 형식×0.2
- * 정렬: (CIV 등급 계층 오름차순, 적합도 내림차순) — civ-engine 미설치 환경은 적합도 순
+ * 적합도 = 레퍼런스 있으면 키워드×0.5 + 형식×0.2 + 레퍼런스×0.3 / 없으면 키워드×0.8 + 형식×0.2
+ * 최종점수 = min(100, 적합도 × CIV계수)  ·  정렬: 최종점수 내림차순(civ-engine 미설치 시 계수=1)
  *
  * 실행 예(데모): node matching-engine.js
  */
@@ -273,37 +271,35 @@ function engagementRate(creator) {
   return rates.reduce((s, r) => s + r, 0) / rates.length;
 }
 
-// CIV 등급 → 랭킹 계층(v0.5 — 광고 매칭 정책: S 우선 노출, 등급 안에서 적합도 순).
-// 미산출(최소기준 미달)은 최하 계층 — "실질적 거래 가능성이 있는 최소 규모" 미만이므로 후순위.
-const GRADE_ORDER = { S: 0, A: 1, B: 2, C: 3 };
-function gradeRankOf(civ) {
-  return civ.available ? (GRADE_ORDER[civ.grade] ?? 3) : 4;
-}
-
 /**
- * 5단계 — CIV 등급 판정(v0.5): 점수 보정이 아니라 랭킹 계층을 결정한다.
- * 반환: { civ, reasons, exclude } — exclude=true면 매칭에서 제외(D등급/어뷰징, CIV 설계서 02/14장)
- * civ-engine 미설치 환경(공개 저장소 클론/데모)에서는 전원 같은 계층 → 적합도 순 랭킹.
+ * 5단계 — CIV 판정(v0.6): 적합도를 주도 축으로 두고 CIV는 "보너스 계수"로만 반영한다.
+ * civFactor = 0.85 + CIV/100 × 0.30 → CIV 50점=×1.0, 100점=×1.15, 0점=×0.85 (등급 우선 아님).
+ * CIV 미산출(최소기준 미달)은 ×0.90 — 살짝만 감점하고, 적합도가 높으면 여전히 상위에 오른다.
+ * 반환: { civ, civFactor, reasons, exclude } — exclude=true면 매칭 제외(D등급/어뷰징, CIV 설계서 02/14장)
+ * civ-engine 미설치 환경(공개 저장소 클론/데모)에서는 civFactor=1(순수 적합도 순 랭킹).
  */
 function civAssess(creator, civStats, metricField) {
   if (!civEngine) {
-    return { civ: { available: false, score: null, grade: null, policy: null }, reasons: ['CIV 모듈 미설치 — 적합도 순 랭킹'], exclude: false };
+    return { civ: { available: false, score: null, grade: null, policy: null }, civFactor: 1, reasons: ['CIV 모듈 미설치 — 적합도 순 랭킹'], exclude: false };
   }
   const civ = civEngine.computeCiv(creator, civStats, metricField);
 
-  if (civ.abuse) return { civ, reasons: ['어뷰징 신호 확정(도달효율+좋아요율 교차) — 광고 매칭 자동 제외'], exclude: true };
-  if (civ.available && civ.grade === 'D') return { civ, reasons: [`CIV ${civ.score}점 D등급 — 매칭 제외`], exclude: true };
+  if (civ.abuse) return { civ, civFactor: 0, reasons: ['어뷰징 신호 확정(도달효율+좋아요율 교차) — 광고 매칭 자동 제외'], exclude: true };
+  if (civ.available && civ.grade === 'D') return { civ, civFactor: 0, reasons: [`CIV ${civ.score}점 D등급 — 매칭 제외`], exclude: true };
 
   const reasons = [];
+  let civFactor;
   if (!civ.available) {
-    reasons.push('CIV 분석 준비 중(최소기준 미달) — 랭킹 후순위');
+    civFactor = 0.90;
+    reasons.push('CIV 분석 준비 중(최소기준 미달) — 소폭 감점(×0.90)');
   } else {
-    reasons.push(`CIV 광고용 ${civ.score}점 (${civ.grade} — ${civ.policy})`);
+    civFactor = 0.85 + (civ.score / 100) * 0.30;
+    reasons.push(`CIV 광고용 ${civ.score}점 (${civ.grade} — ${civ.policy}) → ×${civFactor.toFixed(2)}`);
     const entries = Object.entries(civ.areas).sort((a, b) => b[1] - a[1]);
     reasons.push(`강점: ${civEngine.AREA_LABELS[entries[0][0]]} ${entries[0][1]}점`);
     if (entries.at(-1)[1] < 50) reasons.push(`약점: ${civEngine.AREA_LABELS[entries.at(-1)[0]]} ${entries.at(-1)[1]}점`);
   }
-  return { civ, reasons, exclude: false };
+  return { civ, civFactor, reasons, exclude: false };
 }
 
 /** 1단계 — 하드필터: 국내판정 + 접근불가 3회 이상(추정 폐쇄) 채널 제외 */
@@ -357,15 +353,16 @@ function scoreCreator(creator, prepared, platform) {
   const refSim = refs.profile ? referenceSimilarity(creator, refs.profile, formatTags, creatorText, metric) : null;
 
   const derived = deriveMetrics(creator, src.metricField);
-  const { civ, reasons: qualityReasons, exclude } = civAssess(creator, prepared.civStats, src.metricField);
+  const { civ, civFactor, reasons: qualityReasons, exclude } = civAssess(creator, prepared.civStats, src.metricField);
   if (exclude) return null; // CIV D등급/어뷰징 확정 — 매칭 제외(설계서 02/14장)
 
-  // v0.5: 점수 = 순수 적합도(0~100). CIV는 점수 보정이 아니라 랭킹 계층(등급)으로 반영
-  const finalScore = Math.round(
+  // v0.6: 적합도(0~100)가 주도, CIV는 보너스 계수. 최종점수 = 적합도 × civFactor(0.85~1.15), 100 캡.
+  const fitScore = Math.round(
     (refSim
       ? kwScore * weights.keyword + fmtScore * weights.format + refSim.score * weights.reference
       : kwScore * weights.keyword + fmtScore * weights.format) * 10,
   ) / 10;
+  const finalScore = Math.min(100, Math.round(fitScore * civFactor * 10) / 10);
 
   return {
     platform,
@@ -375,8 +372,9 @@ function scoreCreator(creator, prepared, platform) {
     metric,
     tier: tierLabelOf(metric),
     score: finalScore,
-    gradeRank: gradeRankOf(civ),
+    fitScore,
     breakdown: {
+      fitScore,
       keywordScore: kwScore,
       matchedKeywords: kwHits,
       matchedCoreKeywords: kw.coreHits || [],
@@ -390,6 +388,7 @@ function scoreCreator(creator, prepared, platform) {
         score: civ.score,
         grade: civ.grade,
         policy: civ.policy ?? null,
+        factor: Math.round(civFactor * 100) / 100,
         areas: civ.available ? civ.areas : null,
         confidence: civ.confidence ?? null,
       },
@@ -411,20 +410,22 @@ function scoreCreator(creator, prepared, platform) {
  */
 function matchCreators(ad, options = {}) {
   const prepared = options.prepared || prepareAd(ad);
+  // 관련성 게이트(v0.6 강화): 핵심 키워드의 일정 비율 이상 매칭돼야 후보로 인정.
+  // "운동" 하나만 걸린 부동산·뉴스 채널처럼 흔한 단어 1개로 끼어드는 무관 채널을 배제한다.
+  const core = prepared.adKeywords.core;
+  const minCoreHits = core.length ? Math.max(1, Math.ceil(core.length * 0.4)) : 0; // 예: 키워드 4개 → 2개 이상
   const results = [];
   for (const { platform, items } of prepared.pools) {
     for (const creator of items) {
       if (!passesHardFilter(creator)) continue;
       const scored = scoreCreator(creator, prepared, platform);
       if (!scored) continue; // null = CIV 제외(D등급/어뷰징)
-      // 관련성 게이트: 핵심 키워드가 하나도 매칭되지 않으면 등급 불문 후보 제외
-      // (등급 우선 랭킹에서 "가치만 높고 광고와 무관한" 채널이 상위를 차지하는 것 방지)
-      if (prepared.adKeywords.core.length && !scored.breakdown.matchedCoreKeywords.length) continue;
+      if (minCoreHits && scored.breakdown.matchedCoreKeywords.length < minCoreHits) continue;
       results.push(scored);
     }
   }
-  // v0.5 랭킹: CIV 등급 계층 우선(S→A→B→C→미산출), 같은 계층 안에서 적합도 내림차순
-  results.sort((a, b) => (a.gradeRank - b.gradeRank) || (b.score - a.score));
+  // v0.6 랭킹: 적합도 주도 + CIV 보너스가 합쳐진 단일 최종점수(score) 내림차순
+  results.sort((a, b) => (b.score - a.score) || (b.fitScore - a.fitScore));
   return options.all ? results : results.slice(0, options.limit || 20);
 }
 
@@ -440,7 +441,6 @@ module.exports = {
   tokenMatches,
   stripJosa,
   civAssess,
-  gradeRankOf,
   engagementRate,
   passesHardFilter,
   loadPools,

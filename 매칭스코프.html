@@ -49,7 +49,8 @@
   .rank-head a:hover{text-decoration:underline}
   .rank-head .info{font-size:12px;color:var(--sub)}
   .scoreline{display:flex;align-items:center;gap:10px;margin:6px 0}
-  .score-big{font-size:19px;font-weight:800}
+  .score-big{font-size:24px;font-weight:800;color:var(--accent)}
+  .score-max{font-size:12px;color:var(--sub);margin-left:-4px}
   .grade{font-size:12px;font-weight:800;color:#fff;border-radius:6px;padding:2px 8px}
   .pct{font-size:12px;color:var(--sub)}
   .axes{display:flex;gap:12px;font-size:11px;color:var(--sub);flex-wrap:wrap;margin-bottom:6px}
@@ -67,7 +68,7 @@
 <body>
 <header>
   <h1>매칭스코프</h1>
-  <span class="sub">광고 소재를 등록하면 10만+ 크리에이터 풀에서 상위 1~10위를 뽑아드립니다 · 매칭엔진 v0.5 (CIV 등급 우선 랭킹)</span>
+  <span class="sub">광고 소재를 등록하면 10만+ 크리에이터 풀에서 상위 1~10위를 뽑아드립니다 · 매칭엔진 v0.6 (적합도 주도 + CIV 보너스)</span>
 </header>
 <main>
   <section class="panel">
@@ -208,16 +209,18 @@ function renderResult({ ad, ranking, meta }) {
           <span class="info">${esc(c.category)} · ${esc(c.tier)} · ${c.metric != null ? c.metric.toLocaleString() + '명' : '-'} · ${esc(c.platform)}</span>
         </div>
         <div class="scoreline">
+          <span class="score-big">${c.score}</span><span class="score-max">점</span>
           ${b.civ && b.civ.available
-            ? `<span class="grade" style="background:${GRADE_COLORS[b.civ.grade] || '#6b7280'}">CIV ${b.civ.grade}</span><span class="pct">${esc(b.civ.policy || '')} · CIV ${b.civ.score}점</span>`
-            : '<span class="grade" style="background:#9ca3af">분석 준비 중</span>'}
-          <span class="score-big">${c.score}</span>
-          <span class="pct">적합도 · 상위 ${c.percentile.topPct}%</span>
+            ? `<span class="grade" style="background:${GRADE_COLORS[b.civ.grade] || '#6b7280'}">CIV ${b.civ.grade}</span>`
+            : '<span class="grade" style="background:#9ca3af">CIV 준비중</span>'}
+          <span class="pct">상위 ${c.percentile.topPct}%</span>
         </div>
         <div class="axes">
+          <span>적합도 <b>${b.fitScore}</b> × CIV보너스 <b>${b.civ ? b.civ.factor : 1}</b></span>
           <span>키워드 <b>${b.keywordScore}</b></span>
           <span>형식 <b>${b.formatScore}</b></span>
           ${b.referenceScore != null ? `<span>레퍼런스 <b>${b.referenceScore}</b></span>` : ''}
+          ${b.civ && b.civ.available ? `<span>${esc(b.civ.policy || '')}</span>` : ''}
         </div>
         ${b.matchedKeywords.length ? `<div class="chips">${b.matchedKeywords.map((k) => `<span class="chip">${esc(k)}</span>`).join('')}</div>` : ''}
         ${b.creatorFormatTags.length ? `<div class="chips">${b.creatorFormatTags.map((f) => `<span class="chip fmt">${esc(f)}</span>`).join('')}</div>` : ''}
@@ -240,10 +243,10 @@ function renderResult({ ad, ranking, meta }) {
     </div>
     <div class="meta-bar">
       ${meta.demo ? '<span style="display:inline-block;background:#fef3c7;color:#92400e;border-radius:6px;padding:2px 8px;font-weight:700;margin-bottom:4px">🧪 데모 모드 — 실제 풀 없이 가상 샘플 채널로 동작 중(결과의 채널은 실존하지 않습니다)</span><br>' : ''}
-      관련 후보 <b>${meta.candidateCount.toLocaleString()}</b>명(핵심 키워드 매칭) 스코어링(${(meta.tookMs / 1000).toFixed(1)}초) ·
+      관련 후보 <b>${meta.candidateCount.toLocaleString()}</b>명(핵심 키워드 40%↑ 매칭) 스코어링(${(meta.tookMs / 1000).toFixed(1)}초) ·
       적합도 가중치: 키워드 ${Math.round(w.keyword * 100)}% / 형식 ${Math.round(w.format * 100)}%${w.reference ? ` / 레퍼런스 ${Math.round(w.reference * 100)}%` : ''}<br>
       ${refLine}<br>
-      랭킹: CIV 등급 우선(S 자동추천 1순위 → A → B → C, D·어뷰징 제외) · 같은 등급 안에서 적합도순${meta.gradeCounts ? `<br>후보 CIV 분포: ${Object.entries(meta.gradeCounts).filter(([, n]) => n > 0).map(([g, n]) => `${g} ${n.toLocaleString()}`).join(' · ')}` : ''}
+      점수 = 적합도 × CIV 보너스(0.85~1.15) · 적합도 높은 순 정렬, CIV는 비슷한 적합도끼리 순위를 가름${meta.gradeCounts ? `<br>후보 CIV 분포: ${Object.entries(meta.gradeCounts).filter(([, n]) => n > 0).map(([g, n]) => `${g} ${n.toLocaleString()}`).join(' · ')}` : ''}
     </div>
     ${rows || '<div class="empty">후보가 없습니다 — 하드필터(플랫폼/국내) 조건을 확인하세요</div>'}`;
 }

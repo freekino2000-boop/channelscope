@@ -37,16 +37,18 @@ function rankCard(c) {
         <span class="info">${esc(c.category)} · ${esc(c.tier)} · ${c.metric != null ? c.metric.toLocaleString() + '명' : '-'} · ${PLATFORM_LABELS[c.platform] || esc(c.platform)}</span>
       </div>
       <div class="scoreline">
+        <span class="score-big">${c.score}</span><span class="score-max">점</span>
         ${b.civ && b.civ.available
-          ? `<span class="grade" style="background:${GRADE_COLORS[b.civ.grade] || '#6b7280'}">CIV ${b.civ.grade}</span><span class="pct">${esc(b.civ.policy || '')} · CIV ${b.civ.score}점</span>`
-          : '<span class="grade" style="background:#9ca3af">분석 준비 중</span>'}
-        <span class="score-big">${c.score}</span>
-        <span class="pct">적합도 · 상위 ${c.percentile.topPct}%</span>
+          ? `<span class="grade" style="background:${GRADE_COLORS[b.civ.grade] || '#6b7280'}">CIV ${b.civ.grade}</span>`
+          : '<span class="grade" style="background:#9ca3af">CIV 준비중</span>'}
+        <span class="pct">상위 ${c.percentile.topPct}%</span>
       </div>
       <div class="axes">
+        <span>적합도 <b>${b.fitScore}</b> × CIV보너스 <b>${b.civ ? b.civ.factor : 1}</b></span>
         <span>키워드 <b>${b.keywordScore}</b></span>
         <span>형식 <b>${b.formatScore}</b></span>
         ${b.referenceScore != null ? `<span>레퍼런스 <b>${b.referenceScore}</b></span>` : ''}
+        ${b.civ && b.civ.available ? `<span>${esc(b.civ.policy || '')}</span>` : ''}
       </div>
       ${b.matchedKeywords.length ? `<div class="chips">${b.matchedKeywords.map((k) => `<span class="chip">${esc(k)}</span>`).join('')}</div>` : ''}
       ${b.creatorFormatTags.length ? `<div class="chips">${b.creatorFormatTags.map((f) => `<span class="chip fmt">${esc(f)}</span>`).join('')}</div>` : ''}
@@ -97,7 +99,8 @@ function buildShareHtml(ad, record) {
   .rank-head a:hover{text-decoration:underline}
   .rank-head .info{font-size:12px;color:var(--sub)}
   .scoreline{display:flex;align-items:center;gap:10px;margin:6px 0}
-  .score-big{font-size:19px;font-weight:800}
+  .score-big{font-size:24px;font-weight:800;color:var(--accent)}
+  .score-max{font-size:12px;color:var(--sub);margin-left:-2px}
   .grade{font-size:12px;font-weight:800;color:#fff;border-radius:6px;padding:2px 8px}
   .pct{font-size:12px;color:var(--sub)}
   .axes{display:flex;gap:12px;font-size:11px;color:var(--sub);flex-wrap:wrap;margin-bottom:6px}
@@ -116,7 +119,7 @@ function buildShareHtml(ad, record) {
 <div class="wrap">
   <div class="head">
     <h1>크리에이터 매칭 리포트 TOP ${ranking.length}</h1>
-    <div class="sub">매칭스코프 · 매칭엔진 v0.5 (CIV 등급 우선 랭킹) · 이 파일은 단독으로 열립니다</div>
+    <div class="sub">매칭스코프 · 매칭엔진 v0.6 (적합도 주도 + CIV 보너스) · 이 파일은 단독으로 열립니다</div>
   </div>
   <div class="adinfo">
     ${record.demo ? '<div style="background:#fef3c7;color:#92400e;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;margin-bottom:10px">🧪 데모 모드 리포트 — 가상 샘플 채널 기반이며 실존 채널이 아닙니다</div>' : ''}
@@ -128,7 +131,7 @@ function buildShareHtml(ad, record) {
     <div class="row">${refLine}</div>
     <div class="meta">
       관련 후보 <b>${record.candidateCount.toLocaleString()}</b>명(핵심 키워드 매칭) 스코어링 · ${esc(record.scoredAt.slice(0, 16).replace('T', ' '))} 기준<br>
-      랭킹: CIV 등급 우선(S 자동추천 1순위 → A → B → C, D·어뷰징 제외), 같은 등급 안에서 적합도순 ·
+      점수 = 적합도 × CIV 보너스(0.85~1.15) · 적합도 높은 순 정렬 ·
       적합도 가중치: 키워드 ${Math.round(w.keyword * 100)}% / 형식 ${Math.round(w.format * 100)}%${w.reference ? ` / 레퍼런스 ${Math.round(w.reference * 100)}%` : ''}${record.gradeCounts ? `<br>후보 CIV 분포: ${Object.entries(record.gradeCounts).filter(([, n]) => n > 0).map(([g, n]) => `${g} ${n.toLocaleString()}`).join(' · ')}` : ''}
     </div>
   </div>

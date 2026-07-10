@@ -61,10 +61,10 @@ function buildHints(ad, result, prepared) {
   // CIV 기반 힌트: 미산출 사유 또는 50점 미만 약점 영역
   const AREA_LABELS = { reach: '채널 규모·도달력', engagement: '참여도·충성도', growth: '성장 가능성', content: '콘텐츠 안정성', brand: '브랜드 안정성' };
   if (b.civ && !b.civ.available) {
-    hints.push('CIV 미산출 — 최소 기준(구독자 3,000+ / 영상 5+ / 운영 30일+)을 충족해야 등급이 부여되어 랭킹 상위 계층에 노출됩니다.');
+    hints.push('CIV 미산출 — 최소 기준(구독자 3,000+ / 영상 5+ / 운영 30일+) 미달로 CIV 보너스가 ×0.90입니다. 기준 충족 시 최대 ×1.15까지 올라 매칭점수가 함께 오릅니다.');
   } else if (b.civ?.areas) {
     for (const [area, sc] of Object.entries(b.civ.areas)) {
-      if (sc < 50) hints.push(`CIV 약점: ${AREA_LABELS[area]} ${sc}점 — 이 영역을 개선하면 모든 광고 매칭 점수가 함께 오릅니다.`);
+      if (sc < 50) hints.push(`CIV 약점: ${AREA_LABELS[area]} ${sc}점 — 이 영역을 개선하면 CIV 보너스가 올라 매칭점수도 함께 오릅니다.`);
     }
   }
   return hints;
@@ -121,14 +121,14 @@ function renderHtml({ ad, result, pctInfo, hints, prepared, record }) {
   <div class="head">
     <div class="ad">광고: ${esc(ad.adName)}${ad.videoFormat ? ` · 희망 형식: ${esc(ad.videoFormat)}` : ''}</div>
     <h1>${esc(result.name)} <span style="font-size:14px;opacity:.85">${esc(result.category)} · ${esc(result.tier)} · ${result.metric != null ? result.metric.toLocaleString() : '-'}명</span></h1>
-    <div class="scorebox"><span class="score">${result.score}</span><span class="grade">${b.civ && b.civ.available ? `CIV ${b.civ.grade}` : '분석 준비 중'}</span><span class="pct">${b.civ?.policy ? esc(b.civ.policy) + ' · ' : ''}적합도 — 후보 ${record.candidateCount.toLocaleString()}명 중 <b>상위 ${pctInfo.topPct}%</b></span></div>
+    <div class="scorebox"><span class="score">${result.score}</span><span class="grade">${b.civ && b.civ.available ? `CIV ${b.civ.grade}` : 'CIV 준비중'}</span><span class="pct">매칭점수 = 적합도 ${b.fitScore} × CIV ${b.civ ? b.civ.factor : 1} · 후보 ${record.candidateCount.toLocaleString()}명 중 <b>상위 ${pctInfo.topPct}%</b></span></div>
   </div>
   <div class="sec"><h2>매칭 축별 점수 (적합도)</h2>
     ${bar('키워드 매칭', b.keywordScore, Math.round(w.keyword * 100) + '%')}
     ${bar('영상형식 적합도', b.formatScore, Math.round(w.format * 100) + '%')}
     ${w.reference ? bar('레퍼런스 유사도', b.referenceScore, Math.round(w.reference * 100) + '%') : ''}
   </div>
-  <div class="sec"><h2>채널 가치 (YOUCHI CIV 광고용) — 랭킹 계층 결정</h2>
+  <div class="sec"><h2>채널 가치 (YOUCHI CIV 광고용) — 적합도에 보너스 계수로 반영</h2>
     ${b.civ && b.civ.available ? `
     <div style="font-size:15px;font-weight:800;margin-bottom:10px">${b.civ.score}점 <span style="font-size:12px;background:${GRADE_COLORS[b.civ.grade] || '#6b7280'};color:#fff;border-radius:6px;padding:2px 8px">${b.civ.grade}</span>
       <span style="font-size:11px;color:#9ca3af;font-weight:400"> 신뢰도 C=${b.civ.confidence}</span></div>
@@ -147,7 +147,7 @@ function renderHtml({ ad, result, pctInfo, hints, prepared, record }) {
     <div class="chips">${badges.map((x) => `<span class="chip badge">${esc(x)}</span>`).join('') || '<span style="font-size:13px;color:#9ca3af">해당 없음</span>'}</div>
   </div>
   ${hints.length ? `<div class="sec"><h2>개선 힌트</h2><ul>${hints.map((h) => `<li>${esc(h)}</li>`).join('')}</ul></div>` : ''}
-  <div class="meta">분포 기준: ${esc(record.scoredAt)} 스코어링 · 매칭엔진 v0.5 (CIV 등급 우선 랭킹) · 이 카드는 실제 업로드된 영상 데이터로만 계산됩니다</div>
+  <div class="meta">분포 기준: ${esc(record.scoredAt)} 스코어링 · 매칭엔진 v0.6 (적합도 주도 + CIV 보너스) · 이 카드는 실제 업로드된 영상 데이터로만 계산됩니다</div>
 </div>
 </body></html>`;
 }
@@ -168,7 +168,7 @@ function run(adId, channelInput) {
   const hints = buildHints(ad, result, prepared);
 
   console.log(`\n[매칭 카드] ${result.name} × "${ad.adName}"`);
-  console.log(`  적합도 ${result.score} | CIV ${result.breakdown.civ?.available ? `${result.breakdown.civ.grade}(${result.breakdown.civ.policy})` : '분석 준비 중'} | 후보 ${record.candidateCount.toLocaleString()}명 중 적합도 상위 ${pctInfo.topPct}%`);
+  console.log(`  매칭점수 ${result.score} (적합도 ${result.fitScore} × CIV ${result.breakdown.civ?.factor ?? 1}) | CIV ${result.breakdown.civ?.available ? `${result.breakdown.civ.grade}(${result.breakdown.civ.policy})` : '분석 준비 중'} | 후보 ${record.candidateCount.toLocaleString()}명 중 상위 ${pctInfo.topPct}%`);
   const civ = result.breakdown.civ;
   console.log(`  키워드 ${result.breakdown.keywordScore} / 형식 ${result.breakdown.formatScore} / 레퍼런스 ${result.breakdown.referenceScore ?? '-'} / CIV ${civ?.available ? `${civ.score}점(${civ.grade})` : '준비중'}`);
   console.log(`  일치 키워드: ${result.breakdown.matchedKeywords.join(', ') || '없음'}`);
