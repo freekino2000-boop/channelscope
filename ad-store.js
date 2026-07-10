@@ -22,12 +22,7 @@ const DIR = __dirname;
 const ADS_PATH = path.join(DIR, 'data', 'ads.json');
 const SCORES_DIR = path.join(DIR, 'data', 'ad-scores');
 
-// 등급컷 백분위(설계문서 8장 예시값 — 추후 조정 가능): S=상위 5%, A=상위 20%, B=상위 50%
-const GRADE_CUTS = [
-  { grade: 'S', topPct: 5 },
-  { grade: 'A', topPct: 20 },
-  { grade: 'B', topPct: 50 },
-];
+// v0.5: 등급은 백분위 컷이 아니라 CIV 광고용 등급(절대평가)을 그대로 사용 — 등급컷 제거
 
 function loadAds() {
   try { return JSON.parse(fs.readFileSync(ADS_PATH, 'utf8')); } catch { return { ads: [] }; }
@@ -51,13 +46,15 @@ function scoreAd(ad, poolsCache) {
   const prepared = prepareAd(ad, poolsCache); // 풀 로드/레퍼런스 리졸브 1회 후 재사용
   const results = matchCreators(ad, { all: true, prepared });
 
-  const scores = results.map((r) => r.score); // 내림차순 정렬 상태
+  // v0.5: 랭킹은 등급 계층순이라 점수가 단조감소하지 않음 — 백분위용 분포는 별도 정렬
+  const scores = results.map((r) => r.score).sort((a, b) => b - a);
   const count = scores.length;
-  const cuts = GRADE_CUTS.map(({ grade, topPct }) => ({
-    grade,
-    topPct,
-    minScore: count ? scores[Math.max(0, Math.ceil((topPct / 100) * count) - 1)] : 0,
-  }));
+  // 후보군의 CIV 등급 분포(광고주에게 풀의 품질 구성을 보여주는 용도)
+  const gradeCounts = { S: 0, A: 0, B: 0, C: 0, '미산출': 0 };
+  for (const r of results) {
+    const g = r.breakdown.civ?.available ? r.breakdown.civ.grade : '미산출';
+    gradeCounts[g] = (gradeCounts[g] || 0) + 1;
+  }
 
   const record = {
     adId: ad.adId,
@@ -67,13 +64,13 @@ function scoreAd(ad, poolsCache) {
     demo: prepared.demoMode || false,
     weights: prepared.weights,
     references: { resolved: prepared.refs.resolved, unresolved: prepared.refs.unresolved },
-    gradeCuts: cuts,
+    gradeCounts,
     stats: count ? {
       max: scores[0],
       median: scores[Math.floor(count / 2)],
       mean: Math.round((scores.reduce((s, n) => s + n, 0) / count) * 10) / 10,
     } : null,
-    // 백분위 계산용 분포(내림차순 전체 점수) — 크리에이터 카드가 이걸 읽는다
+    // 적합도 백분위 계산용 분포(내림차순 전체 점수) — 크리에이터 카드가 이걸 읽는다
     scores,
     // 광고주용 상위 후보 요약(설명가능성 breakdown 포함)
     topCandidates: results.slice(0, 20),
@@ -88,14 +85,13 @@ function loadAdScores(adId) {
   try { return JSON.parse(fs.readFileSync(path.join(SCORES_DIR, `${adId}.json`), 'utf8')); } catch { return null; }
 }
 
-/** 점수 → 상위 백분위(%)와 등급. distribution은 loadAdScores() 결과 */
+/** 적합도 점수 → 후보군 내 상위 백분위(%). 등급은 CIV 등급을 별도 사용(v0.5) */
 function percentileOf(score, record) {
   const { scores } = record;
-  if (!scores?.length) return { topPct: null, grade: 'C' };
+  if (!scores?.length) return { topPct: null };
   const above = scores.filter((s) => s > score).length;
   const topPct = Math.max(0.1, Math.round(((above + 1) / scores.length) * 1000) / 10);
-  const cut = record.gradeCuts.find((c) => topPct <= c.topPct);
-  return { topPct, grade: cut ? cut.grade : 'C' };
+  return { topPct };
 }
 
 /** 광고 생성 + ads.json 저장(스코어링은 별도 — 서버/CLI가 각자 호출) */
@@ -134,12 +130,12 @@ function addAd(input) {
   console.log(`[스코어링] 후보 ${record.candidateCount.toLocaleString()}명, ${record.tookMs}ms`);
   if (record.references.resolved.length) console.log(`[레퍼런스] 리졸브됨: ${record.references.resolved.map((r) => r.name).join(', ')}`);
   if (record.references.unresolved.length) console.log(`[레퍼런스] 풀에 없음: ${record.references.unresolved.join(', ')}`);
-  console.log(`[등급컷] ${record.gradeCuts.map((c) => `${c.grade}≥${c.minScore}점(상위${c.topPct}%)`).join(' / ')}`);
-  console.log(`[상위 3] ${record.topCandidates.slice(0, 3).map((c) => `${c.name}(${c.score})`).join(', ')}`);
+  console.log(`[CIV 분포] ${Object.entries(record.gradeCounts).map(([g, n]) => `${g} ${n.toLocaleString()}`).join(' / ')}`);
+  console.log(`[상위 3] ${record.topCandidates.slice(0, 3).map((c) => `${c.name}(${c.breakdown.civ?.grade || '미산출'}, 적합도 ${c.score})`).join(', ')}`);
   return ad;
 }
 
-module.exports = { loadAds, loadAdScores, scoreAd, percentileOf, createAd, deleteAd, GRADE_CUTS };
+module.exports = { loadAds, loadAdScores, scoreAd, percentileOf, createAd, deleteAd };
 
 if (require.main === module) {
   const [cmd, ...args] = process.argv.slice(2);

@@ -55,7 +55,7 @@ function metaOf(record) {
     candidateCount: record.candidateCount,
     weights: record.weights,
     references: record.references,
-    gradeCuts: record.gradeCuts,
+    gradeCounts: record.gradeCounts,
     stats: record.stats,
   };
 }

@@ -56,12 +56,12 @@ function buildHints(ad, result, prepared) {
   }
 
   if (!b.derived.contactEmail) hints.push('채널 설명에 비즈니스 문의 이메일이 없습니다 — 추가하면 CIV 브랜드 안정성(설명란 전문성) 점수와 광고주 연락 가능성이 올라갑니다.');
-  if (!b.derived.sponsoredExperience) hints.push('협찬/유료광고 이력이 감지되지 않았습니다(이력이 있으면 +0.05 보정).');
+  if (!b.derived.sponsoredExperience) hints.push('협찬/유료광고 이력이 감지되지 않았습니다 — 이력이 있으면 광고주 신뢰 배지가 표시됩니다.');
 
   // CIV 기반 힌트: 미산출 사유 또는 50점 미만 약점 영역
   const AREA_LABELS = { reach: '채널 규모·도달력', engagement: '참여도·충성도', growth: '성장 가능성', content: '콘텐츠 안정성', brand: '브랜드 안정성' };
   if (b.civ && !b.civ.available) {
-    hints.push('CIV 미산출 — 최소 기준(구독자 3,000+ / 영상 5+ / 운영 30일+) 충족 시 보정계수가 ×0.75에서 최대 ×1.4까지 올라갑니다.');
+    hints.push('CIV 미산출 — 최소 기준(구독자 3,000+ / 영상 5+ / 운영 30일+)을 충족해야 등급이 부여되어 랭킹 상위 계층에 노출됩니다.');
   } else if (b.civ?.areas) {
     for (const [area, sc] of Object.entries(b.civ.areas)) {
       if (sc < 50) hints.push(`CIV 약점: ${AREA_LABELS[area]} ${sc}점 — 이 영역을 개선하면 모든 광고 매칭 점수가 함께 오릅니다.`);
@@ -84,12 +84,12 @@ const GRADE_COLORS = { S: '#7c3aed', A: '#2563eb', B: '#059669', C: '#6b7280' };
 
 function renderHtml({ ad, result, pctInfo, hints, prepared, record }) {
   const b = result.breakdown;
-  const gc = GRADE_COLORS[pctInfo.grade];
+  const gc = (b.civ && b.civ.available && GRADE_COLORS[b.civ.grade]) || '#6b7280';
   const w = prepared.weights;
   const badges = [];
   if (b.derived.sponsoredExperience) badges.push('협찬경험 있음');
   if (b.derived.contactEmail) badges.push('연락 가능');
-  for (const r of b.qualityReasons) if (!r.includes('-')) badges.push(r.replace(/\(\+?[\d.]+\)/, ''));
+  for (const r of b.qualityReasons) if (r.startsWith('강점:') || r.startsWith('약점:')) badges.push(r);
 
   return `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -121,14 +121,14 @@ function renderHtml({ ad, result, pctInfo, hints, prepared, record }) {
   <div class="head">
     <div class="ad">광고: ${esc(ad.adName)}${ad.videoFormat ? ` · 희망 형식: ${esc(ad.videoFormat)}` : ''}</div>
     <h1>${esc(result.name)} <span style="font-size:14px;opacity:.85">${esc(result.category)} · ${esc(result.tier)} · ${result.metric != null ? result.metric.toLocaleString() : '-'}명</span></h1>
-    <div class="scorebox"><span class="score">${result.score}</span><span class="grade">${pctInfo.grade}</span><span class="pct">후보 ${record.candidateCount.toLocaleString()}명 중 <b>상위 ${pctInfo.topPct}%</b></span></div>
+    <div class="scorebox"><span class="score">${result.score}</span><span class="grade">${b.civ && b.civ.available ? `CIV ${b.civ.grade}` : '분석 준비 중'}</span><span class="pct">${b.civ?.policy ? esc(b.civ.policy) + ' · ' : ''}적합도 — 후보 ${record.candidateCount.toLocaleString()}명 중 <b>상위 ${pctInfo.topPct}%</b></span></div>
   </div>
   <div class="sec"><h2>매칭 축별 점수 (적합도)</h2>
     ${bar('키워드 매칭', b.keywordScore, Math.round(w.keyword * 100) + '%')}
     ${bar('영상형식 적합도', b.formatScore, Math.round(w.format * 100) + '%')}
     ${w.reference ? bar('레퍼런스 유사도', b.referenceScore, Math.round(w.reference * 100) + '%') : ''}
   </div>
-  <div class="sec"><h2>채널 가치 (YOUCHI CIV 광고용) — 보정계수 ×${b.qualityMultiplier}</h2>
+  <div class="sec"><h2>채널 가치 (YOUCHI CIV 광고용) — 랭킹 계층 결정</h2>
     ${b.civ && b.civ.available ? `
     <div style="font-size:15px;font-weight:800;margin-bottom:10px">${b.civ.score}점 <span style="font-size:12px;background:${GRADE_COLORS[b.civ.grade] || '#6b7280'};color:#fff;border-radius:6px;padding:2px 8px">${b.civ.grade}</span>
       <span style="font-size:11px;color:#9ca3af;font-weight:400"> 신뢰도 C=${b.civ.confidence}</span></div>
@@ -137,7 +137,7 @@ function renderHtml({ ad, result, pctInfo, hints, prepared, record }) {
     ${bar('성장 가능성', b.civ.areas.growth)}
     ${bar('콘텐츠 안정성', b.civ.areas.content)}
     ${bar('브랜드 안정성', b.civ.areas.brand)}
-    ` : '<div style="font-size:13px;color:#9ca3af">CIV 분석 준비 중 — 최소 기준(구독자 3,000+/영상 5+/운영 30일+) 미달로 보수적 보정(×0.75) 적용</div>'}
+    ` : '<div style="font-size:13px;color:#9ca3af">CIV 분석 준비 중 — 최소 기준(구독자 3,000+/영상 5+/운영 30일+) 미달로 랭킹 후순위 계층에 배치됩니다</div>'}
   </div>
   <div class="sec"><h2>일치한 키워드 (${b.matchedKeywords.length}개)</h2>
     <div class="chips">${b.matchedKeywords.map((k) => `<span class="chip">${esc(k)}</span>`).join('') || '<span style="font-size:13px;color:#9ca3af">일치 키워드 없음</span>'}</div>
@@ -147,7 +147,7 @@ function renderHtml({ ad, result, pctInfo, hints, prepared, record }) {
     <div class="chips">${badges.map((x) => `<span class="chip badge">${esc(x)}</span>`).join('') || '<span style="font-size:13px;color:#9ca3af">해당 없음</span>'}</div>
   </div>
   ${hints.length ? `<div class="sec"><h2>개선 힌트</h2><ul>${hints.map((h) => `<li>${esc(h)}</li>`).join('')}</ul></div>` : ''}
-  <div class="meta">분포 기준: ${esc(record.scoredAt)} 스코어링 · 매칭엔진 v0.4 (적합도 Lv1 × YOUCHI CIV) · 이 카드는 실제 업로드된 영상 데이터로만 계산됩니다</div>
+  <div class="meta">분포 기준: ${esc(record.scoredAt)} 스코어링 · 매칭엔진 v0.5 (CIV 등급 우선 랭킹) · 이 카드는 실제 업로드된 영상 데이터로만 계산됩니다</div>
 </div>
 </body></html>`;
 }
@@ -168,9 +168,9 @@ function run(adId, channelInput) {
   const hints = buildHints(ad, result, prepared);
 
   console.log(`\n[매칭 카드] ${result.name} × "${ad.adName}"`);
-  console.log(`  점수 ${result.score} | 등급 ${pctInfo.grade} | 후보 ${record.candidateCount.toLocaleString()}명 중 상위 ${pctInfo.topPct}%`);
+  console.log(`  적합도 ${result.score} | CIV ${result.breakdown.civ?.available ? `${result.breakdown.civ.grade}(${result.breakdown.civ.policy})` : '분석 준비 중'} | 후보 ${record.candidateCount.toLocaleString()}명 중 적합도 상위 ${pctInfo.topPct}%`);
   const civ = result.breakdown.civ;
-  console.log(`  키워드 ${result.breakdown.keywordScore} / 형식 ${result.breakdown.formatScore} / 레퍼런스 ${result.breakdown.referenceScore ?? '-'} / CIV ${civ?.available ? `${civ.score}(${civ.grade})` : '준비중'} → ×${result.breakdown.qualityMultiplier}`);
+  console.log(`  키워드 ${result.breakdown.keywordScore} / 형식 ${result.breakdown.formatScore} / 레퍼런스 ${result.breakdown.referenceScore ?? '-'} / CIV ${civ?.available ? `${civ.score}점(${civ.grade})` : '준비중'}`);
   console.log(`  일치 키워드: ${result.breakdown.matchedKeywords.join(', ') || '없음'}`);
   for (const h of hints) console.log(`  힌트: ${h}`);
 
