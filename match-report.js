@@ -61,7 +61,7 @@ function buildHints(ad, result, prepared) {
   // CIV 기반 힌트: 미산출 사유 또는 50점 미만 약점 영역
   const AREA_LABELS = { reach: '채널 규모·도달력', engagement: '참여도·충성도', growth: '성장 가능성', content: '콘텐츠 안정성', brand: '브랜드 안정성' };
   if (b.civ && !b.civ.available) {
-    hints.push('CIV 미산출 — 최소 기준(구독자 3,000+ / 영상 5+ / 운영 30일+) 미달로 CIV 보너스가 ×0.90입니다. 기준 충족 시 최대 ×1.15까지 올라 매칭점수가 함께 오릅니다.');
+    hints.push('CIV 미산출 — 최소 기준(구독자 3,000+ / 영상 5+ / 운영 30일+) 미달 채널은 광고 매칭에서 제외됩니다. 기준을 충족하면 랭킹에 노출됩니다.');
   } else if (b.civ?.areas) {
     for (const [area, sc] of Object.entries(b.civ.areas)) {
       if (sc < 50) hints.push(`CIV 약점: ${AREA_LABELS[area]} ${sc}점 — 이 영역을 개선하면 CIV 보너스가 올라 매칭점수도 함께 오릅니다.`);

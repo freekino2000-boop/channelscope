@@ -12,7 +12,7 @@
  *   2) 키워드매칭      — Lv1.5(핵심/맥락 키워드 분리 + 조사 제거 + 복합어 매칭)
  *   3) 영상형식적합도  — video-format.js
  *   4) 레퍼런스유사도  — 카테고리(40)+형식(30)+어휘(20)+티어근접(10), 리졸브 실패 시 축 생략
- *   5) CIV 보너스계수  — 적합도에 ×(0.85~1.15) 곱함(civ-engine.js, 광고용). 미산출 ×0.90
+ *   5) CIV 보너스계수  — 적합도에 ×(0.85~1.15) 곱함(civ-engine.js, 광고용). D·어뷰징·미산출은 제외
  *
  * 적합도 = 레퍼런스 있으면 키워드×0.5 + 형식×0.2 + 레퍼런스×0.3 / 없으면 키워드×0.8 + 형식×0.2
  * 최종점수 = min(100, 적합도 × CIV계수)  ·  정렬: 최종점수 내림차순(civ-engine 미설치 시 계수=1)
@@ -274,9 +274,9 @@ function engagementRate(creator) {
 /**
  * 5단계 — CIV 판정(v0.6): 적합도를 주도 축으로 두고 CIV는 "보너스 계수"로만 반영한다.
  * civFactor = 0.85 + CIV/100 × 0.30 → CIV 50점=×1.0, 100점=×1.15, 0점=×0.85 (등급 우선 아님).
- * CIV 미산출(최소기준 미달)은 ×0.90 — 살짝만 감점하고, 적합도가 높으면 여전히 상위에 오른다.
- * 반환: { civ, civFactor, reasons, exclude } — exclude=true면 매칭 제외(D등급/어뷰징, CIV 설계서 02/14장)
- * civ-engine 미설치 환경(공개 저장소 클론/데모)에서는 civFactor=1(순수 적합도 순 랭킹).
+ * CIV 미산출(최소기준 미달 = 구독자 3천/영상 5/운영 30일)은 매칭에서 제외(등급이 안 나오는 채널 배제).
+ * 반환: { civ, civFactor, reasons, exclude } — exclude=true면 매칭 제외(D등급/어뷰징/미산출, CIV 설계서 02/08/14장)
+ * civ-engine 미설치 환경(공개 저장소 클론/데모)에서는 제외 없이 civFactor=1(순수 적합도 순 랭킹).
  */
 function civAssess(creator, civStats, metricField) {
   if (!civEngine) {
@@ -286,19 +286,15 @@ function civAssess(creator, civStats, metricField) {
 
   if (civ.abuse) return { civ, civFactor: 0, reasons: ['어뷰징 신호 확정(도달효율+좋아요율 교차) — 광고 매칭 자동 제외'], exclude: true };
   if (civ.available && civ.grade === 'D') return { civ, civFactor: 0, reasons: [`CIV ${civ.score}점 D등급 — 매칭 제외`], exclude: true };
+  // 미산출(최소기준 미달 = 구독자 3천/영상 5/운영 30일) 채널은 매칭에서 제외 — CIV 설계서상
+  // "실질적 거래 가능성이 있는 최소 규모" 미만. (civ-engine 미설치 환경은 위에서 이미 반환되어 여기 안 옴)
+  if (!civ.available) return { civ, civFactor: 0, reasons: ['CIV 미산출(최소기준 미달) — 매칭 제외'], exclude: true };
 
-  const reasons = [];
-  let civFactor;
-  if (!civ.available) {
-    civFactor = 0.90;
-    reasons.push('CIV 분석 준비 중(최소기준 미달) — 소폭 감점(×0.90)');
-  } else {
-    civFactor = 0.85 + (civ.score / 100) * 0.30;
-    reasons.push(`CIV 광고용 ${civ.score}점 (${civ.grade} — ${civ.policy}) → ×${civFactor.toFixed(2)}`);
-    const entries = Object.entries(civ.areas).sort((a, b) => b[1] - a[1]);
-    reasons.push(`강점: ${civEngine.AREA_LABELS[entries[0][0]]} ${entries[0][1]}점`);
-    if (entries.at(-1)[1] < 50) reasons.push(`약점: ${civEngine.AREA_LABELS[entries.at(-1)[0]]} ${entries.at(-1)[1]}점`);
-  }
+  const civFactor = 0.85 + (civ.score / 100) * 0.30;
+  const reasons = [`CIV 광고용 ${civ.score}점 (${civ.grade} — ${civ.policy}) → ×${civFactor.toFixed(2)}`];
+  const entries = Object.entries(civ.areas).sort((a, b) => b[1] - a[1]);
+  reasons.push(`강점: ${civEngine.AREA_LABELS[entries[0][0]]} ${entries[0][1]}점`);
+  if (entries.at(-1)[1] < 50) reasons.push(`약점: ${civEngine.AREA_LABELS[entries.at(-1)[0]]} ${entries.at(-1)[1]}점`);
   return { civ, civFactor, reasons, exclude: false };
 }
 
