@@ -101,11 +101,18 @@ function stripJosa(token) {
   return token;
 }
 
-/** 광고 토큰이 크리에이터 텍스트에 있는지 — 원형 우선, 없으면 조사 제거형으로 재시도(Lv1.5) */
-function tokenMatches(creatorText, token) {
+/** 광고 토큰이 크리에이터 텍스트에 있는지 — 원형 → 조사 제거형 → 공백 제거 텍스트 순 재시도(Lv1.5).
+ *  공백 제거 매칭("민감성피부" ↔ "민감성 피부")은 4자 이상 토큰만 — 짧은 토큰은
+ *  단어 경계를 넘는 오탐("가방수납"에서 "방수")이 생길 수 있어 제외 */
+function tokenMatches(creatorText, token, compactText) {
   if (creatorText.includes(token)) return true;
   const stripped = stripJosa(token);
-  return stripped !== token && creatorText.includes(stripped);
+  if (stripped !== token && creatorText.includes(stripped)) return true;
+  if (compactText && token.length >= 4) {
+    if (compactText.includes(token)) return true;
+    if (stripped !== token && stripped.length >= 4 && compactText.includes(stripped)) return true;
+  }
+  return false;
 }
 
 /**
@@ -139,8 +146,9 @@ function buildCreatorText(creator) {
 function keywordMatchScore(adKeywords, creatorText) {
   const { core, context } = adKeywords;
   if (!core.length && !context.length) return { score: 50, hits: [] }; // 키워드가 아예 없으면 중립값
-  const coreHits = core.filter((kw) => tokenMatches(creatorText, kw));
-  const contextHits = context.filter((kw) => tokenMatches(creatorText, kw));
+  const compactText = creatorText.replace(/\s+/g, ''); // 복합 키워드("민감성피부") 폴백 매칭용
+  const coreHits = core.filter((kw) => tokenMatches(creatorText, kw, compactText));
+  const contextHits = context.filter((kw) => tokenMatches(creatorText, kw, compactText));
   let score;
   if (core.length) {
     const coreRatio = coreHits.length / core.length;
